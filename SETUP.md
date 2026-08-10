@@ -38,12 +38,14 @@ Recommended path: open the Vercel project, choose **Storage/Marketplace**, find 
    ```text
    NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_...
    CLERK_SECRET_KEY=sk_...
-   REQUIRE_ADMIN_ROLE=true
+   ADMIN_EMAILS=epowery@icloud.com
    ```
+
+   Admin access is restricted to the comma-separated `ADMIN_EMAILS` allowlist. Every other authenticated Clerk account is treated as a client and routed to `/client`.
 
 5. Add `http://localhost:3005` and the Vercel production domain to Clerk's allowed origins/redirects.
 6. Pull only the publishable key into `.env.local` for local UI testing. Keep the secret key server-only.
-7. In Clerk Organizations, create an OSAI organization and assign administrators the `org:admin` role. Before real client data is added, enforce that role in every serverless API handler—not only in the browser UI.
+7. Keep the administrator email allowlist limited to trusted OSAI administrators. Before real client data is added, enforce the same allowlist in every admin API handler—not only in the browser UI.
 
 ## 4. Add Neon Postgres
 

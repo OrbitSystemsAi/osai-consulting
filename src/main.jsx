@@ -2,6 +2,7 @@
 
 import React, { useMemo, useState } from 'react'
 import { SignInButton, SignOutButton, UserButton, useAuth } from '@clerk/nextjs'
+import { leadProspects } from './leads'
 import {
   ArrowRight,
   ArrowUpRight,
@@ -15,11 +16,17 @@ import {
   CircleDollarSign,
   CircleCheck,
   Clock3,
+  Filter,
+  Globe2,
   LayoutDashboard,
+  Layers3,
   LockKeyhole,
   LogOut,
+  Mail,
   Menu,
   MoreHorizontal,
+  Pencil,
+  Phone,
   Plus,
   Search,
   ShieldCheck,
@@ -35,21 +42,32 @@ const navItems = [
   { label: 'Overview', icon: LayoutDashboard },
   { label: 'Contacts', icon: Users, count: 128 },
   { label: 'Companies', icon: Building2 },
+  { label: 'Clients', icon: Layers3, count: 48 },
+  { label: 'Leads & Prospects', icon: Target, count: leadProspects.length },
   { label: 'Pipeline', icon: BriefcaseBusiness, count: 7 },
   { label: 'Calendar', icon: CalendarDays },
 ]
 
 const opportunities = [
-  { company: 'Lumon Industries', contact: 'Natalie K.', value: '$18,500', stage: 'Proposal', tone: 'violet' },
-  { company: 'Northstar Labs', contact: 'Avery Chen', value: '$12,000', stage: 'Discovery', tone: 'blue' },
-  { company: 'Cedar & Stone', contact: 'Maya Brooks', value: '$8,750', stage: 'Review', tone: 'amber' },
-  { company: 'Atlas Robotics', contact: 'Jon Bell', value: '$24,000', stage: 'Qualified', tone: 'green' },
+  { company: 'Weston Family Medicine', contact: 'Family Medicine', value: 'Priority 1', stage: 'Qualified', tone: 'green' },
+  { company: 'AssociatesMD - Weston', contact: 'Urgent Care & Walk-in', value: 'Priority 1', stage: 'Research', tone: 'blue' },
+  { company: 'Weston Dental Care', contact: 'Cosmetic & Implant Dentistry', value: 'Priority 1', stage: 'Qualified', tone: 'violet' },
+  { company: 'Sage Dental of Weston', contact: 'General & Multi-Specialty', value: 'Priority 1', stage: 'Research', tone: 'amber' },
 ]
 
 const activity = [
-  { icon: CheckCircle2, text: 'Proposal sent to Lumon Industries', time: '12 min ago', color: 'mint' },
-  { icon: CalendarDays, text: 'Discovery call with Northstar Labs', time: 'Today, 2:30 PM', color: 'violet' },
-  { icon: Users, text: 'Maya Brooks added as a new contact', time: 'Yesterday', color: 'gold' },
+  { icon: CheckCircle2, text: 'Weston Family Medicine qualified', time: 'Imported lead', color: 'mint' },
+  { icon: CalendarDays, text: 'AssociatesMD intake opportunity identified', time: 'Imported lead', color: 'violet' },
+  { icon: Users, text: `${leadProspects.length} Weston prospects ingested`, time: 'Google Drive', color: 'gold' },
+]
+
+const clientSeed = [
+  { id: 1, name: 'Lumon Industries', initials: 'L', vertical: 'Manufacturing', category: 'Industrial Equipment', subcategory: 'Automation', status: 'Active', owner: 'Earl Powery', website: 'lumonindustries.com', lastActivity: '12 min ago', primary: { name: 'Natalie K.', title: 'VP of Operations', email: 'natalie.k@lumonindustries.com', phone: '(312) 555-0187' }, contacts: ['Jon Diaz', 'Rachel Stone', 'Mina Wu', 'Alex Lee', 'Sam Ortiz'] },
+  { id: 2, name: 'Northstar Labs', initials: 'N', vertical: 'Technology', category: 'Software', subcategory: 'Data Intelligence', status: 'Active', owner: 'Earl Powery', website: 'northstarlabs.ai', lastActivity: 'Today, 2:30 PM', primary: { name: 'Avery Chen', title: 'Head of Product', email: 'avery@northstarlabs.ai', phone: '(415) 555-0122' }, contacts: ['Nina Ross', 'Theo Grant', 'Lee Park'] },
+  { id: 3, name: 'Cedar & Stone', initials: 'C', vertical: 'Consumer Products', category: 'Home Goods', subcategory: 'Premium', status: 'Prospect', owner: 'Earl Powery', website: 'cedarandstone.co', lastActivity: 'Yesterday', primary: { name: 'Maya Brooks', title: 'Founder', email: 'maya@cedarandstone.co', phone: '(646) 555-0164' }, contacts: ['Drew Cole', 'Sara Kim'] },
+  { id: 4, name: 'Atlas Robotics', initials: 'A', vertical: 'Manufacturing', category: 'Robotics', subcategory: 'Systems Integration', status: 'Active', owner: 'Earl Powery', website: 'atlasrobotics.com', lastActivity: 'Jun 2, 2026', primary: { name: 'Jon Bell', title: 'Director of Sales', email: 'jon@atlasrobotics.com', phone: '(512) 555-0191' }, contacts: ['Ari Lane', 'Mo Chen', 'Tess Ford', 'Kai Reed'] },
+  { id: 5, name: 'Greenfield Energy', initials: 'G', vertical: 'Energy', category: 'Renewable', subcategory: 'Solar', status: 'Inactive', owner: 'Earl Powery', website: 'greenfield.energy', lastActivity: 'May 28, 2026', primary: { name: 'Lucas Grant', title: 'CEO', email: 'lucas@greenfield.energy', phone: '(720) 555-0176' }, contacts: ['Priya Shah', 'Owen West'] },
+  { id: 6, name: 'Pioneer Health', initials: 'P', vertical: 'Healthcare', category: 'Providers', subcategory: 'Outpatient', status: 'Active', owner: 'Earl Powery', website: 'pioneerhealth.org', lastActivity: 'May 26, 2026', primary: { name: 'Dr. Sarah Patel', title: 'COO', email: 'spatel@pioneerhealth.org', phone: '(617) 555-0138' }, contacts: ['Mara Hill', 'Eli Ford', 'June Park'] },
 ]
 
 function Header({ onMenu }) {
@@ -194,6 +212,69 @@ function Dashboard({ active }) {
   )
 }
 
+function ClientForm({ onClose, onCreate }) {
+  const [form, setForm] = useState({ name: '', vertical: '', category: '', subcategory: '', contact: '', email: '' })
+  const update = event => setForm(current => ({ ...current, [event.target.name]: event.target.value }))
+  const submit = event => {
+    event.preventDefault()
+    if (!form.name.trim() || !form.contact.trim()) return
+    onCreate(form)
+  }
+  return <div className="crm-modal-backdrop" role="presentation"><section className="crm-modal" role="dialog" aria-modal="true" aria-labelledby="new-client-title"><header><div><h2 id="new-client-title">New client</h2><p>Create the company and its primary contact.</p></div><button className="row-menu" onClick={onClose} aria-label="Close new client form"><X size={18} /></button></header><form onSubmit={submit}><label>Company name<input required name="name" value={form.name} onChange={update} placeholder="Company name" /></label><div className="form-pair"><label>Industry vertical<input name="vertical" value={form.vertical} onChange={update} placeholder="Technology" /></label><label>Category<input name="category" value={form.category} onChange={update} placeholder="Software" /></label></div><label>Subcategory<input name="subcategory" value={form.subcategory} onChange={update} placeholder="Data intelligence" /></label><div className="form-pair"><label>Primary contact<input required name="contact" value={form.contact} onChange={update} placeholder="Full name" /></label><label>Email<input type="email" name="email" value={form.email} onChange={update} placeholder="name@company.com" /></label></div><footer><button type="button" className="quiet-button" onClick={onClose}>Cancel</button><button className="primary-button" type="submit">Create client</button></footer></form></section></div>
+}
+
+function AddContactForm({ onCancel, onAdd }) {
+  const [contact, setContact] = useState({ name: '', title: '', email: '' })
+  const update = event => setContact(current => ({ ...current, [event.target.name]: event.target.value }))
+  return <form className="add-contact-form" onSubmit={event => { event.preventDefault(); if (contact.name.trim()) onAdd(contact) }}><strong>Add contact</strong><input required name="name" value={contact.name} onChange={update} placeholder="Full name" /><input name="title" value={contact.title} onChange={update} placeholder="Title" /><input type="email" name="email" value={contact.email} onChange={update} placeholder="Email" /><div><button type="button" onClick={onCancel}>Cancel</button><button type="submit">Add</button></div></form>
+}
+
+function ClientDetail({ client, onAddContact }) {
+  const [addingContact, setAddingContact] = useState(false)
+  return <aside className="client-detail-pane"><header className="client-detail-head"><div className="company-cell"><span className="company-logo logo-0">{client.initials}</span><span><strong>{client.name}</strong><small>Client relationship</small></span></div><em className={`client-status ${client.status.toLowerCase()}`}>{client.status}</em></header><div className="client-detail-actions"><button><Pencil size={14} /> Edit company</button><button className="dark" onClick={() => setAddingContact(value => !value)}><Plus size={15} /> Add contact</button></div>{addingContact && <AddContactForm onCancel={() => setAddingContact(false)} onAdd={contact => { onAddContact(contact); setAddingContact(false) }} />}<section className="client-detail-section"><h3>Overview</h3><dl><div><dt><Globe2 size={14} /> Website</dt><dd>{client.website}</dd></div><div><dt><Building2 size={14} /> Industry vertical</dt><dd>{client.vertical}</dd></div><div><dt>Category</dt><dd>{client.category}</dd></div><div><dt>Subcategory</dt><dd>{client.subcategory}</dd></div><div><dt>Status</dt><dd><span className="status-dot" /> {client.status}</dd></div><div><dt><Users size={14} /> Relationship owner</dt><dd><i className="owner-avatar">EP</i>{client.owner}</dd></div></dl></section><section className="client-detail-section"><h3>Primary contact</h3><div className="primary-contact"><span>{client.primary.name.split(' ').map(part => part[0]).join('').slice(0, 2)}</span><div><strong>{client.primary.name}</strong><small>{client.primary.title}</small><a href={`mailto:${client.primary.email}`}><Mail size={12} /> {client.primary.email}</a><a href={`tel:${client.primary.phone}`}><Phone size={12} /> {client.primary.phone}</a></div></div></section><section className="client-detail-section"><div className="section-title-row"><h3>Additional contacts ({client.contacts.length})</h3><button>View all</button></div><div className="contact-stack">{client.contacts.slice(0, 5).map(name => <span title={name} key={name}>{name.split(' ').map(part => part[0]).join('').slice(0, 2)}</span>)}</div></section><section className="client-detail-section"><h3>Recent activity</h3><div className="mini-activity"><span><CheckCircle2 size={15} /></span><div><strong>Client record reviewed</strong><small>{client.lastActivity} by {client.owner}</small></div></div><div className="mini-activity"><span className="violet"><CalendarDays size={15} /></span><div><strong>Relationship check-in</strong><small>Next action assigned</small></div></div></section></aside>
+}
+
+function ClientsModule() {
+  const [clients, setClients] = useState(clientSeed)
+  const [selectedId, setSelectedId] = useState(clientSeed[0].id)
+  const [query, setQuery] = useState('')
+  const [vertical, setVertical] = useState('All')
+  const [category, setCategory] = useState('All')
+  const [subcategory, setSubcategory] = useState('All')
+  const [status, setStatus] = useState('All')
+  const [showForm, setShowForm] = useState(false)
+  const values = key => ['All', ...new Set(clients.map(client => client[key]))]
+  const visibleClients = clients.filter(client => {
+    const matchesQuery = `${client.name} ${client.primary.name}`.toLowerCase().includes(query.toLowerCase())
+    return matchesQuery && (vertical === 'All' || client.vertical === vertical) && (category === 'All' || client.category === category) && (subcategory === 'All' || client.subcategory === subcategory) && (status === 'All' || client.status === status)
+  })
+  const selected = clients.find(client => client.id === selectedId) || visibleClients[0] || clients[0]
+  const createClient = form => {
+    const next = { id: Date.now(), name: form.name.trim(), initials: form.name.trim()[0].toUpperCase(), vertical: form.vertical || 'Unassigned', category: form.category || 'Unassigned', subcategory: form.subcategory || 'Unassigned', status: 'Prospect', owner: 'Earl Powery', website: 'Website not added', lastActivity: 'Just now', primary: { name: form.contact.trim(), title: 'Primary contact', email: form.email || 'Email not added', phone: 'Phone not added' }, contacts: [] }
+    setClients(current => [next, ...current]); setSelectedId(next.id); setShowForm(false)
+  }
+  const addContact = contact => setClients(current => current.map(client => client.id === selected.id ? { ...client, contacts: [...client.contacts, contact.name] } : client))
+  return <main className="content pane clients-content"><div className="clients-layout"><section className="clients-workspace"><header className="clients-heading"><div><p className="eyebrow">Clients</p><h1>Clients</h1><p>Manage client organizations and relationships.</p></div><button className="primary-button" onClick={() => setShowForm(true)}><Plus size={17} /> New client</button></header><section className="client-summary" aria-label="Client summary"><span><Building2 size={18} /><small>Total clients</small><strong>{clients.length}</strong></span><span><CircleCheck size={18} /><small>Active</small><strong>{clients.filter(client => client.status === 'Active').length}</strong></span><span><Clock3 size={18} /><small>Prospects</small><strong>{clients.filter(client => client.status === 'Prospect').length}</strong></span><span><CircleCheck size={18} /><small>Inactive</small><strong>{clients.filter(client => client.status === 'Inactive').length}</strong></span></section><section className="clients-table-panel"><div className="client-filters"><label className="client-search"><Search size={15} /><input value={query} onChange={event => setQuery(event.target.value)} placeholder="Search clients..." aria-label="Search clients" /></label>{[['Industry vertical', vertical, setVertical, values('vertical')], ['Category', category, setCategory, values('category')], ['Subcategory', subcategory, setSubcategory, values('subcategory')], ['Status', status, setStatus, ['All', 'Active', 'Prospect', 'Inactive']]].map(([label, value, setter, options]) => <label className="filter-select" key={label}><span>{label}</span><select value={value} onChange={event => setter(event.target.value)}>{options.map(option => <option key={option}>{option}</option>)}</select></label>)}<button className="filter-button" onClick={() => { setVertical('All'); setCategory('All'); setSubcategory('All'); setStatus('All') }}><Filter size={14} /> Reset</button></div><div className="client-table"><div className="client-table-labels"><span>Company</span><span>Industry hierarchy</span><span>Primary contact</span><span>Contacts</span><span>Status</span><span>Last activity</span></div>{visibleClients.map((client, index) => <button className={`client-row ${selected.id === client.id ? 'selected' : ''}`} key={client.id} onClick={() => setSelectedId(client.id)}><span className="company-cell"><i className={`company-logo logo-${index % 4}`}>{client.initials}</i><strong>{client.name}</strong></span><span className="hierarchy-cell">{client.vertical} <b>›</b> {client.category} <b>›</b> {client.subcategory}</span><span><strong>{client.primary.name}</strong><small>{client.primary.title}</small></span><span>{client.contacts.length + 1} <Users size={13} /></span><span><em className={`client-status ${client.status.toLowerCase()}`}>{client.status}</em></span><span>{client.lastActivity}</span></button>)}{visibleClients.length === 0 && <div className="clients-empty">No clients match these filters.</div>}</div><footer className="clients-table-footer">Showing {visibleClients.length} of {clients.length} clients</footer></section></section><ClientDetail client={selected} onAddContact={addContact} /></div>{showForm && <ClientForm onClose={() => setShowForm(false)} onCreate={createClient} />}</main>
+}
+
+function LeadDetail({ lead }) {
+  const address = [lead.address, lead.city, lead.state, lead.zip].filter(Boolean).join(', ')
+  return <aside className="client-detail-pane"><header className="client-detail-head"><div className="company-cell"><span className="company-logo logo-1">{lead.name[0]}</span><span><strong>{lead.name}</strong><small>{lead.priority}</small></span></div><em className="client-status prospect">Prospect</em></header><div className="client-detail-actions">{lead.website && <a href={`https://${lead.website.replace(/^https?:\/\//, '')}`} target="_blank" rel="noreferrer"><Globe2 size={14} /> Website</a>}{lead.phone && <a className="dark" href={`tel:${lead.phone}`}><Phone size={15} /> Call</a>}</div><section className="lead-offer"><small>Suggested wedge offer</small><strong>{lead.offer}</strong></section><section className="client-detail-section"><h3>Classification</h3><dl><div><dt>Industry vertical</dt><dd>{lead.vertical}</dd></div><div><dt>Category</dt><dd>{lead.category}</dd></div><div><dt>Subcategory</dt><dd>{lead.subcategory}</dd></div><div><dt>Priority</dt><dd>{lead.priority}</dd></div></dl></section><section className="client-detail-section"><h3>Contact details</h3><dl><div><dt><Building2 size={14} /> Address</dt><dd>{address || 'Not available'}</dd></div><div><dt><Phone size={14} /> Phone</dt><dd>{lead.phone || 'Not available'}</dd></div><div><dt><Globe2 size={14} /> Website</dt><dd>{lead.website || 'Not available'}</dd></div><div><dt>Source</dt><dd>{lead.source}</dd></div></dl></section><section className="client-detail-section"><h3>Research notes</h3><p className="lead-note">{lead.notes || 'No additional notes.'}</p></section></aside>
+}
+
+function LeadsModule() {
+  const [query, setQuery] = useState('')
+  const [vertical, setVertical] = useState('All')
+  const [category, setCategory] = useState('All')
+  const [priority, setPriority] = useState('All')
+  const [selectedId, setSelectedId] = useState(leadProspects[0].id)
+  const options = key => ['All', ...new Set(leadProspects.map(lead => lead[key]).filter(Boolean))]
+  const visible = leadProspects.filter(lead => `${lead.name} ${lead.category} ${lead.subcategory} ${lead.city}`.toLowerCase().includes(query.toLowerCase()) && (vertical === 'All' || lead.vertical === vertical) && (category === 'All' || lead.category === category) && (priority === 'All' || lead.priority === priority))
+  const selected = leadProspects.find(lead => lead.id === selectedId) || visible[0] || leadProspects[0]
+  return <main className="content pane clients-content"><div className="clients-layout"><section className="clients-workspace"><header className="clients-heading"><div><p className="eyebrow">Business development</p><h1>Leads & Prospects</h1><p>Weston prospects ingested from the Google Drive research list.</p></div><span className="source-chip">Source · Google Drive</span></header><section className="client-summary" aria-label="Lead summary"><span><Target size={18} /><small>Total leads</small><strong>{leadProspects.length}</strong></span><span><ArrowUpRight size={18} /><small>Priority 1</small><strong>{leadProspects.filter(lead => lead.priority === 'Priority 1').length}</strong></span><span><Building2 size={18} /><small>Categories</small><strong>{new Set(leadProspects.map(lead => lead.category)).size}</strong></span><span><Globe2 size={18} /><small>With website</small><strong>{leadProspects.filter(lead => lead.website).length}</strong></span></section><section className="clients-table-panel"><div className="client-filters"><label className="client-search"><Search size={15} /><input value={query} onChange={event => setQuery(event.target.value)} placeholder="Search leads..." aria-label="Search leads" /></label>{[['Industry vertical', vertical, setVertical, options('vertical')], ['Category', category, setCategory, options('category')], ['Priority', priority, setPriority, options('priority')]].map(([label, value, setter, choices]) => <label className="filter-select" key={label}><span>{label}</span><select value={value} onChange={event => setter(event.target.value)}>{choices.map(choice => <option key={choice}>{choice}</option>)}</select></label>)}<button className="filter-button" onClick={() => { setQuery(''); setVertical('All'); setCategory('All'); setPriority('All') }}><Filter size={14} /> Reset</button></div><div className="client-table"><div className="client-table-labels"><span>Company</span><span>Industry hierarchy</span><span>Location</span><span>Phone</span><span>Priority</span><span>Source</span></div>{visible.map((lead, index) => <button className={`client-row ${selected.id === lead.id ? 'selected' : ''}`} key={lead.id} onClick={() => setSelectedId(lead.id)}><span className="company-cell"><i className={`company-logo logo-${index % 4}`}>{lead.name[0]}</i><strong>{lead.name}</strong></span><span className="hierarchy-cell">{lead.vertical} <b>›</b> {lead.category} <b>›</b> {lead.subcategory}</span><span>{lead.city}, {lead.state}<small>{lead.zip}</small></span><span>{lead.phone || 'Not available'}</span><span><em className="lead-priority">{lead.priority}</em></span><span>{lead.source}</span></button>)}{visible.length === 0 && <div className="clients-empty">No prospects match these filters.</div>}</div><footer className="clients-table-footer">Showing {visible.length} of {leadProspects.length} leads and prospects</footer></section></section><LeadDetail lead={selected} /></div></main>
+}
+
+
 function Brand({ dark = false }) {
   return <div className={`brand ${dark ? '' : 'brand-light'}`}><div className="brand-mark" aria-hidden="true"><span>O</span></div><div><strong>OSAI</strong><small>CONSULTING</small></div></div>
 }
@@ -241,12 +322,12 @@ function SignedStatus({ configured, signedOut }) {
 function AuthenticatedStatus({ signedOut }) {
   const { isLoaded, isSignedIn } = useAuth()
   if (!isLoaded || !isSignedIn) return signedOut
-  return <div className="landing-user"><a className="landing-admin-link" href="/admin"><LayoutDashboard size={17} /> Open admin</a><UserButton /></div>
+  return <div className="landing-user"><a className="landing-admin-link" href="/account"><LayoutDashboard size={17} /> Open workspace</a><UserButton /></div>
 }
 
 export function Landing({ configured }) {
   const goToPreview = () => { window.location.href = '/admin?preview=1' }
-  const SignInAction = ({ secondary = false }) => configured ? <SignInButton mode="modal" fallbackRedirectUrl="/admin"><button className={secondary ? 'landing-admin-link' : 'landing-primary'}>{secondary && <LockKeyhole size={17} />}{secondary ? 'Client sign in' : 'Sign in'}</button></SignInButton> : <button className={secondary ? 'landing-admin-link' : 'landing-primary'} onClick={goToPreview}>{secondary && <LockKeyhole size={17} />}{secondary ? 'Client sign in' : 'Sign in'}</button>
+  const SignInAction = ({ secondary = false }) => configured ? <SignInButton mode="modal" fallbackRedirectUrl="/account"><button className={secondary ? 'landing-admin-link' : 'landing-primary'}>{secondary && <LockKeyhole size={17} />}{secondary ? 'Client sign in' : 'Sign in'}</button></SignInButton> : <button className={secondary ? 'landing-admin-link' : 'landing-primary'} onClick={goToPreview}>{secondary && <LockKeyhole size={17} />}{secondary ? 'Client sign in' : 'Sign in'}</button>
   return (
     <div className="landing-page">
       <header className="landing-header"><Brand /><nav aria-label="Public navigation"><a href="#services">Services</a><a href="#how-we-work">How we work</a><a href="#project-view">Project view</a><a href="mailto:hello@osai-consulting.com">Contact</a></nav><SignedStatus configured={configured} signedOut={<SignInAction secondary />} /></header>
@@ -269,7 +350,7 @@ export function AdminApp({ configured = false }) {
       <Header onMenu={() => setMenuOpen(true)} />
       <Sidebar active={active} setActive={setActive} open={menuOpen} close={() => setMenuOpen(false)} configured={configured} />
       {menuOpen && <button className="scrim" aria-label="Close navigation" onClick={() => setMenuOpen(false)} />}
-      <Dashboard active={active} />
+      {active === 'Clients' ? <ClientsModule /> : active === 'Leads & Prospects' ? <LeadsModule /> : <Dashboard active={active} />}
     </div>
   )
 }
