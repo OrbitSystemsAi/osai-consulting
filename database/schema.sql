@@ -2,9 +2,35 @@ CREATE TABLE IF NOT EXISTS crm_users (
   clerk_user_id TEXT PRIMARY KEY,
   email TEXT NOT NULL,
   display_name TEXT,
-  role TEXT NOT NULL DEFAULT 'member' CHECK (role IN ('admin', 'member')),
+  role TEXT NOT NULL DEFAULT 'client' CHECK (role IN ('admin', 'osai_admin', 'client', 'collaborator')),
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+ALTER TABLE crm_users DROP CONSTRAINT IF EXISTS crm_users_role_check;
+ALTER TABLE crm_users ALTER COLUMN role SET DEFAULT 'client';
+UPDATE crm_users SET role = 'client' WHERE role = 'member';
+ALTER TABLE crm_users ADD CONSTRAINT crm_users_role_check CHECK (role IN ('admin', 'osai_admin', 'client', 'collaborator'));
+
+CREATE TABLE IF NOT EXISTS projects (
+  id BIGSERIAL PRIMARY KEY,
+  name TEXT NOT NULL,
+  status TEXT NOT NULL DEFAULT 'active' CHECK (status IN ('draft', 'active', 'complete', 'archived')),
+  created_by TEXT NOT NULL REFERENCES crm_users(clerk_user_id),
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS project_user_access (
+  id BIGSERIAL PRIMARY KEY,
+  project_id BIGINT NOT NULL REFERENCES projects(id) ON DELETE CASCADE,
+  clerk_user_id TEXT NOT NULL REFERENCES crm_users(clerk_user_id) ON DELETE CASCADE,
+  access_scope TEXT NOT NULL DEFAULT 'entire_project' CHECK (access_scope IN ('entire_project', 'selected_parts')),
+  project_parts TEXT[] NOT NULL DEFAULT '{}',
+  assigned_by TEXT NOT NULL REFERENCES crm_users(clerk_user_id),
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  UNIQUE (project_id, clerk_user_id)
 );
 
 CREATE TABLE IF NOT EXISTS industry_verticals (
@@ -81,6 +107,10 @@ CREATE TABLE IF NOT EXISTS opportunities (
 );
 
 CREATE INDEX IF NOT EXISTS contacts_company_id_idx ON contacts(company_id);
+CREATE INDEX IF NOT EXISTS crm_users_role_idx ON crm_users(role);
+CREATE INDEX IF NOT EXISTS projects_status_idx ON projects(status);
+CREATE INDEX IF NOT EXISTS project_user_access_user_id_idx ON project_user_access(clerk_user_id);
+CREATE INDEX IF NOT EXISTS project_user_access_project_id_idx ON project_user_access(project_id);
 CREATE UNIQUE INDEX IF NOT EXISTS contacts_one_primary_per_company_idx ON contacts(company_id) WHERE is_primary;
 CREATE INDEX IF NOT EXISTS client_categories_vertical_id_idx ON client_categories(industry_vertical_id);
 CREATE INDEX IF NOT EXISTS client_subcategories_category_id_idx ON client_subcategories(category_id);

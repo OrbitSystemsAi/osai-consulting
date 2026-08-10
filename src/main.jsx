@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { SignInButton, SignOutButton, UserButton, useAuth, useUser } from '@clerk/nextjs'
 import { leadProspects } from './leads'
 import {
@@ -34,6 +34,7 @@ import {
   Sparkles,
   Target,
   UserRound,
+  UserCog,
   Users,
   Workflow,
   X,
@@ -45,6 +46,7 @@ const navItems = [
   { label: 'Companies', icon: Building2 },
   { label: 'Clients', icon: Layers3, count: 48 },
   { label: 'Leads & Prospects', icon: Target, count: leadProspects.length },
+  { label: 'Users', icon: UserCog, count: 5 },
   { label: 'Pipeline', icon: BriefcaseBusiness, count: 7 },
   { label: 'Calendar', icon: CalendarDays },
 ]
@@ -69,6 +71,13 @@ const clientSeed = [
   { id: 4, name: 'Atlas Robotics', initials: 'A', vertical: 'Manufacturing', category: 'Robotics', subcategory: 'Systems Integration', status: 'Active', owner: 'Earl Powery', website: 'atlasrobotics.com', lastActivity: 'Jun 2, 2026', primary: { name: 'Jon Bell', title: 'Director of Sales', email: 'jon@atlasrobotics.com', phone: '(512) 555-0191' }, contacts: ['Ari Lane', 'Mo Chen', 'Tess Ford', 'Kai Reed'] },
   { id: 5, name: 'Greenfield Energy', initials: 'G', vertical: 'Energy', category: 'Renewable', subcategory: 'Solar', status: 'Inactive', owner: 'Earl Powery', website: 'greenfield.energy', lastActivity: 'May 28, 2026', primary: { name: 'Lucas Grant', title: 'CEO', email: 'lucas@greenfield.energy', phone: '(720) 555-0176' }, contacts: ['Priya Shah', 'Owen West'] },
   { id: 6, name: 'Pioneer Health', initials: 'P', vertical: 'Healthcare', category: 'Providers', subcategory: 'Outpatient', status: 'Active', owner: 'Earl Powery', website: 'pioneerhealth.org', lastActivity: 'May 26, 2026', primary: { name: 'Dr. Sarah Patel', title: 'COO', email: 'spatel@pioneerhealth.org', phone: '(617) 555-0138' }, contacts: ['Mara Hill', 'Eli Ford', 'June Park'] },
+]
+
+const projectCatalog = ['Client Operations Transformation', 'Weston Growth Program', 'OSAI Website Launch', 'CRM Implementation']
+const projectParts = ['Overview', 'Plan', 'Work', 'Decisions', 'Risks', 'Documents']
+const userSeed = [
+  { id: 1, firstName: 'Earl', lastName: 'Powery', email: 'epowery@icloud.com', role: 'Admin', status: 'Active', lastActive: 'Today, 12:46 PM', assignments: [{ project: 'Client Operations Transformation', scope: 'Entire project', parts: projectParts }] },
+  { id: 2, firstName: 'nawlunz', lastName: ' ', email: 'nawlunz@me.com', role: 'Client', status: 'Active', lastActive: 'Current account', assignments: [] },
 ]
 
 function Header({ onMenu, profile, onProfile }) {
@@ -105,7 +114,7 @@ function SignOutAction({ configured }) {
   return <SignOutButton redirectUrl="/"><button className="nav-item sign-out"><LogOut size={18} /><span>Sign out</span></button></SignOutButton>
 }
 
-function Sidebar({ active, setActive, open, close, configured }) {
+function Sidebar({ active, setActive, open, close, configured, userCount }) {
   const [settingsOpen, setSettingsOpen] = useState(false)
 
   return (
@@ -118,7 +127,7 @@ function Sidebar({ active, setActive, open, close, configured }) {
             <button key={label} className={`nav-item ${active === label ? 'active' : ''}`} onClick={() => { setActive(label); close() }}>
               <Icon size={18} />
               <span>{label}</span>
-              {count && <em>{count}</em>}
+              {(label === 'Users' ? userCount : count) ? <em>{label === 'Users' ? userCount : count}</em> : null}
             </button>
           ))}
         </nav>
@@ -277,6 +286,42 @@ function LeadsModule() {
   return <main className="content pane clients-content"><div className="clients-layout"><section className="clients-workspace"><header className="clients-heading"><div><p className="eyebrow">Business development</p><h1>Leads & Prospects</h1><p>Weston prospects ingested from the Google Drive research list.</p></div><span className="source-chip">Source · Google Drive</span></header><section className="client-summary" aria-label="Lead summary"><span><Target size={18} /><small>Total leads</small><strong>{leadProspects.length}</strong></span><span><ArrowUpRight size={18} /><small>Priority 1</small><strong>{leadProspects.filter(lead => lead.priority === 'Priority 1').length}</strong></span><span><Building2 size={18} /><small>Categories</small><strong>{new Set(leadProspects.map(lead => lead.category)).size}</strong></span><span><Globe2 size={18} /><small>With website</small><strong>{leadProspects.filter(lead => lead.website).length}</strong></span></section><section className="clients-table-panel"><div className="client-filters"><label className="client-search"><Search size={15} /><input value={query} onChange={event => setQuery(event.target.value)} placeholder="Search leads..." aria-label="Search leads" /></label>{[['Industry vertical', vertical, setVertical, options('vertical')], ['Category', category, setCategory, options('category')], ['Priority', priority, setPriority, options('priority')]].map(([label, value, setter, choices]) => <label className="filter-select" key={label}><span>{label}</span><select value={value} onChange={event => setter(event.target.value)}>{choices.map(choice => <option key={choice}>{choice}</option>)}</select></label>)}<button className="filter-button" onClick={() => { setQuery(''); setVertical('All'); setCategory('All'); setPriority('All') }}><Filter size={14} /> Reset</button></div><div className="client-table"><div className="client-table-labels"><span>Company</span><span>Industry hierarchy</span><span>Location</span><span>Phone</span><span>Priority</span><span>Source</span></div>{visible.map((lead, index) => <button className={`client-row ${selected.id === lead.id ? 'selected' : ''}`} key={lead.id} onClick={() => setSelectedId(lead.id)}><span className="company-cell"><i className={`company-logo logo-${index % 4}`}>{lead.name[0]}</i><strong>{lead.name}</strong></span><span className="hierarchy-cell">{lead.vertical} <b>›</b> {lead.category} <b>›</b> {lead.subcategory}</span><span>{lead.city}, {lead.state}<small>{lead.zip}</small></span><span>{lead.phone || 'Not available'}</span><span><em className="lead-priority">{lead.priority}</em></span><span>{lead.source}</span></button>)}{visible.length === 0 && <div className="clients-empty">No prospects match these filters.</div>}</div><footer className="clients-table-footer">Showing {visible.length} of {leadProspects.length} leads and prospects</footer></section></section><LeadDetail lead={selected} /></div></main>
 }
 
+function UserAccessDetail({ user, onChange }) {
+  const [role, setRole] = useState(user.role)
+  const [project, setProject] = useState(user.assignments[0]?.project || projectCatalog[0])
+  const [scope, setScope] = useState(user.assignments[0]?.scope || 'Entire project')
+  const [parts, setParts] = useState(user.assignments[0]?.parts || projectParts)
+  const [saved, setSaved] = useState('')
+  const assignedProjects = new Set(user.assignments.map(item => item.project))
+  const togglePart = part => setParts(current => current.includes(part) ? current.filter(item => item !== part) : [...current, part])
+  const save = () => {
+    const assignments = [{ project, scope, parts: scope === 'Entire project' ? projectParts : parts }]
+    onChange({ ...user, role, assignments })
+    setSaved('Access saved')
+  }
+  return <aside className="user-access-pane"><header><div className="user-identity"><span>{user.firstName[0]}{user.lastName[0]}</span><div><strong>{user.firstName} {user.lastName}</strong><small>{user.email}</small></div></div><em className={`user-status ${user.status.toLowerCase()}`}>{user.status}</em></header><section><label>Role<select value={role} onChange={event => setRole(event.target.value)}><option>Admin</option><option>OSAI-Admin</option><option>Client</option><option>Collaborator</option></select></label></section><section><h3>Assigned projects</h3><div className="project-checklist">{projectCatalog.map(item => <label key={item}><input type="checkbox" checked={item === project || assignedProjects.has(item)} onChange={() => setProject(item)} /><span>{item}</span></label>)}</div></section><section><h3>Project access</h3><label>Configure project<select value={project} onChange={event => setProject(event.target.value)}>{projectCatalog.map(item => <option key={item}>{item}</option>)}</select></label><div className="scope-options"><label><input type="radio" name="scope" checked={scope === 'Entire project'} onChange={() => setScope('Entire project')} /> Entire project</label><label><input type="radio" name="scope" checked={scope === 'Selected parts'} onChange={() => setScope('Selected parts')} /> Selected project parts</label></div>{scope === 'Selected parts' && <div className="part-grid">{projectParts.map(part => <label key={part}><input type="checkbox" checked={parts.includes(part)} onChange={() => togglePart(part)} /> {part}</label>)}</div>}</section><footer><span role="status">{saved}</span><button onClick={save}>Save access</button></footer></aside>
+}
+
+function InviteUserForm({ onClose, onInvite }) {
+  const [form, setForm] = useState({ firstName: '', lastName: '', email: '', role: 'Client' })
+  const update = event => setForm(current => ({ ...current, [event.target.name]: event.target.value }))
+  return <div className="crm-modal-backdrop"><section className="crm-modal" role="dialog" aria-modal="true" aria-labelledby="invite-title"><header><div><h2 id="invite-title">Invite user</h2><p>Add a person and choose their initial workspace role.</p></div><button className="row-menu" onClick={onClose} aria-label="Close invite form"><X size={18} /></button></header><form onSubmit={event => { event.preventDefault(); onInvite(form) }}><div className="form-pair"><label>First name<input required name="firstName" value={form.firstName} onChange={update} /></label><label>Last name<input required name="lastName" value={form.lastName} onChange={update} /></label></div><label>Email<input required type="email" name="email" value={form.email} onChange={update} /></label><label>Role<select name="role" value={form.role} onChange={update}><option>Admin</option><option>OSAI-Admin</option><option>Client</option><option>Collaborator</option></select></label><footer><button type="button" className="quiet-button" onClick={onClose}>Cancel</button><button className="primary-button">Send invitation</button></footer></form></section></div>
+}
+
+function UsersModule({ initialUsers }) {
+  const sourceUsers = initialUsers.length ? initialUsers : userSeed
+  const [usersState, setUsersState] = useState(sourceUsers)
+  const [selectedId, setSelectedId] = useState(sourceUsers[0].id)
+  const [query, setQuery] = useState('')
+  const [role, setRole] = useState('All')
+  const [inviteOpen, setInviteOpen] = useState(false)
+  const visible = usersState.filter(user => `${user.firstName} ${user.lastName} ${user.email}`.toLowerCase().includes(query.toLowerCase()) && (role === 'All' || user.role === role))
+  const selected = usersState.find(user => user.id === selectedId) || usersState[0]
+  const updateUser = next => setUsersState(current => current.map(user => user.id === next.id ? next : user))
+  const invite = form => { const next = { id: Date.now(), ...form, status: 'Invited', lastActive: 'Invitation pending', assignments: [] }; setUsersState(current => [...current, next]); setSelectedId(next.id); setInviteOpen(false) }
+  return <main className="content pane users-content"><div className="users-layout"><section className="users-workspace"><header className="clients-heading"><div><h1>Users</h1><p>Manage workspace access and project assignments.</p></div><button className="primary-button" onClick={() => setInviteOpen(true)}><Plus size={17} /> Invite user</button></header><section className="user-summary"><span><Users size={18} /><small>Total users</small><strong>{usersState.length}</strong></span><span><ShieldCheck size={18} /><small>Administrators</small><strong>{usersState.filter(user => ['Admin', 'OSAI-Admin'].includes(user.role)).length}</strong></span><span><UserRound size={18} /><small>Clients</small><strong>{usersState.filter(user => user.role === 'Client').length}</strong></span><span><UserCog size={18} /><small>Collaborators</small><strong>{usersState.filter(user => user.role === 'Collaborator').length}</strong></span></section><section className="users-table-panel"><div className="user-filters"><label className="client-search"><Search size={15} /><input value={query} onChange={event => setQuery(event.target.value)} placeholder="Search users..." aria-label="Search users" /></label><label className="filter-select"><span>Role</span><select value={role} onChange={event => setRole(event.target.value)}><option>All</option><option>Admin</option><option>OSAI-Admin</option><option>Client</option><option>Collaborator</option></select></label></div><div className="user-table"><div className="user-table-labels"><span>User</span><span>Email</span><span>Role</span><span>Project access</span><span>Status</span><span>Last active</span></div>{visible.map(user => <button key={user.id} className={`user-row ${selected.id === user.id ? 'selected' : ''}`} onClick={() => setSelectedId(user.id)}><span className="user-identity"><i>{user.firstName[0]}{user.lastName[0]}</i><strong>{user.firstName} {user.lastName}</strong></span><span>{user.email}</span><span><em className={`role-badge role-${user.role.toLowerCase()}`}>{user.role}</em></span><span>{user.assignments.length} {user.assignments.length === 1 ? 'project' : 'projects'}</span><span><em className={`user-status ${user.status.toLowerCase()}`}>{user.status}</em></span><span>{user.lastActive}</span></button>)}</div><footer className="clients-table-footer">Showing {visible.length} of {usersState.length} users</footer></section></section><UserAccessDetail key={selected.id} user={selected} onChange={updateUser} /></div>{inviteOpen && <InviteUserForm onClose={() => setInviteOpen(false)} onInvite={invite} />}</main>
+}
+
 function ProfileForm({ profile, onSave }) {
   const [form, setForm] = useState(profile)
   const [status, setStatus] = useState('')
@@ -372,16 +417,20 @@ export function Landing({ configured }) {
   )
 }
 
-export function AdminApp({ configured = false, initialProfile = { firstName: 'Earl', lastName: 'Powery', email: '' } }) {
+export function AdminApp({ configured = false, initialProfile = { firstName: 'Earl', lastName: 'Powery', email: '' }, initialUsers = [] }) {
   const [active, setActive] = useState('Overview')
   const [menuOpen, setMenuOpen] = useState(false)
   const [profile, setProfile] = useState(initialProfile)
+  useEffect(() => {
+    const requestedView = new URLSearchParams(window.location.search).get('view')
+    if (requestedView && [...navItems.map(item => item.label), 'Profile'].includes(requestedView)) setActive(requestedView)
+  }, [])
   return (
     <div className="app-shell">
       <Header onMenu={() => setMenuOpen(true)} profile={profile} onProfile={() => setActive('Profile')} />
-      <Sidebar active={active} setActive={setActive} open={menuOpen} close={() => setMenuOpen(false)} configured={configured} />
+      <Sidebar active={active} setActive={setActive} open={menuOpen} close={() => setMenuOpen(false)} configured={configured} userCount={initialUsers.length || userSeed.length} />
       {menuOpen && <button className="scrim" aria-label="Close navigation" onClick={() => setMenuOpen(false)} />}
-      {active === 'Clients' ? <ClientsModule /> : active === 'Leads & Prospects' ? <LeadsModule /> : active === 'Profile' ? <ProfileModule configured={configured} profile={profile} onSaved={setProfile} /> : <Dashboard active={active} firstName={profile.firstName} />}
+      {active === 'Clients' ? <ClientsModule /> : active === 'Leads & Prospects' ? <LeadsModule /> : active === 'Users' ? <UsersModule initialUsers={initialUsers} /> : active === 'Profile' ? <ProfileModule configured={configured} profile={profile} onSaved={setProfile} /> : <Dashboard active={active} firstName={profile.firstName} />}
     </div>
   )
 }
