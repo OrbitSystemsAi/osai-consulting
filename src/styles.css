@@ -66,8 +66,13 @@ button { color: inherit; }
 .insight-card strong { font: 700 11px/1.3 Manrope, sans-serif; }
 .insight-card p { font-size: 10px; color: #63715c; line-height: 1.55; margin: 6px 0 10px; }
 .insight-card button { display: flex; align-items: center; gap: 5px; border: 0; padding: 0; background: transparent; font-size: 10px; font-weight: 700; color: var(--forest); cursor: pointer; }
-.settings { border-top: 1px solid #e0e4df; border-radius: 0; padding-top: 9px; height: 48px; }
-.sign-out { color: #765552; }
+.settings-menu { border-top: 1px solid #e0e4df; padding-top: 6px; }
+.settings { margin: 0; }
+.settings-chevron { margin-left: auto; transition: transform .18s ease; }
+.settings-menu.open .settings-chevron { transform: rotate(180deg); }
+.settings-actions { margin: 0 0 3px 28px; padding-left: 8px; border-left: 1px solid #d8ddd7; }
+.sign-out { height: 36px; margin: 0; color: #765552; font-size: 12px; }
+.sign-out svg { width: 16px; height: 16px; }
 .sign-out:hover { background: #f0e8e6; color: #8c3f38; }
 .system-status { display: flex; align-items: center; gap: 7px; padding: 3px 11px; color: #919995; font-size: 8px; }
 .system-status span { width: 6px; height: 6px; border-radius: 50%; background: #65bd74; }

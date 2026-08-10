@@ -85,6 +85,8 @@ function SignOutAction({ configured }) {
 }
 
 function Sidebar({ active, setActive, open, close, configured }) {
+  const [settingsOpen, setSettingsOpen] = useState(false)
+
   return (
     <aside className={`sidebar pane ${open ? 'open' : ''}`}>
       <div className="sidebar-inner">
@@ -106,8 +108,19 @@ function Sidebar({ active, setActive, open, close, configured }) {
           <p>Your proposal follow-ups are converting 18% faster this month.</p>
           <button>View insight <ArrowRight size={14} /></button>
         </div>
-        <button className="nav-item settings"><Settings size={18} /><span>Settings</span></button>
-        <SignOutAction configured={configured} />
+        <div className={`settings-menu ${settingsOpen ? 'open' : ''}`}>
+          <button
+            className="nav-item settings"
+            aria-expanded={settingsOpen}
+            aria-controls="settings-actions"
+            onClick={() => setSettingsOpen(value => !value)}
+          >
+            <Settings size={18} />
+            <span>Settings</span>
+            <ChevronDown className="settings-chevron" size={15} />
+          </button>
+          {settingsOpen && <div className="settings-actions" id="settings-actions"><SignOutAction configured={configured} /></div>}
+        </div>
         <div className="system-status"><span /> All systems operational</div>
       </div>
     </aside>
