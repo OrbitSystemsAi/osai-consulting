@@ -1,16 +1,13 @@
 import { auth, clerkClient, currentUser } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
 import { AdminApp } from '../../src/main'
-import { isAdminUser } from '../../lib/access'
+import { canAccessAdminWorkspace, getUserRole } from '../../lib/access'
 
 export const dynamic = 'force-dynamic'
 
-const validRoles = new Set(['Admin', 'OSAI-Admin', 'Client', 'Collaborator'])
-
 function formatClerkUser(clerkUser) {
   const email = clerkUser.primaryEmailAddress?.emailAddress || clerkUser.emailAddresses[0]?.emailAddress || ''
-  const metadataRole = clerkUser.publicMetadata?.role
-  const role = email.toLowerCase() === 'epowery@icloud.com' ? 'Admin' : validRoles.has(metadataRole) ? metadataRole : 'Client'
+  const role = getUserRole(clerkUser)
   const assignments = Array.isArray(clerkUser.publicMetadata?.projectAssignments) ? clerkUser.publicMetadata.projectAssignments : []
   return {
     id: clerkUser.id,
@@ -32,11 +29,12 @@ export default async function AdminPage() {
   if (!userId) redirect('/')
 
   const user = await currentUser()
-  if (!isAdminUser(user)) redirect('/client')
+  if (!canAccessAdminWorkspace(user)) redirect('/client')
+  const currentRole = getUserRole(user)
 
   const client = await clerkClient()
   const { data: clerkUsers } = await client.users.getUserList({ limit: 100, orderBy: '-created_at' })
   const users = clerkUsers.length ? clerkUsers.map(formatClerkUser) : [formatClerkUser(user)]
 
-  return <AdminApp configured initialProfile={{ firstName: user?.firstName || '', lastName: user?.lastName || '', email: user?.primaryEmailAddress?.emailAddress || '' }} initialUsers={users} />
+  return <AdminApp configured userRole={currentRole} initialProfile={{ firstName: user?.firstName || '', lastName: user?.lastName || '', email: user?.primaryEmailAddress?.emailAddress || '' }} initialUsers={users} />
 }

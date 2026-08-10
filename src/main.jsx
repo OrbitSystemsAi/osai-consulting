@@ -80,7 +80,7 @@ const userSeed = [
   { id: 2, firstName: 'nawlunz', lastName: ' ', email: 'nawlunz@me.com', role: 'Client', status: 'Active', lastActive: 'Current account', assignments: [] },
 ]
 
-function Header({ onMenu, profile, onProfile }) {
+function Header({ onMenu, profile, onProfile, userRole }) {
   const displayName = [profile.firstName, profile.lastName].filter(Boolean).join(' ') || 'OSAI User'
   const initials = `${profile.firstName?.[0] || ''}${profile.lastName?.[0] || ''}`.toUpperCase() || 'OU'
   return (
@@ -100,7 +100,7 @@ function Header({ onMenu, profile, onProfile }) {
           <button className="icon-button" aria-label="Notifications"><Bell size={18} /><span className="notification-dot" /></button>
           <button className="profile-button" onClick={onProfile} aria-label={`Open profile for ${displayName}`}>
             <span className="avatar">{initials}</span>
-            <span className="profile-copy"><strong>{displayName}</strong><small>Administrator</small></span>
+            <span className="profile-copy"><strong>{displayName}</strong><small>{userRole}</small></span>
             <ChevronDown size={15} />
           </button>
         </div>
@@ -114,8 +114,9 @@ function SignOutAction({ configured }) {
   return <SignOutButton redirectUrl="/"><button className="nav-item sign-out"><LogOut size={18} /><span>Sign out</span></button></SignOutButton>
 }
 
-function Sidebar({ active, setActive, open, close, configured, userCount }) {
+function Sidebar({ active, setActive, open, close, configured, userCount, userRole }) {
   const [settingsOpen, setSettingsOpen] = useState(false)
+  const availableNavItems = navItems.filter(item => userRole === 'Admin' || item.label !== 'Users')
 
   return (
     <aside className={`sidebar pane ${open ? 'open' : ''}`}>
@@ -123,7 +124,7 @@ function Sidebar({ active, setActive, open, close, configured, userCount }) {
         <div className="mobile-sidebar-head"><span>Navigation</span><button className="icon-button" onClick={close} aria-label="Close navigation"><X size={18} /></button></div>
         <p className="nav-label">Workspace</p>
         <nav aria-label="Main navigation">
-          {navItems.map(({ label, icon: Icon, count }) => (
+          {availableNavItems.map(({ label, icon: Icon, count }) => (
             <button key={label} className={`nav-item ${active === label ? 'active' : ''}`} onClick={() => { setActive(label); close() }}>
               <Icon size={18} />
               <span>{label}</span>
@@ -294,10 +295,15 @@ function UserAccessDetail({ user, onChange }) {
   const [saved, setSaved] = useState('')
   const assignedProjects = new Set(user.assignments.map(item => item.project))
   const togglePart = part => setParts(current => current.includes(part) ? current.filter(item => item !== part) : [...current, part])
-  const save = () => {
+  const save = async () => {
     const assignments = [{ project, scope, parts: scope === 'Entire project' ? projectParts : parts }]
-    onChange({ ...user, role, assignments })
-    setSaved('Access saved')
+    setSaved('Saving…')
+    try {
+      await onChange({ ...user, role, assignments })
+      setSaved('Access saved')
+    } catch (error) {
+      setSaved(error.message || 'Unable to save access')
+    }
   }
   return <aside className="user-access-pane"><header><div className="user-identity"><span>{user.firstName[0]}{user.lastName[0]}</span><div><strong>{user.firstName} {user.lastName}</strong><small>{user.email}</small></div></div><em className={`user-status ${user.status.toLowerCase()}`}>{user.status}</em></header><section><label>Role<select value={role} onChange={event => setRole(event.target.value)}><option>Admin</option><option>OSAI-Admin</option><option>Client</option><option>Collaborator</option></select></label></section><section><h3>Assigned projects</h3><div className="project-checklist">{projectCatalog.map(item => <label key={item}><input type="checkbox" checked={item === project || assignedProjects.has(item)} onChange={() => setProject(item)} /><span>{item}</span></label>)}</div></section><section><h3>Project access</h3><label>Configure project<select value={project} onChange={event => setProject(event.target.value)}>{projectCatalog.map(item => <option key={item}>{item}</option>)}</select></label><div className="scope-options"><label><input type="radio" name="scope" checked={scope === 'Entire project'} onChange={() => setScope('Entire project')} /> Entire project</label><label><input type="radio" name="scope" checked={scope === 'Selected parts'} onChange={() => setScope('Selected parts')} /> Selected project parts</label></div>{scope === 'Selected parts' && <div className="part-grid">{projectParts.map(part => <label key={part}><input type="checkbox" checked={parts.includes(part)} onChange={() => togglePart(part)} /> {part}</label>)}</div>}</section><footer><span role="status">{saved}</span><button onClick={save}>Save access</button></footer></aside>
 }
@@ -308,7 +314,7 @@ function InviteUserForm({ onClose, onInvite }) {
   return <div className="crm-modal-backdrop"><section className="crm-modal" role="dialog" aria-modal="true" aria-labelledby="invite-title"><header><div><h2 id="invite-title">Invite user</h2><p>Add a person and choose their initial workspace role.</p></div><button className="row-menu" onClick={onClose} aria-label="Close invite form"><X size={18} /></button></header><form onSubmit={event => { event.preventDefault(); onInvite(form) }}><div className="form-pair"><label>First name<input required name="firstName" value={form.firstName} onChange={update} /></label><label>Last name<input required name="lastName" value={form.lastName} onChange={update} /></label></div><label>Email<input required type="email" name="email" value={form.email} onChange={update} /></label><label>Role<select name="role" value={form.role} onChange={update}><option>Admin</option><option>OSAI-Admin</option><option>Client</option><option>Collaborator</option></select></label><footer><button type="button" className="quiet-button" onClick={onClose}>Cancel</button><button className="primary-button">Send invitation</button></footer></form></section></div>
 }
 
-function UsersModule({ initialUsers }) {
+function UsersModule({ initialUsers, configured }) {
   const sourceUsers = initialUsers.length ? initialUsers : userSeed
   const [usersState, setUsersState] = useState(sourceUsers)
   const [selectedId, setSelectedId] = useState(sourceUsers[0].id)
@@ -317,7 +323,20 @@ function UsersModule({ initialUsers }) {
   const [inviteOpen, setInviteOpen] = useState(false)
   const visible = usersState.filter(user => `${user.firstName} ${user.lastName} ${user.email}`.toLowerCase().includes(query.toLowerCase()) && (role === 'All' || user.role === role))
   const selected = usersState.find(user => user.id === selectedId) || usersState[0]
-  const updateUser = next => setUsersState(current => current.map(user => user.id === next.id ? next : user))
+  const updateUser = async next => {
+    if (!configured) {
+      setUsersState(current => current.map(user => user.id === next.id ? next : user))
+      return
+    }
+    const response = await fetch(`/api/admin/users/${encodeURIComponent(next.id)}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ role: next.role, assignments: next.assignments }),
+    })
+    const result = await response.json()
+    if (!response.ok) throw new Error(result.error || 'Unable to save access')
+    setUsersState(current => current.map(user => user.id === next.id ? { ...next, role: result.role, assignments: result.assignments } : user))
+  }
   const invite = form => { const next = { id: Date.now(), ...form, status: 'Invited', lastActive: 'Invitation pending', assignments: [] }; setUsersState(current => [...current, next]); setSelectedId(next.id); setInviteOpen(false) }
   return <main className="content pane users-content"><div className="users-layout"><section className="users-workspace"><header className="clients-heading"><div><h1>Users</h1><p>Manage workspace access and project assignments.</p></div><button className="primary-button" onClick={() => setInviteOpen(true)}><Plus size={17} /> Invite user</button></header><section className="user-summary"><span><Users size={18} /><small>Total users</small><strong>{usersState.length}</strong></span><span><ShieldCheck size={18} /><small>Administrators</small><strong>{usersState.filter(user => ['Admin', 'OSAI-Admin'].includes(user.role)).length}</strong></span><span><UserRound size={18} /><small>Clients</small><strong>{usersState.filter(user => user.role === 'Client').length}</strong></span><span><UserCog size={18} /><small>Collaborators</small><strong>{usersState.filter(user => user.role === 'Collaborator').length}</strong></span></section><section className="users-table-panel"><div className="user-filters"><label className="client-search"><Search size={15} /><input value={query} onChange={event => setQuery(event.target.value)} placeholder="Search users..." aria-label="Search users" /></label><label className="filter-select"><span>Role</span><select value={role} onChange={event => setRole(event.target.value)}><option>All</option><option>Admin</option><option>OSAI-Admin</option><option>Client</option><option>Collaborator</option></select></label></div><div className="user-table"><div className="user-table-labels"><span>User</span><span>Email</span><span>Role</span><span>Project access</span><span>Status</span><span>Last active</span></div>{visible.map(user => <button key={user.id} className={`user-row ${selected.id === user.id ? 'selected' : ''}`} onClick={() => setSelectedId(user.id)}><span className="user-identity"><i>{user.firstName[0]}{user.lastName[0]}</i><strong>{user.firstName} {user.lastName}</strong></span><span>{user.email}</span><span><em className={`role-badge role-${user.role.toLowerCase()}`}>{user.role}</em></span><span>{user.assignments.length} {user.assignments.length === 1 ? 'project' : 'projects'}</span><span><em className={`user-status ${user.status.toLowerCase()}`}>{user.status}</em></span><span>{user.lastActive}</span></button>)}</div><footer className="clients-table-footer">Showing {visible.length} of {usersState.length} users</footer></section></section><UserAccessDetail key={selected.id} user={selected} onChange={updateUser} /></div>{inviteOpen && <InviteUserForm onClose={() => setInviteOpen(false)} onInvite={invite} />}</main>
 }
@@ -417,20 +436,21 @@ export function Landing({ configured }) {
   )
 }
 
-export function AdminApp({ configured = false, initialProfile = { firstName: 'Earl', lastName: 'Powery', email: '' }, initialUsers = [] }) {
+export function AdminApp({ configured = false, userRole = 'Admin', initialProfile = { firstName: 'Earl', lastName: 'Powery', email: '' }, initialUsers = [] }) {
   const [active, setActive] = useState('Overview')
   const [menuOpen, setMenuOpen] = useState(false)
   const [profile, setProfile] = useState(initialProfile)
   useEffect(() => {
     const requestedView = new URLSearchParams(window.location.search).get('view')
-    if (requestedView && [...navItems.map(item => item.label), 'Profile'].includes(requestedView)) setActive(requestedView)
-  }, [])
+    const allowedViews = [...navItems.filter(item => userRole === 'Admin' || item.label !== 'Users').map(item => item.label), 'Profile']
+    if (requestedView && allowedViews.includes(requestedView)) setActive(requestedView)
+  }, [userRole])
   return (
     <div className="app-shell">
-      <Header onMenu={() => setMenuOpen(true)} profile={profile} onProfile={() => setActive('Profile')} />
-      <Sidebar active={active} setActive={setActive} open={menuOpen} close={() => setMenuOpen(false)} configured={configured} userCount={initialUsers.length || userSeed.length} />
+      <Header onMenu={() => setMenuOpen(true)} profile={profile} onProfile={() => setActive('Profile')} userRole={userRole} />
+      <Sidebar active={active} setActive={setActive} open={menuOpen} close={() => setMenuOpen(false)} configured={configured} userCount={initialUsers.length || userSeed.length} userRole={userRole} />
       {menuOpen && <button className="scrim" aria-label="Close navigation" onClick={() => setMenuOpen(false)} />}
-      {active === 'Clients' ? <ClientsModule /> : active === 'Leads & Prospects' ? <LeadsModule /> : active === 'Users' ? <UsersModule initialUsers={initialUsers} /> : active === 'Profile' ? <ProfileModule configured={configured} profile={profile} onSaved={setProfile} /> : <Dashboard active={active} firstName={profile.firstName} />}
+      {active === 'Clients' ? <ClientsModule /> : active === 'Leads & Prospects' ? <LeadsModule /> : active === 'Users' && userRole === 'Admin' ? <UsersModule initialUsers={initialUsers} configured={configured} /> : active === 'Profile' ? <ProfileModule configured={configured} profile={profile} onSaved={setProfile} /> : <Dashboard active={active === 'Users' ? 'Overview' : active} firstName={profile.firstName} />}
     </div>
   )
 }
