@@ -4,13 +4,16 @@ import React, { useMemo, useState } from 'react'
 import { SignInButton, UserButton, useAuth } from '@clerk/nextjs'
 import {
   ArrowRight,
+  ArrowUpRight,
   Bell,
+  BrainCircuit,
   BriefcaseBusiness,
   Building2,
   CalendarDays,
   CheckCircle2,
   ChevronDown,
   CircleDollarSign,
+  CircleCheck,
   Clock3,
   LayoutDashboard,
   LockKeyhole,
@@ -21,7 +24,9 @@ import {
   ShieldCheck,
   Settings,
   Sparkles,
+  Target,
   Users,
+  Workflow,
   X,
 } from 'lucide-react'
 
@@ -173,20 +178,39 @@ function Brand({ dark = false }) {
   return <div className={`brand ${dark ? '' : 'brand-light'}`}><div className="brand-mark" aria-hidden="true"><span>O</span></div><div><strong>OSAI</strong><small>CONSULTING</small></div></div>
 }
 
-function AdminPreview() {
-  return (
-    <div className="landing-preview" aria-label="Preview of the OSAI admin workspace">
-      <div className="preview-top"><Brand dark /><div className="preview-search"><Search size={11} /> Search contacts, companies, deals...</div><span className="preview-user">EP</span></div>
-      <div className="preview-layout">
-        <div className="preview-nav"><span className="preview-label">Workspace</span><strong><LayoutDashboard size={11} /> Overview</strong><span><Users size={11} /> Contacts</span><span><Building2 size={11} /> Companies</span><span><BriefcaseBusiness size={11} /> Pipeline</span></div>
-        <div className="preview-body">
-          <div className="preview-heading"><div><small>Overview</small><h3>Good morning, Earl.</h3></div><b>+ Add opportunity</b></div>
-          <div className="preview-metrics"><span><small>Active pipeline</small><strong>$63,250</strong></span><span><small>Open opportunities</small><strong>7</strong></span><span><small>Upcoming meetings</small><strong>5</strong></span></div>
-          <div className="preview-panels"><div><strong>Opportunity pipeline</strong>{opportunities.slice(0, 3).map(item => <span key={item.company}><i>{item.company[0]}</i>{item.company}<small>{item.value}</small></span>)}</div><div><strong>Recent activity</strong>{activity.slice(0, 2).map(item => <span key={item.text}>{item.text}</span>)}</div></div>
-        </div>
-      </div>
-    </div>
-  )
+const phases = [
+  { name: 'Discover & align', owner: 'Earl Powery', initials: 'EP', date: 'Mar 18 – Mar 28', status: 'Complete', detail: 'Clarify goals, constraints, and success metrics.', deliverables: ['Project charter', 'Stakeholder map', 'Success metrics'] },
+  { name: 'Design the system', owner: 'Nadia Khan', initials: 'NK', date: 'Mar 29 – Apr 21', status: 'Complete', detail: 'Define future state, workflows, and solution approach.', deliverables: ['Future state model', 'Workflow design', 'Implementation plan'] },
+  { name: 'Build & validate', owner: 'Jon Diaz', initials: 'JD', date: 'Apr 22 – May 13', status: 'In progress', detail: 'Configure, develop, and test the solution in real conditions.', deliverables: ['Working solution', 'Test results', 'Validation report'] },
+  { name: 'Launch & enable', owner: 'Sara Kim', initials: 'SK', date: 'May 14 – Jun 24', status: 'Upcoming', detail: 'Go live, support adoption, and hand over.', deliverables: ['Go-live checklist', 'Training & enablement', 'Support plan'] },
+]
+
+function ProjectHero() {
+  return <div className="project-hero" aria-label="Project delivery workspace preview"><aside><Brand dark /><strong><LayoutDashboard size={14} /> Overview</strong><span><Workflow size={14} /> Plan</span><span><CheckCircle2 size={14} /> Work</span><span><CircleCheck size={14} /> Decisions</span><span><ShieldCheck size={14} /> Risks</span></aside><div className="project-hero-body"><div className="project-title"><div><small>Project</small><h3>Client Operations Transformation</h3><p>Unify systems, automate key workflows, and enable data-driven decisions.</p></div><b>68%<small>Complete</small></b></div><div className="phase-summary"><span><small>Current phase</small><strong>Build & validate</strong><em>● In progress</em></span><span><small>Phase progress</small><strong>68% complete</strong><i><b /></i></span></div><div className="milestone-line">{['Discover & align','Define & plan','Design solution','Build & validate','Pilot','Launch'].map((label,index)=><span className={index < 4 ? 'done' : ''} key={label}><i>{index < 3 ? '✓' : ''}</i><small>{label}</small></span>)}</div><div className="hero-project-footer"><span><strong>Owners</strong><small><i>EP</i> Earl Powery · Executive sponsor</small><small><i>NK</i> Nadia Khan · Project lead</small></span><span><strong>Top risk</strong><small>Legacy system dependency may impact integration timeline.</small><em>Mitigation · Sandbox in progress</em></span></div></div></div>
+}
+
+function ServicesSection() {
+  const services = [{ icon: BrainCircuit, title: 'AI strategy', text: 'Find the right use cases and build a practical roadmap.' },{ icon: Workflow, title: 'Systems & workflow design', text: 'Replace friction with connected, scalable operations.' },{ icon: ArrowUpRight, title: 'Project delivery', text: 'Create momentum with clear ownership, cadence, and decisions.' }]
+  return <section className="services-section" id="services"><h2>Strategy is only<br />valuable when it ships.</h2><div className="service-list">{services.map(({icon:Icon,title,text})=><article key={title}><span><Icon size={21} /></span><h3>{title}</h3><p>{text}</p></article>)}</div></section>
+}
+
+function ProjectShowcase() {
+  const [view, setView] = useState('Roadmap')
+  const views = ['Roadmap', 'Weekly view', 'Decisions', 'Risks']
+  return <section className="project-showcase" id="project-view"><div className="showcase-heading"><h2>See how your project stays on track.</h2><p>A shared operating view keeps scope, ownership, decisions, risks, and outcomes visible from kickoff through launch.</p></div><div className="view-tabs" role="tablist">{views.map(item=><button role="tab" aria-selected={view===item} className={view===item?'active':''} onClick={()=>setView(item)} key={item}>{item}</button>)}</div>{view==='Roadmap'?<RoadmapView />:<AlternateProjectView view={view} />}</section>
+}
+
+function RoadmapView() {
+  return <div className="roadmap-layout"><div className="roadmap-table"><header><div><span className="roadmap-mark">O</span><span><strong>Client Operations Transformation</strong><small>Project roadmap</small></span></div><div className="roadmap-progress"><small>Overall progress</small><i><b /></i><strong>68%</strong></div></header><div className="roadmap-labels"><span>Phase</span><span>Owner</span><span>Date</span><span>Status</span><span>Deliverables</span></div>{phases.map((phase,index)=><div className={`phase-row ${phase.status==='In progress'?'selected':''}`} key={phase.name}><span className="phase-cell"><i className={`phase-node node-${index}`}>{index<2?'✓':''}</i><span><strong>{phase.name}</strong><small>{phase.detail}</small></span></span><span className="owner-cell"><i>{phase.initials}</i><span>{phase.owner}<small>{index===0?'Executive sponsor':index===1?'Project lead':index===2?'Delivery lead':'Change lead'}</small></span></span><span>{phase.date}</span><span className={`status-text status-${index}`}>● {phase.status}</span><span className="deliverables">{phase.deliverables.map(item=><small key={item}>• {item}</small>)}</span></div>)}</div><ProjectDetail /></div>
+}
+
+function ProjectDetail() {
+  return <aside className="project-detail"><header><h3>Build & validate</h3><em>In progress</em></header><section><span><Target size={16} /></span><div><strong>Outcome</strong><p>A validated solution that meets user needs and operational requirements.</p></div></section><section><span><CalendarDays size={16} /></span><div><strong>This week</strong><ul><li>Complete workflow configuration</li><li>Execute end-to-end test scenarios</li><li>Prepare stakeholder review</li></ul></div></section><section><span><CircleCheck size={16} /></span><div><strong>Decision needed</strong><p>Confirm automation scope for Phase 2.</p></div></section><section className="risk"><span>!</span><div><strong>Top risk</strong><p>Integration complexity may delay validation.</p><small>Mitigation · Run integration tests early.</small></div></section></aside>
+}
+
+function AlternateProjectView({ view }) {
+  const copy={ 'Weekly view':['This week’s delivery focus','Three workstreams are moving through validation with clear owners and Friday decision points.'], Decisions:['Decision log','Every material choice includes an owner, deadline, context, and impact on scope.'], Risks:['Risk register','Risks are surfaced early, scored by impact, and paired with a named mitigation owner.'] }
+  return <div className="alternate-view"><span><Target size={28} /></span><h3>{copy[view][0]}</h3><p>{copy[view][1]}</p><button onClick={()=>{}}>Open {view.toLowerCase()}</button></div>
 }
 
 function SignedStatus({ configured, signedOut }) {
@@ -202,15 +226,17 @@ function AuthenticatedStatus({ signedOut }) {
 
 export function Landing({ configured }) {
   const goToPreview = () => { window.location.href = '/admin?preview=1' }
-  const SignInAction = ({ secondary = false }) => configured ? <SignInButton mode="modal" fallbackRedirectUrl="/admin"><button className={secondary ? 'landing-admin-link' : 'landing-primary'}>{secondary && <LockKeyhole size={17} />}{secondary ? 'Admin access' : 'Sign in'}</button></SignInButton> : <button className={secondary ? 'landing-admin-link' : 'landing-primary'} onClick={goToPreview}>{secondary && <LockKeyhole size={17} />}{secondary ? 'Admin access' : 'Sign in'}</button>
+  const SignInAction = ({ secondary = false }) => configured ? <SignInButton mode="modal" fallbackRedirectUrl="/admin"><button className={secondary ? 'landing-admin-link' : 'landing-primary'}>{secondary && <LockKeyhole size={17} />}{secondary ? 'Client sign in' : 'Sign in'}</button></SignInButton> : <button className={secondary ? 'landing-admin-link' : 'landing-primary'} onClick={goToPreview}>{secondary && <LockKeyhole size={17} />}{secondary ? 'Client sign in' : 'Sign in'}</button>
   return (
     <div className="landing-page">
-      <header className="landing-header"><Brand /><nav aria-label="Public navigation"><a href="#approach">Approach</a><a href="#capabilities">Capabilities</a><a href="mailto:hello@osai-consulting.com">Contact</a></nav><SignedStatus configured={configured} signedOut={<SignInAction secondary />} /></header>
-      <main className="landing-main">
-        <section className="landing-copy" id="approach"><h1>Clarity for every<br />client relationship.</h1><p>One secure workspace for opportunities, relationships, and the work that moves your business forward.</p><div className="landing-actions"><SignInAction /><a className="landing-secondary" href="mailto:hello@osai-consulting.com?subject=OSAI%20CRM%20access%20request">Request access</a></div>{!configured && <p className="preview-note"><ShieldCheck size={14} /> Local preview mode · Connect Clerk to enable live sign-in</p>}</section>
-        <section className="landing-visual" id="capabilities"><AdminPreview /></section>
+      <header className="landing-header"><Brand /><nav aria-label="Public navigation"><a href="#services">Services</a><a href="#how-we-work">How we work</a><a href="#project-view">Project view</a><a href="mailto:hello@osai-consulting.com">Contact</a></nav><SignedStatus configured={configured} signedOut={<SignInAction secondary />} /></header>
+      <main>
+        <section className="services-hero" id="how-we-work"><div className="services-hero-copy"><h1>Turn complex work<br />into clear forward motion.</h1><p>OSAI Consulting brings AI strategy, operational systems, and hands-on project leadership together—so your most important initiatives move from idea to measurable outcome.</p><div className="landing-actions"><a className="landing-primary" href="mailto:hello@osai-consulting.com?subject=Start%20an%20OSAI%20conversation">Start a conversation</a><a className="landing-secondary" href="#project-view">See how we deliver</a></div></div><div className="services-hero-visual"><ProjectHero /></div></section>
+        <ServicesSection />
+        <ProjectShowcase />
+        <section className="consulting-cta"><Brand dark /><div><h2>Bring structure to the work that matters.</h2><p>Let’s turn your next initiative into a clear, accountable delivery plan.</p></div><a href="mailto:hello@osai-consulting.com?subject=Plan%20a%20working%20session">Plan a working session</a><SignedStatus configured={configured} signedOut={<SignInAction secondary />} /></section>
       </main>
-      <footer className="landing-footer"><LockKeyhole size={15} /> Private workspace <span>·</span> Protected access</footer>
+      <footer className="landing-footer"><Brand /><span>AI strategy · Systems design · Project delivery</span><a href="mailto:hello@osai-consulting.com">hello@osai-consulting.com</a></footer>
     </div>
   )
 }
