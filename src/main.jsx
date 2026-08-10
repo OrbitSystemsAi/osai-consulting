@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useMemo, useState } from 'react'
-import { SignInButton, UserButton, useAuth } from '@clerk/nextjs'
+import { SignInButton, SignOutButton, UserButton, useAuth } from '@clerk/nextjs'
 import {
   ArrowRight,
   ArrowUpRight,
@@ -17,6 +17,7 @@ import {
   Clock3,
   LayoutDashboard,
   LockKeyhole,
+  LogOut,
   Menu,
   MoreHorizontal,
   Plus,
@@ -78,7 +79,12 @@ function Header({ onMenu }) {
   )
 }
 
-function Sidebar({ active, setActive, open, close }) {
+function SignOutAction({ configured }) {
+  if (!configured) return <button className="nav-item sign-out" onClick={() => { window.location.href = '/' }}><LogOut size={18} /><span>Sign out</span></button>
+  return <SignOutButton redirectUrl="/"><button className="nav-item sign-out"><LogOut size={18} /><span>Sign out</span></button></SignOutButton>
+}
+
+function Sidebar({ active, setActive, open, close, configured }) {
   return (
     <aside className={`sidebar pane ${open ? 'open' : ''}`}>
       <div className="sidebar-inner">
@@ -101,6 +107,7 @@ function Sidebar({ active, setActive, open, close }) {
           <button>View insight <ArrowRight size={14} /></button>
         </div>
         <button className="nav-item settings"><Settings size={18} /><span>Settings</span></button>
+        <SignOutAction configured={configured} />
         <div className="system-status"><span /> All systems operational</div>
       </div>
     </aside>
@@ -241,13 +248,13 @@ export function Landing({ configured }) {
   )
 }
 
-export function AdminApp() {
+export function AdminApp({ configured = false }) {
   const [active, setActive] = useState('Overview')
   const [menuOpen, setMenuOpen] = useState(false)
   return (
     <div className="app-shell">
       <Header onMenu={() => setMenuOpen(true)} />
-      <Sidebar active={active} setActive={setActive} open={menuOpen} close={() => setMenuOpen(false)} />
+      <Sidebar active={active} setActive={setActive} open={menuOpen} close={() => setMenuOpen(false)} configured={configured} />
       {menuOpen && <button className="scrim" aria-label="Close navigation" onClick={() => setMenuOpen(false)} />}
       <Dashboard active={active} />
     </div>

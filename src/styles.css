@@ -67,6 +67,8 @@ button { color: inherit; }
 .insight-card p { font-size: 10px; color: #63715c; line-height: 1.55; margin: 6px 0 10px; }
 .insight-card button { display: flex; align-items: center; gap: 5px; border: 0; padding: 0; background: transparent; font-size: 10px; font-weight: 700; color: var(--forest); cursor: pointer; }
 .settings { border-top: 1px solid #e0e4df; border-radius: 0; padding-top: 9px; height: 48px; }
+.sign-out { color: #765552; }
+.sign-out:hover { background: #f0e8e6; color: #8c3f38; }
 .system-status { display: flex; align-items: center; gap: 7px; padding: 3px 11px; color: #919995; font-size: 8px; }
 .system-status span { width: 6px; height: 6px; border-radius: 50%; background: #65bd74; }
 .mobile-sidebar-head { display: none; }
