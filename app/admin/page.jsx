@@ -6,7 +6,7 @@ export const dynamic = 'force-dynamic'
 
 export default async function AdminPage() {
   const configured = Boolean(process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY && process.env.CLERK_SECRET_KEY)
-  if (!configured) return <AdminApp configured={false} />
+  if (!configured) return <AdminApp configured={false} initialProfile={{ firstName: 'Earl', lastName: 'Powery', email: 'epowery@icloud.com' }} />
 
   const { userId } = await auth()
   if (!userId) redirect('/')
@@ -21,5 +21,5 @@ export default async function AdminPage() {
 
   if (!isAdmin) redirect('/client')
 
-  return <AdminApp configured />
+  return <AdminApp configured initialProfile={{ firstName: user?.firstName || '', lastName: user?.lastName || '', email: user?.primaryEmailAddress?.emailAddress || '' }} />
 }

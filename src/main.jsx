@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useMemo, useState } from 'react'
-import { SignInButton, SignOutButton, UserButton, useAuth } from '@clerk/nextjs'
+import { SignInButton, SignOutButton, UserButton, useAuth, useUser } from '@clerk/nextjs'
 import { leadProspects } from './leads'
 import {
   ArrowRight,
@@ -33,6 +33,7 @@ import {
   Settings,
   Sparkles,
   Target,
+  UserRound,
   Users,
   Workflow,
   X,
@@ -70,7 +71,9 @@ const clientSeed = [
   { id: 6, name: 'Pioneer Health', initials: 'P', vertical: 'Healthcare', category: 'Providers', subcategory: 'Outpatient', status: 'Active', owner: 'Earl Powery', website: 'pioneerhealth.org', lastActivity: 'May 26, 2026', primary: { name: 'Dr. Sarah Patel', title: 'COO', email: 'spatel@pioneerhealth.org', phone: '(617) 555-0138' }, contacts: ['Mara Hill', 'Eli Ford', 'June Park'] },
 ]
 
-function Header({ onMenu }) {
+function Header({ onMenu, profile, onProfile }) {
+  const displayName = [profile.firstName, profile.lastName].filter(Boolean).join(' ') || 'OSAI User'
+  const initials = `${profile.firstName?.[0] || ''}${profile.lastName?.[0] || ''}`.toUpperCase() || 'OU'
   return (
     <header className="app-header pane">
       <div className="header-inner">
@@ -86,9 +89,9 @@ function Header({ onMenu }) {
         </div>
         <div className="header-actions">
           <button className="icon-button" aria-label="Notifications"><Bell size={18} /><span className="notification-dot" /></button>
-          <button className="profile-button">
-            <span className="avatar">EP</span>
-            <span className="profile-copy"><strong>Earl Powery</strong><small>Administrator</small></span>
+          <button className="profile-button" onClick={onProfile} aria-label={`Open profile for ${displayName}`}>
+            <span className="avatar">{initials}</span>
+            <span className="profile-copy"><strong>{displayName}</strong><small>Administrator</small></span>
             <ChevronDown size={15} />
           </button>
         </div>
@@ -137,7 +140,7 @@ function Sidebar({ active, setActive, open, close, configured }) {
             <span>Settings</span>
             <ChevronDown className="settings-chevron" size={15} />
           </button>
-          {settingsOpen && <div className="settings-actions" id="settings-actions"><SignOutAction configured={configured} /></div>}
+          {settingsOpen && <div className="settings-actions" id="settings-actions"><button className="nav-item" onClick={() => { setActive('Profile'); close() }}><UserRound size={18} /><span>Profile</span></button><SignOutAction configured={configured} /></div>}
         </div>
         <div className="system-status"><span /> All systems operational</div>
       </div>
@@ -154,7 +157,7 @@ function MetricCard({ label, value, note, icon: Icon, accent }) {
   )
 }
 
-function Dashboard({ active }) {
+function Dashboard({ active, firstName }) {
   const [filter, setFilter] = useState('All deals')
   const [query, setQuery] = useState('')
   const visible = useMemo(() => opportunities.filter(item => item.company.toLowerCase().includes(query.toLowerCase())), [query])
@@ -163,7 +166,7 @@ function Dashboard({ active }) {
     <main className="content pane">
       <div className="content-inner">
         <section className="page-heading">
-          <div><p className="eyebrow">{active}</p><h1>Good morning, Earl.</h1><p>Here’s what’s moving across your business today.</p></div>
+          <div><p className="eyebrow">{active}</p><h1>Good morning, {firstName || 'there'}.</h1><p>Here’s what’s moving across your business today.</p></div>
           <button className="primary-button"><Plus size={17} /> Add opportunity</button>
         </section>
 
@@ -274,6 +277,33 @@ function LeadsModule() {
   return <main className="content pane clients-content"><div className="clients-layout"><section className="clients-workspace"><header className="clients-heading"><div><p className="eyebrow">Business development</p><h1>Leads & Prospects</h1><p>Weston prospects ingested from the Google Drive research list.</p></div><span className="source-chip">Source · Google Drive</span></header><section className="client-summary" aria-label="Lead summary"><span><Target size={18} /><small>Total leads</small><strong>{leadProspects.length}</strong></span><span><ArrowUpRight size={18} /><small>Priority 1</small><strong>{leadProspects.filter(lead => lead.priority === 'Priority 1').length}</strong></span><span><Building2 size={18} /><small>Categories</small><strong>{new Set(leadProspects.map(lead => lead.category)).size}</strong></span><span><Globe2 size={18} /><small>With website</small><strong>{leadProspects.filter(lead => lead.website).length}</strong></span></section><section className="clients-table-panel"><div className="client-filters"><label className="client-search"><Search size={15} /><input value={query} onChange={event => setQuery(event.target.value)} placeholder="Search leads..." aria-label="Search leads" /></label>{[['Industry vertical', vertical, setVertical, options('vertical')], ['Category', category, setCategory, options('category')], ['Priority', priority, setPriority, options('priority')]].map(([label, value, setter, choices]) => <label className="filter-select" key={label}><span>{label}</span><select value={value} onChange={event => setter(event.target.value)}>{choices.map(choice => <option key={choice}>{choice}</option>)}</select></label>)}<button className="filter-button" onClick={() => { setQuery(''); setVertical('All'); setCategory('All'); setPriority('All') }}><Filter size={14} /> Reset</button></div><div className="client-table"><div className="client-table-labels"><span>Company</span><span>Industry hierarchy</span><span>Location</span><span>Phone</span><span>Priority</span><span>Source</span></div>{visible.map((lead, index) => <button className={`client-row ${selected.id === lead.id ? 'selected' : ''}`} key={lead.id} onClick={() => setSelectedId(lead.id)}><span className="company-cell"><i className={`company-logo logo-${index % 4}`}>{lead.name[0]}</i><strong>{lead.name}</strong></span><span className="hierarchy-cell">{lead.vertical} <b>›</b> {lead.category} <b>›</b> {lead.subcategory}</span><span>{lead.city}, {lead.state}<small>{lead.zip}</small></span><span>{lead.phone || 'Not available'}</span><span><em className="lead-priority">{lead.priority}</em></span><span>{lead.source}</span></button>)}{visible.length === 0 && <div className="clients-empty">No prospects match these filters.</div>}</div><footer className="clients-table-footer">Showing {visible.length} of {leadProspects.length} leads and prospects</footer></section></section><LeadDetail lead={selected} /></div></main>
 }
 
+function ProfileForm({ profile, onSave }) {
+  const [form, setForm] = useState(profile)
+  const [status, setStatus] = useState('')
+  const update = event => setForm(current => ({ ...current, [event.target.name]: event.target.value }))
+  const submit = async event => {
+    event.preventDefault()
+    setStatus('Saving…')
+    try {
+      await onSave({ firstName: form.firstName.trim(), lastName: form.lastName.trim(), email: form.email })
+      setStatus('Profile saved')
+    } catch {
+      setStatus('Unable to save profile')
+    }
+  }
+  return <main className="content pane profile-content"><section className="profile-module"><header><div><h1>Profile</h1><p>Manage the name connected to your OSAI workspace.</p></div><span className="profile-large-avatar">{`${form.firstName?.[0] || ''}${form.lastName?.[0] || ''}`.toUpperCase() || 'OU'}</span></header><form onSubmit={submit}><div className="profile-form-grid"><label>First name<input required name="firstName" value={form.firstName} onChange={update} autoComplete="given-name" /></label><label>Last name<input required name="lastName" value={form.lastName} onChange={update} autoComplete="family-name" /></label></div><label>Email address<input name="email" value={form.email} disabled aria-describedby="email-help" /></label><small id="email-help">Email is managed by your sign-in account.</small><footer><span role="status">{status}</span><button className="primary-button" type="submit">Save profile</button></footer></form></section></main>
+}
+
+function ClerkProfileModule({ profile, onSaved }) {
+  const { user } = useUser()
+  return <ProfileForm profile={profile} onSave={async next => { await user.update({ firstName: next.firstName, lastName: next.lastName }); onSaved(next) }} />
+}
+
+function ProfileModule({ configured, profile, onSaved }) {
+  if (configured) return <ClerkProfileModule profile={profile} onSaved={onSaved} />
+  return <ProfileForm profile={profile} onSave={async next => onSaved(next)} />
+}
+
 
 function Brand({ dark = false }) {
   return <div className={`brand ${dark ? '' : 'brand-light'}`}><div className="brand-mark" aria-hidden="true"><span>O</span></div><div><strong>OSAI</strong><small>CONSULTING</small></div></div>
@@ -342,15 +372,16 @@ export function Landing({ configured }) {
   )
 }
 
-export function AdminApp({ configured = false }) {
+export function AdminApp({ configured = false, initialProfile = { firstName: 'Earl', lastName: 'Powery', email: '' } }) {
   const [active, setActive] = useState('Overview')
   const [menuOpen, setMenuOpen] = useState(false)
+  const [profile, setProfile] = useState(initialProfile)
   return (
     <div className="app-shell">
-      <Header onMenu={() => setMenuOpen(true)} />
+      <Header onMenu={() => setMenuOpen(true)} profile={profile} onProfile={() => setActive('Profile')} />
       <Sidebar active={active} setActive={setActive} open={menuOpen} close={() => setMenuOpen(false)} configured={configured} />
       {menuOpen && <button className="scrim" aria-label="Close navigation" onClick={() => setMenuOpen(false)} />}
-      {active === 'Clients' ? <ClientsModule /> : active === 'Leads & Prospects' ? <LeadsModule /> : <Dashboard active={active} />}
+      {active === 'Clients' ? <ClientsModule /> : active === 'Leads & Prospects' ? <LeadsModule /> : active === 'Profile' ? <ProfileModule configured={configured} profile={profile} onSaved={setProfile} /> : <Dashboard active={active} firstName={profile.firstName} />}
     </div>
   )
 }
