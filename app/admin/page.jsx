@@ -1,6 +1,7 @@
 import { auth, currentUser } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
 import { AdminApp } from '../../src/main'
+import { isAdminUser } from '../../lib/access'
 
 export const dynamic = 'force-dynamic'
 
@@ -12,14 +13,7 @@ export default async function AdminPage() {
   if (!userId) redirect('/')
 
   const user = await currentUser()
-  const allowedEmails = (process.env.ADMIN_EMAILS || '')
-    .split(',')
-    .map(email => email.trim().toLowerCase())
-    .filter(Boolean)
-  const isAllowedEmail = user?.emailAddresses.some(({ emailAddress }) => allowedEmails.includes(emailAddress.toLowerCase()))
-  const isAdmin = isAllowedEmail
-
-  if (!isAdmin) redirect('/client')
+  if (!isAdminUser(user)) redirect('/client')
 
   return <AdminApp configured initialProfile={{ firstName: user?.firstName || '', lastName: user?.lastName || '', email: user?.primaryEmailAddress?.emailAddress || '' }} />
 }

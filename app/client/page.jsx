@@ -1,6 +1,7 @@
 import { auth, currentUser } from '@clerk/nextjs/server'
 import { SignOutButton } from '@clerk/nextjs'
 import { redirect } from 'next/navigation'
+import { isAdminUser } from '../../lib/access'
 
 export const dynamic = 'force-dynamic'
 
@@ -9,14 +10,7 @@ export default async function ClientPage() {
   if (!userId) redirect('/')
 
   const user = await currentUser()
-  const adminEmails = (process.env.ADMIN_EMAILS || '')
-    .split(',')
-    .map(email => email.trim().toLowerCase())
-    .filter(Boolean)
-  const isAdmin = user?.emailAddresses.some(({ emailAddress }) =>
-    adminEmails.includes(emailAddress.toLowerCase())
-  )
-  if (isAdmin) redirect('/admin')
+  if (isAdminUser(user)) redirect('/admin')
 
   const name = user?.firstName || user?.fullName || 'Client'
 
