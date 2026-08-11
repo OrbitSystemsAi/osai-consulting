@@ -520,12 +520,16 @@ function CalendarModule() {
   const [view, setView] = useState('Month')
   const [dragOver, setDragOver] = useState('')
   const [events, setEvents] = useState(calendarSeed)
+  const [calendarHydrated, setCalendarHydrated] = useState(false)
   const [editing, setEditing] = useState(null)
   useEffect(() => {
     const saved = window.localStorage.getItem('osai-calendar-items')
     if (saved) { try { setEvents(normalizeCalendarItems(JSON.parse(saved))) } catch {} }
+    setCalendarHydrated(true)
   }, [])
-  useEffect(() => { window.localStorage.setItem('osai-calendar-items', JSON.stringify(events)) }, [events])
+  useEffect(() => {
+    if (calendarHydrated) window.localStorage.setItem('osai-calendar-items', JSON.stringify(events))
+  }, [events, calendarHydrated])
   const monthStart = new Date(cursor.getFullYear(), cursor.getMonth(), 1)
   const gridStart = new Date(monthStart); gridStart.setDate(1 - monthStart.getDay())
   const monthDays = Array.from({ length: 42 }, (_, index) => { const date = new Date(gridStart); date.setDate(gridStart.getDate() + index); return date })
