@@ -3,6 +3,7 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { SignInButton, SignOutButton, UserButton, useAuth, useUser } from '@clerk/nextjs'
 import { leadProspects } from './leads'
+import { serviceCatalog } from './services'
 import {
   ArrowRight,
   ArrowUpRight,
@@ -49,16 +50,91 @@ const navItems = [
   { label: 'Overview', icon: LayoutDashboard },
   { label: 'Market', icon: Target, count: leadProspects.length },
   { label: 'Calendar', icon: CalendarDays },
-  { label: 'Services', icon: Sparkles, count: 3 },
+  { label: 'Campaign', icon: Megaphone, count: 3 },
+  { label: 'Services', icon: Sparkles, count: serviceCatalog.length },
   { label: 'Pipeline', icon: BriefcaseBusiness, count: 7 },
   { label: 'Users', icon: UserCog, count: 5 },
 ]
 
-const serviceCatalog = [
-  { icon: BrainCircuit, title: 'AI strategy', type: 'Advisory', text: 'Find the right AI use cases and build a practical roadmap tied to measurable business outcomes.', deliverables: ['Opportunity assessment', 'AI roadmap', 'Implementation priorities'] },
-  { icon: Workflow, title: 'Systems & workflow design', type: 'Transformation', text: 'Replace operational friction with connected workflows, clear ownership, and scalable systems.', deliverables: ['Current-state review', 'Future-state workflows', 'Systems blueprint'] },
-  { icon: ArrowUpRight, title: 'Project delivery', type: 'Delivery', text: 'Move critical initiatives from plan to launch with visible decisions, risks, milestones, and accountability.', deliverables: ['Delivery roadmap', 'Operating cadence', 'Launch oversight'] },
-]
+const serviceIcons = { Advisory: BrainCircuit, Transformation: Workflow, Delivery: ArrowUpRight }
+const customServicesKey = 'osai-custom-services-v1'
+const serviceProductOverridesKey = 'osai-service-products-v1'
+const customCampaignsKey = 'osai-custom-campaigns-v1'
+
+function serviceSlug(value) {
+  return value.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+}
+
+function parseUploadedService(source, fileName) {
+  if (fileName.toLowerCase().endsWith('.json')) {
+    const parsed = JSON.parse(source)
+    const service = Array.isArray(parsed) ? parsed[0] : parsed
+    if (!service?.title || !service?.brief || !service?.description) throw new Error('JSON requires title, brief, and description fields.')
+    return { ...service, id: service.id || serviceSlug(service.title), products: service.products || [] }
+  }
+
+  const title = source.match(/^##(?:\s+\d+\.)?\s+(.+)$/m)?.[1]?.trim() || source.match(/^#\s+(.+)$/m)?.[1]?.trim()
+  const category = source.match(/^\*\*Category:\*\*\s*(.+)$/m)?.[1]?.trim()
+  const brief = source.match(/^\*\*Brief:\*\*\s*(.+)$/m)?.[1]?.trim()
+  const description = source.match(/\*\*Description:\*\*\s*\n([\s\S]*?)(?=\n\n\*\*Products:\*\*|$)/)?.[1]?.trim().replace(/\n+/g, ' ')
+  const productsSection = source.split('**Products:**')[1] || ''
+  const productBlocks = productsSection.split(/^\*\*(.+)\*\*$/m).slice(1)
+  const products = []
+  for (let index = 0; index < productBlocks.length; index += 2) {
+    const name = productBlocks[index]?.trim()
+    const details = productBlocks[index + 1] || ''
+    if (!name) continue
+    products.push({
+      name,
+      summary: details.match(/^\*([^*]+)\*$/m)?.[1]?.trim() || '',
+      includes: details.match(/^- Includes:\s*(.+)$/m)?.[1]?.split(',').map(item => item.trim()) || [],
+      format: details.match(/^- Format:\s*(.+)$/m)?.[1]?.trim() || '',
+      investment: details.match(/^- Investment:\s*(.+)$/m)?.[1]?.trim() || '',
+    })
+  }
+  if (!title || !category || !brief || !description) throw new Error('The document needs a title, Category, Brief, Description, and Products section.')
+  return { id: serviceSlug(title), title, category, brief, description, products }
+}
+
+function parseUploadedProduct(source, fileName) {
+  if (fileName.toLowerCase().endsWith('.json')) {
+    const parsed = JSON.parse(source)
+    const product = Array.isArray(parsed) ? parsed[0] : parsed
+    if (!product?.name) throw new Error('JSON requires a product name.')
+    return { name: product.name, summary: product.summary || '', includes: product.includes || [], format: product.format || '', investment: product.investment || '' }
+  }
+  const name = source.match(/^\*\*(.+)\*\*$/m)?.[1]?.trim() || source.match(/^#{1,3}\s+(.+)$/m)?.[1]?.trim()
+  const summary = source.match(/^\*([^*]+)\*$/m)?.[1]?.trim() || ''
+  const includes = source.match(/^- Includes:\s*(.+)$/m)?.[1]?.split(',').map(item => item.trim()) || []
+  const format = source.match(/^- Format:\s*(.+)$/m)?.[1]?.trim() || ''
+  const investment = source.match(/^- Investment:\s*(.+)$/m)?.[1]?.trim() || ''
+  if (!name) throw new Error('The document needs a product name as a heading.')
+  return { name, summary, includes, format, investment }
+}
+
+function parseUploadedCampaign(source, fileName) {
+  if (fileName.toLowerCase().endsWith('.json')) {
+    const parsed = JSON.parse(source)
+    const campaign = Array.isArray(parsed) ? parsed[0] : parsed
+    if (!campaign?.title || !campaign?.brief || !campaign?.description) throw new Error('JSON requires title, brief, and description fields.')
+    return { ...campaign, id: campaign.id || serviceSlug(campaign.title), category: campaign.category || campaign.status || 'Planning', activities: campaign.activities || [] }
+  }
+  const title = source.match(/^##(?:\s+\d+\.)?\s+(.+)$/m)?.[1]?.trim() || source.match(/^#\s+(.+)$/m)?.[1]?.trim()
+  const category = source.match(/^\*\*(?:Status|Category):\*\*\s*(.+)$/m)?.[1]?.trim() || 'Planning'
+  const brief = source.match(/^\*\*Brief:\*\*\s*(.+)$/m)?.[1]?.trim()
+  const description = source.match(/\*\*Description:\*\*\s*\n([\s\S]*?)(?=\n\n\*\*(?:Activities|Products):\*\*|$)/)?.[1]?.trim().replace(/\n+/g, ' ')
+  const activitiesSection = source.split(/\*\*(?:Activities|Products):\*\*/)[1] || ''
+  const activityBlocks = activitiesSection.split(/^\*\*(.+)\*\*$/m).slice(1)
+  const activities = []
+  for (let index = 0; index < activityBlocks.length; index += 2) {
+    const name = activityBlocks[index]?.trim()
+    const details = activityBlocks[index + 1] || ''
+    if (!name) continue
+    activities.push({ name, summary: details.match(/^\*([^*]+)\*$/m)?.[1]?.trim() || '', includes: details.match(/^- Includes:\s*(.+)$/m)?.[1]?.split(',').map(item => item.trim()) || [] })
+  }
+  if (!title || !brief || !description) throw new Error('The document needs a title, Brief, Description, and Activities section.')
+  return { id: serviceSlug(title), title, category, brief, description, activities }
+}
 
 const opportunities = [
   { company: 'Weston Family Medicine', contact: 'Family Medicine', value: 'Priority 1', stage: 'Qualified', tone: 'green' },
@@ -71,6 +147,43 @@ const activity = [
   { icon: CheckCircle2, text: 'Weston Family Medicine qualified', time: 'Imported lead', color: 'mint' },
   { icon: CalendarDays, text: 'AssociatesMD intake opportunity identified', time: 'Imported lead', color: 'violet' },
   { icon: Users, text: `${leadProspects.length} Weston prospects ingested`, time: 'Google Drive', color: 'gold' },
+]
+
+const campaignCatalog = [
+  {
+    id: 'weston-healthcare-outreach',
+    title: 'Weston Healthcare Outreach',
+    category: 'Active',
+    brief: 'Introduce OSAI intake and scheduling solutions to qualified healthcare targets across Weston.',
+    description: 'A focused market-development campaign designed to move high-fit healthcare targets from initial outreach into discovery conversations around intake, scheduling, and operational workflow improvements.',
+    activities: [
+      { name: 'Target list', summary: 'Build and qualify the priority healthcare audience.', includes: ['Review market fit', 'Confirm decision-maker roles', 'Prioritize outreach order'] },
+      { name: 'Outreach sequence', summary: 'Run a coordinated introduction across email and direct follow-up.', includes: ['Initial introduction', 'Value-led follow-up', 'Discovery invitation'] },
+      { name: 'Campaign review', summary: 'Evaluate responses and advance qualified relationships.', includes: ['Response review', 'Status updates', 'Next-step assignments'] },
+    ],
+  },
+  {
+    id: 'business-services-development',
+    title: 'Business Services Development',
+    category: 'Planning',
+    brief: 'Identify operationally complex service businesses that can benefit from connected workflows and automation.',
+    description: 'A market-development campaign focused on business-service organizations with visible workflow friction, manual handoffs, or opportunities for better client intake and operational coordination.',
+    activities: [
+      { name: 'Segment refinement', summary: 'Narrow the market to the highest-potential categories.', includes: ['Category review', 'Fit criteria', 'Priority segment selection'] },
+      { name: 'Message development', summary: 'Create an outreach message grounded in operational value.', includes: ['Problem framing', 'Offer alignment', 'Call-to-action design'] },
+    ],
+  },
+  {
+    id: 'technology-advisory-nurture',
+    title: 'Technology Advisory Nurture',
+    category: 'Nurture',
+    brief: 'Maintain useful contact with organizations considering technology planning, AI adoption, or modernization.',
+    description: 'A long-term nurture campaign for companies that are not ready to buy today but have an emerging need for technology planning, AI readiness, or modernization guidance.',
+    activities: [
+      { name: 'Insight series', summary: 'Share concise guidance that builds trust over time.', includes: ['Technology readiness insight', 'AI planning perspective', 'Roadmap example'] },
+      { name: 'Readiness check-in', summary: 'Create a natural opportunity to reassess timing and priorities.', includes: ['Quarterly check-in', 'Priority review', 'Advisory invitation'] },
+    ],
+  },
 ]
 
 const clientSeed = [
@@ -123,7 +236,7 @@ function SignOutAction({ configured }) {
   return <SignOutButton redirectUrl="/"><button className="nav-item sign-out"><LogOut size={18} /><span>Sign out</span></button></SignOutButton>
 }
 
-function Sidebar({ active, setActive, open, close, configured, userCount, userRole }) {
+function Sidebar({ active, setActive, open, close, campaignCount, configured, serviceCount, userCount, userRole }) {
   const availableNavItems = navItems.filter(item => userRole === 'Admin' || item.label !== 'Users')
 
   return (
@@ -136,7 +249,7 @@ function Sidebar({ active, setActive, open, close, configured, userCount, userRo
             <button key={label} className={`nav-item ${active === label ? 'active' : ''}`} onClick={() => { setActive(label); close() }}>
               <Icon size={18} />
               <span>{label}</span>
-              {(label === 'Users' ? userCount : count) ? <em>{label === 'Users' ? userCount : count}</em> : null}
+              {(label === 'Users' ? userCount : label === 'Services' ? serviceCount : label === 'Campaign' ? campaignCount : count) ? <em>{label === 'Users' ? userCount : label === 'Services' ? serviceCount : label === 'Campaign' ? campaignCount : count}</em> : null}
             </button>
           ))}
         </nav>
@@ -326,7 +439,7 @@ function LeadDetail({ lead, onNotesChange, calendarItems, onCalendarItemsChange 
       return related && (related === companyName || companyName.includes(related) || related.includes(companyName))
     })
     .sort((a, b) => `${a.date}${a.time}`.localeCompare(`${b.date}${b.time}`))
-  const tabs = ['Main', 'Contacts', 'Calendar', 'Offers']
+  const tabs = ['Main', 'Contacts', 'Calendar', 'Campaigns', 'Offers']
   const updateCalendarItems = updater => {
     onCalendarItemsChange(updater)
   }
@@ -426,6 +539,10 @@ function LeadDetail({ lead, onNotesChange, calendarItems, onCalendarItemsChange 
           <label>Notes<textarea value={editingCalendarItem.notes || ''} onChange={event => setEditingCalendarItem({ ...editingCalendarItem, notes: event.target.value })} /></label>
           <footer><button type="button" onClick={() => setEditingCalendarItem(null)}>Cancel</button><button className="dark" type="submit">Save event</button></footer>
         </form>}
+      </section>}
+      {tab === 'Campaigns' && <section className="client-detail-section company-campaign-panel">
+        <div className="company-tab-heading"><h3>Campaigns</h3></div>
+        <div className="company-tab-empty"><Megaphone size={22} /><strong>No campaigns</strong><span>Create or assign a campaign for this company.</span></div>
       </section>}
       {tab === 'Offers' && <section className="client-detail-section company-offer-panel">
         <h3>Offers</h3>
@@ -567,8 +684,135 @@ function CalendarModule() {
       </aside></div></main>
 }
 
-function ServicesModule() {
-  return <main className="content pane services-content"><div className="content-inner"><header className="page-heading"><div><h1>Services</h1><p>Define, package, and manage the services OSAI brings to market.</p></div></header><section className="workspace-services">{serviceCatalog.map(({ icon: Icon, title, type, text, deliverables }) => <article key={title}><header><span><Icon size={20} /></span><small>{type}</small></header><h2>{title}</h2><p>{text}</p><div><strong>Core deliverables</strong>{deliverables.map(item => <span key={item}><CheckCircle2 size={13} />{item}</span>)}</div></article>)}</section></div></main>
+function ServicesModule({ onCountChange }) {
+  const [selectedId, setSelectedId] = useState(null)
+  const [addOpen, setAddOpen] = useState(false)
+  const [productAddOpen, setProductAddOpen] = useState(false)
+  const [customServices, setCustomServices] = useState([])
+  const [productOverrides, setProductOverrides] = useState({})
+  useEffect(() => {
+    try {
+      const saved = JSON.parse(window.localStorage.getItem(customServicesKey) || '[]')
+      const savedProducts = JSON.parse(window.localStorage.getItem(serviceProductOverridesKey) || '{}')
+      setCustomServices(saved)
+      setProductOverrides(savedProducts)
+      onCountChange(serviceCatalog.length + saved.length)
+    } catch { setCustomServices([]); setProductOverrides({}) }
+  }, [onCountChange])
+  const services = [...serviceCatalog, ...customServices].map(service => ({ ...service, products: productOverrides[service.id] || service.products }))
+  const selected = services.find(service => service.id === selectedId)
+  const addService = service => {
+    const uniqueService = { ...service, id: `${service.id}-${Date.now()}` }
+    const next = [...customServices, uniqueService]
+    setCustomServices(next)
+    window.localStorage.setItem(customServicesKey, JSON.stringify(next))
+    onCountChange(serviceCatalog.length + next.length)
+    setAddOpen(false)
+    setSelectedId(uniqueService.id)
+  }
+  const addProduct = product => {
+    const nextProducts = [...selected.products, product]
+    const nextOverrides = { ...productOverrides, [selected.id]: nextProducts }
+    setProductOverrides(nextOverrides)
+    window.localStorage.setItem(serviceProductOverridesKey, JSON.stringify(nextOverrides))
+    setProductAddOpen(false)
+  }
+
+  if (selected) {
+    return <main className="content pane services-content"><div className="content-inner service-detail">
+      <button className="service-back" onClick={() => setSelectedId(null)}><ChevronLeft size={16} /> Services</button>
+      <header className="service-detail-heading"><div className="service-detail-title"><div><h1>{selected.title}</h1><em>{selected.category}</em></div><button className="service-add" onClick={() => setProductAddOpen(true)}><Plus size={15} /> Add</button></div><p>{selected.description}</p></header>
+      <section className="service-product-grid" aria-label={`${selected.title} products`}>
+        {selected.products.map(product => <article key={product.name}>
+          <h2>{product.name}</h2>
+          <p>{product.summary}</p>
+          <div><strong>Includes</strong><ul>{product.includes.map(item => <li key={item}>{item}</li>)}</ul></div>
+          <footer><span><small>Format</small>{product.format}</span><span><small>Investment</small>{product.investment}</span></footer>
+        </article>)}
+      </section>{productAddOpen && <AddProductDialog serviceTitle={selected.title} onClose={() => setProductAddOpen(false)} onAdd={addProduct} />}
+    </div></main>
+  }
+
+  return <main className="content pane services-content"><div className="content-inner"><header className="page-heading services-heading"><div><h1>Services</h1><p>Define, package, and manage the services OSAI brings to market.</p></div><button className="service-add" onClick={() => setAddOpen(true)}><Plus size={15} /> Add</button></header><section className="workspace-services">{services.map(service => <article className="service-card" key={service.id} role="link" tabIndex={0} aria-label={`View ${service.title}`} onClick={() => setSelectedId(service.id)} onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); setSelectedId(service.id) } }}><h2>{service.title}</h2><em>{service.category}</em><p>{service.brief}</p><div className="service-card-products"><strong>Products</strong><ul>{service.products.map(product => <li key={product.name}>{product.name}</li>)}</ul></div></article>)}</section>{addOpen && <AddServiceDialog onClose={() => setAddOpen(false)} onAdd={addService} />}</div></main>
+}
+
+function CampaignModule({ onCountChange }) {
+  const [selectedId, setSelectedId] = useState(null)
+  const [addOpen, setAddOpen] = useState(false)
+  const [customCampaigns, setCustomCampaigns] = useState([])
+  useEffect(() => {
+    try {
+      const saved = JSON.parse(window.localStorage.getItem(customCampaignsKey) || '[]')
+      setCustomCampaigns(saved)
+      onCountChange(campaignCatalog.length + saved.length)
+    } catch { setCustomCampaigns([]) }
+  }, [onCountChange])
+  const campaigns = [...campaignCatalog, ...customCampaigns]
+  const selected = campaigns.find(campaign => campaign.id === selectedId)
+  const addCampaign = campaign => {
+    const uniqueCampaign = { ...campaign, id: `${campaign.id}-${Date.now()}` }
+    const next = [...customCampaigns, uniqueCampaign]
+    setCustomCampaigns(next)
+    window.localStorage.setItem(customCampaignsKey, JSON.stringify(next))
+    onCountChange(campaignCatalog.length + next.length)
+    setAddOpen(false)
+    setSelectedId(uniqueCampaign.id)
+  }
+  if (selected) {
+    return <main className="content pane services-content"><div className="content-inner service-detail">
+      <button className="service-back" onClick={() => setSelectedId(null)}><ChevronLeft size={16} /> Campaign</button>
+      <header className="service-detail-heading"><div className="service-detail-title"><div><h1>{selected.title}</h1><em>{selected.category}</em></div></div><p>{selected.description}</p></header>
+      <section className="service-product-grid" aria-label={`${selected.title} activities`}>
+        {selected.activities.map(activityItem => <article key={activityItem.name}><h2>{activityItem.name}</h2><p>{activityItem.summary}</p><div><strong>Activities</strong><ul>{activityItem.includes.map(item => <li key={item}>{item}</li>)}</ul></div></article>)}
+      </section>
+    </div></main>
+  }
+  return <main className="content pane services-content"><div className="content-inner"><header className="page-heading services-heading"><div><h1>Campaign</h1><p>Plan and manage focused activity that moves relationships through the market-development lifecycle.</p></div><button className="service-add" onClick={() => setAddOpen(true)}><Plus size={15} /> Add</button></header><section className="workspace-services workspace-campaigns">{campaigns.map(campaign => <article className="service-card" key={campaign.id} role="link" tabIndex={0} aria-label={`View ${campaign.title}`} onClick={() => setSelectedId(campaign.id)} onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); setSelectedId(campaign.id) } }}><h2>{campaign.title}</h2><em>{campaign.category}</em><p>{campaign.brief}</p><div className="service-card-products"><strong>Activities</strong><ul>{campaign.activities.map(item => <li key={item.name}>{item.name}</li>)}</ul></div></article>)}</section>{addOpen && <AddCampaignDialog onClose={() => setAddOpen(false)} onAdd={addCampaign} />}</div></main>
+}
+
+function AddCampaignDialog({ onClose, onAdd }) {
+  const [file, setFile] = useState(null)
+  const [preview, setPreview] = useState(null)
+  const [error, setError] = useState('')
+  const chooseFile = async event => {
+    const nextFile = event.target.files?.[0]
+    if (!nextFile) return
+    setFile(nextFile)
+    setError('')
+    try { setPreview(parseUploadedCampaign(await nextFile.text(), nextFile.name)) }
+    catch (reason) { setPreview(null); setError(reason.message || 'Unable to read this document.') }
+  }
+  return <div className="crm-modal-backdrop"><section className="crm-modal service-upload-dialog" role="dialog" aria-modal="true" aria-labelledby="add-campaign-title"><header><div><h2 id="add-campaign-title">Add campaign</h2><p>Upload a campaign document to create its card and detail page.</p></div><button className="row-menu" onClick={onClose} aria-label="Close campaign upload"><X size={18} /></button></header><div className="service-upload-body"><label className="service-file-picker"><input type="file" accept=".md,.txt,.json,text/markdown,text/plain,application/json" onChange={chooseFile} /><span><Plus size={18} /><strong>{file ? file.name : 'Choose campaign document'}</strong><small>Markdown, plain text, or JSON</small></span></label>{error && <p className="service-upload-error" role="alert">{error}</p>}{preview && <article className="service-upload-preview"><small>Preview</small><h3>{preview.title}</h3><em>{preview.category}</em><p>{preview.brief}</p><span>{preview.activities.length} activit{preview.activities.length === 1 ? 'y' : 'ies'}</span></article>}</div><footer><button type="button" className="quiet-button" onClick={onClose}>Cancel</button><button className="primary-button" disabled={!preview} onClick={() => onAdd(preview)}>Add campaign</button></footer></section></div>
+}
+
+function AddServiceDialog({ onClose, onAdd }) {
+  const [file, setFile] = useState(null)
+  const [preview, setPreview] = useState(null)
+  const [error, setError] = useState('')
+  const chooseFile = async event => {
+    const nextFile = event.target.files?.[0]
+    if (!nextFile) return
+    setFile(nextFile)
+    setError('')
+    try { setPreview(parseUploadedService(await nextFile.text(), nextFile.name)) }
+    catch (reason) { setPreview(null); setError(reason.message || 'Unable to read this document.') }
+  }
+  return <div className="crm-modal-backdrop"><section className="crm-modal service-upload-dialog" role="dialog" aria-modal="true" aria-labelledby="add-service-title"><header><div><h2 id="add-service-title">Add service</h2><p>Upload a structured service document to create its card and detail page.</p></div><button className="row-menu" onClick={onClose} aria-label="Close service upload"><X size={18} /></button></header><div className="service-upload-body"><label className="service-file-picker"><input type="file" accept=".md,.txt,.json,text/markdown,text/plain,application/json" onChange={chooseFile} /><span><Plus size={18} /><strong>{file ? file.name : 'Choose service document'}</strong><small>Markdown, plain text, or JSON</small></span></label>{error && <p className="service-upload-error" role="alert">{error}</p>}{preview && <article className="service-upload-preview"><small>Preview</small><h3>{preview.title}</h3><em>{preview.category}</em><p>{preview.brief}</p><span>{preview.products.length} product{preview.products.length === 1 ? '' : 's'}</span></article>}</div><footer><button type="button" className="quiet-button" onClick={onClose}>Cancel</button><button className="primary-button" disabled={!preview} onClick={() => onAdd(preview)}>Add service</button></footer></section></div>
+}
+
+function AddProductDialog({ serviceTitle, onClose, onAdd }) {
+  const [file, setFile] = useState(null)
+  const [preview, setPreview] = useState(null)
+  const [error, setError] = useState('')
+  const chooseFile = async event => {
+    const nextFile = event.target.files?.[0]
+    if (!nextFile) return
+    setFile(nextFile)
+    setError('')
+    try { setPreview(parseUploadedProduct(await nextFile.text(), nextFile.name)) }
+    catch (reason) { setPreview(null); setError(reason.message || 'Unable to read this document.') }
+  }
+  return <div className="crm-modal-backdrop"><section className="crm-modal service-upload-dialog" role="dialog" aria-modal="true" aria-labelledby="add-product-title"><header><div><h2 id="add-product-title">Add product</h2><p>Upload a product document for {serviceTitle}.</p></div><button className="row-menu" onClick={onClose} aria-label="Close product upload"><X size={18} /></button></header><div className="service-upload-body"><label className="service-file-picker"><input type="file" accept=".md,.txt,.json,text/markdown,text/plain,application/json" onChange={chooseFile} /><span><Plus size={18} /><strong>{file ? file.name : 'Choose product document'}</strong><small>Markdown, plain text, or JSON</small></span></label>{error && <p className="service-upload-error" role="alert">{error}</p>}{preview && <article className="service-upload-preview"><small>Preview</small><h3>{preview.name}</h3><p>{preview.summary || 'No product summary provided.'}</p><span>{preview.includes.length} included item{preview.includes.length === 1 ? '' : 's'}</span></article>}</div><footer><button type="button" className="quiet-button" onClick={onClose}>Cancel</button><button className="primary-button" disabled={!preview} onClick={() => onAdd(preview)}>Add product</button></footer></section></div>
 }
 
 function UserAccessDetail({ user, onChange }) {
@@ -669,7 +913,7 @@ function ProjectHero() {
 }
 
 function ServicesSection() {
-  return <section className="services-section" id="services"><h2>Strategy is only<br />valuable when it ships.</h2><div className="service-list">{serviceCatalog.map(({icon:Icon,title,text})=><article key={title}><span><Icon size={21} /></span><h3>{title}</h3><p>{text}</p></article>)}</div></section>
+  return <section className="services-section" id="services"><h2>Strategy is only<br />valuable when it ships.</h2><div className="service-list">{serviceCatalog.map(service => { const Icon = serviceIcons[service.category] || Sparkles; return <article key={service.id}><span><Icon size={21} /></span><h3>{service.title}</h3><p>{service.brief}</p></article> })}</div></section>
 }
 
 function ProjectShowcase() {
@@ -723,6 +967,8 @@ export function AdminApp({ configured = false, userRole = 'Admin', initialProfil
   const [active, setActive] = useState('Overview')
   const [menuOpen, setMenuOpen] = useState(false)
   const [profile, setProfile] = useState(initialProfile)
+  const [campaignCount, setCampaignCount] = useState(campaignCatalog.length)
+  const [serviceCount, setServiceCount] = useState(serviceCatalog.length)
   useEffect(() => {
     const requestedView = new URLSearchParams(window.location.search).get('view')
     const allowedViews = [...navItems.filter(item => userRole === 'Admin' || item.label !== 'Users').map(item => item.label), 'Settings']
@@ -731,9 +977,9 @@ export function AdminApp({ configured = false, userRole = 'Admin', initialProfil
   return (
     <div className="app-shell">
       <Header onMenu={() => setMenuOpen(true)} profile={profile} onProfile={() => setActive('Settings')} userRole={userRole} />
-      <Sidebar active={active} setActive={setActive} open={menuOpen} close={() => setMenuOpen(false)} configured={configured} userCount={initialUsers.length || userSeed.length} userRole={userRole} />
+      <Sidebar active={active} setActive={setActive} open={menuOpen} close={() => setMenuOpen(false)} campaignCount={campaignCount} configured={configured} serviceCount={serviceCount} userCount={initialUsers.length || userSeed.length} userRole={userRole} />
       {menuOpen && <button className="scrim" aria-label="Close navigation" onClick={() => setMenuOpen(false)} />}
-      {active === 'Market' ? <LeadsModule /> : active === 'Services' ? <ServicesModule /> : active === 'Calendar' ? <CalendarModule /> : active === 'Users' && userRole === 'Admin' ? <UsersModule initialUsers={initialUsers} configured={configured} /> : active === 'Settings' ? <ProfileModule configured={configured} profile={profile} onSaved={setProfile} settings /> : <Dashboard active={active === 'Users' ? 'Overview' : active} greetingName={profile.nickname || profile.firstName} />}
+      {active === 'Market' ? <LeadsModule /> : active === 'Campaign' ? <CampaignModule onCountChange={setCampaignCount} /> : active === 'Services' ? <ServicesModule onCountChange={setServiceCount} /> : active === 'Calendar' ? <CalendarModule /> : active === 'Users' && userRole === 'Admin' ? <UsersModule initialUsers={initialUsers} configured={configured} /> : active === 'Settings' ? <ProfileModule configured={configured} profile={profile} onSaved={setProfile} settings /> : <Dashboard active={active === 'Users' ? 'Overview' : active} greetingName={profile.nickname || profile.firstName} />}
     </div>
   )
 }
