@@ -47,14 +47,11 @@ import {
 
 const navItems = [
   { label: 'Overview', icon: LayoutDashboard },
-  { label: 'Contacts', icon: Users, count: 128 },
-  { label: 'Companies', icon: Building2 },
-  { label: 'Clients', icon: Layers3, count: 48 },
   { label: 'Market', icon: Target, count: leadProspects.length },
-  { label: 'Services', icon: Sparkles, count: 3 },
-  { label: 'Users', icon: UserCog, count: 5 },
-  { label: 'Pipeline', icon: BriefcaseBusiness, count: 7 },
   { label: 'Calendar', icon: CalendarDays },
+  { label: 'Services', icon: Sparkles, count: 3 },
+  { label: 'Pipeline', icon: BriefcaseBusiness, count: 7 },
+  { label: 'Users', icon: UserCog, count: 5 },
 ]
 
 const serviceCatalog = [
@@ -127,7 +124,6 @@ function SignOutAction({ configured }) {
 }
 
 function Sidebar({ active, setActive, open, close, configured, userCount, userRole }) {
-  const [settingsOpen, setSettingsOpen] = useState(false)
   const availableNavItems = navItems.filter(item => userRole === 'Admin' || item.label !== 'Users')
 
   return (
@@ -151,19 +147,7 @@ function Sidebar({ active, setActive, open, close, configured, userCount, userRo
           <p>Your proposal follow-ups are converting 18% faster this month.</p>
           <button>View insight <ArrowRight size={14} /></button>
         </div>
-        <div className={`settings-menu ${settingsOpen ? 'open' : ''}`}>
-          <button
-            className="nav-item settings"
-            aria-expanded={settingsOpen}
-            aria-controls="settings-actions"
-            onClick={() => setSettingsOpen(value => !value)}
-          >
-            <Settings size={18} />
-            <span>Settings</span>
-            <ChevronDown className="settings-chevron" size={15} />
-          </button>
-          {settingsOpen && <div className="settings-actions" id="settings-actions"><button className="nav-item" onClick={() => { setActive('Profile'); close() }}><UserRound size={18} /><span>Profile</span></button><SignOutAction configured={configured} /></div>}
-        </div>
+        <div className="settings-menu"><button className={`nav-item settings ${active === 'Settings' ? 'active' : ''}`} onClick={() => { setActive('Settings'); close() }}><Settings size={18} /><span>Settings</span></button></div>
         <div className="system-status"><span /> All systems operational</div>
       </div>
     </aside>
@@ -637,7 +621,7 @@ function UsersModule({ initialUsers, configured }) {
   return <main className="content pane users-content"><div className="users-layout"><section className="users-workspace"><header className="clients-heading"><div><h1>Users</h1><p>Manage workspace access and project assignments.</p></div><button className="primary-button" onClick={() => setInviteOpen(true)}><Plus size={17} /> Invite user</button></header><section className="user-summary"><span><Users size={18} /><small>Total users</small><strong>{usersState.length}</strong></span><span><ShieldCheck size={18} /><small>Administrators</small><strong>{usersState.filter(user => ['Admin', 'OSAI-Admin'].includes(user.role)).length}</strong></span><span><UserRound size={18} /><small>Clients</small><strong>{usersState.filter(user => user.role === 'Client').length}</strong></span><span><UserCog size={18} /><small>Collaborators</small><strong>{usersState.filter(user => user.role === 'Collaborator').length}</strong></span></section><section className="users-table-panel"><div className="user-filters"><label className="client-search"><Search size={15} /><input value={query} onChange={event => setQuery(event.target.value)} placeholder="Search users..." aria-label="Search users" /></label><label className="filter-select"><span>Role</span><select value={role} onChange={event => setRole(event.target.value)}><option>All</option><option>Admin</option><option>OSAI-Admin</option><option>Client</option><option>Collaborator</option></select></label></div><div className="user-table"><div className="user-table-labels"><span>User</span><span>Email</span><span>Role</span><span>Project access</span><span>Status</span><span>Last active</span></div>{visible.map(user => <button key={user.id} className={`user-row ${selected.id === user.id ? 'selected' : ''}`} onClick={() => setSelectedId(user.id)}><span className="user-identity"><i>{user.firstName[0]}{user.lastName[0]}</i><strong>{user.firstName} {user.lastName}</strong></span><span>{user.email}</span><span><em className={`role-badge role-${user.role.toLowerCase()}`}>{user.role}</em></span><span>{user.assignments.length} {user.assignments.length === 1 ? 'project' : 'projects'}</span><span><em className={`user-status ${user.status.toLowerCase()}`}>{user.status}</em></span><span>{user.lastActive}</span></button>)}</div><footer className="clients-table-footer">Showing {visible.length} of {usersState.length} users</footer></section></section><UserAccessDetail key={selected.id} user={selected} onChange={updateUser} /></div>{inviteOpen && <InviteUserForm onClose={() => setInviteOpen(false)} onInvite={invite} />}</main>
 }
 
-function ProfileForm({ profile, onSave }) {
+function ProfileForm({ profile, onSave, settings = false, configured = false }) {
   const [form, setForm] = useState(profile)
   const [status, setStatus] = useState('')
   const update = event => setForm(current => ({ ...current, [event.target.name]: event.target.value }))
@@ -651,17 +635,17 @@ function ProfileForm({ profile, onSave }) {
       setStatus('Unable to save profile')
     }
   }
-  return <main className="content pane profile-content"><section className="profile-module"><header><div><h1>Profile</h1><p>Manage the name connected to your OSAI workspace.</p></div><span className="profile-large-avatar">{`${form.firstName?.[0] || ''}${form.lastName?.[0] || ''}`.toUpperCase() || 'OU'}</span></header><form onSubmit={submit}><div className="profile-form-grid"><label>Nickname<input name="nickname" value={form.nickname} onChange={update} autoComplete="nickname" placeholder="Welcome name" /></label><label>First name<input required name="firstName" value={form.firstName} onChange={update} autoComplete="given-name" /></label><label>Last name<input required name="lastName" value={form.lastName} onChange={update} autoComplete="family-name" /></label></div><label>Email address<input name="email" value={form.email} disabled aria-describedby="email-help" /></label><small id="email-help">Email is managed by your sign-in account.</small><footer><span role="status">{status}</span><button className="primary-button" type="submit">Save profile</button></footer></form></section></main>
+  return <main className="content pane profile-content"><div className="settings-body"><section className="profile-module"><header><div><h1>{settings ? 'Settings' : 'Profile'}</h1><p>Manage your profile and OSAI workspace preferences.</p></div><span className="profile-large-avatar">{`${form.firstName?.[0] || ''}${form.lastName?.[0] || ''}`.toUpperCase() || 'OU'}</span></header><form onSubmit={submit}><div className="profile-form-grid"><label>Nickname<input name="nickname" value={form.nickname} onChange={update} autoComplete="nickname" placeholder="Welcome name" /></label><label>First name<input required name="firstName" value={form.firstName} onChange={update} autoComplete="given-name" /></label><label>Last name<input required name="lastName" value={form.lastName} onChange={update} autoComplete="family-name" /></label></div><label>Email address<input name="email" value={form.email} disabled aria-describedby="email-help" /></label><small id="email-help">Email is managed by your sign-in account.</small><footer><span role="status">{status}</span><button className="primary-button" type="submit">Save profile</button></footer></form></section>{settings && <section className="settings-account-section"><div><h2>Account</h2><p>End your current OSAI workspace session.</p></div><SignOutAction configured={configured} /></section>}</div></main>
 }
 
-function ClerkProfileModule({ profile, onSaved }) {
+function ClerkProfileModule({ profile, onSaved, settings, configured }) {
   const { user } = useUser()
-  return <ProfileForm profile={profile} onSave={async next => { await user.update({ firstName: next.firstName, lastName: next.lastName, unsafeMetadata: { ...user.unsafeMetadata, nickname: next.nickname } }); onSaved(next) }} />
+  return <ProfileForm profile={profile} settings={settings} configured={configured} onSave={async next => { await user.update({ firstName: next.firstName, lastName: next.lastName, unsafeMetadata: { ...user.unsafeMetadata, nickname: next.nickname } }); onSaved(next) }} />
 }
 
-function ProfileModule({ configured, profile, onSaved }) {
-  if (configured) return <ClerkProfileModule profile={profile} onSaved={onSaved} />
-  return <ProfileForm profile={profile} onSave={async next => onSaved(next)} />
+function ProfileModule({ configured, profile, onSaved, settings = false }) {
+  if (configured) return <ClerkProfileModule profile={profile} onSaved={onSaved} settings={settings} configured={configured} />
+  return <ProfileForm profile={profile} settings={settings} configured={configured} onSave={async next => onSaved(next)} />
 }
 
 
@@ -737,15 +721,15 @@ export function AdminApp({ configured = false, userRole = 'Admin', initialProfil
   const [profile, setProfile] = useState(initialProfile)
   useEffect(() => {
     const requestedView = new URLSearchParams(window.location.search).get('view')
-    const allowedViews = [...navItems.filter(item => userRole === 'Admin' || item.label !== 'Users').map(item => item.label), 'Profile']
+    const allowedViews = [...navItems.filter(item => userRole === 'Admin' || item.label !== 'Users').map(item => item.label), 'Settings']
     if (requestedView && allowedViews.includes(requestedView)) setActive(requestedView)
   }, [userRole])
   return (
     <div className="app-shell">
-      <Header onMenu={() => setMenuOpen(true)} profile={profile} onProfile={() => setActive('Profile')} userRole={userRole} />
+      <Header onMenu={() => setMenuOpen(true)} profile={profile} onProfile={() => setActive('Settings')} userRole={userRole} />
       <Sidebar active={active} setActive={setActive} open={menuOpen} close={() => setMenuOpen(false)} configured={configured} userCount={initialUsers.length || userSeed.length} userRole={userRole} />
       {menuOpen && <button className="scrim" aria-label="Close navigation" onClick={() => setMenuOpen(false)} />}
-      {active === 'Clients' ? <ClientsModule /> : active === 'Market' ? <LeadsModule /> : active === 'Services' ? <ServicesModule /> : active === 'Calendar' ? <CalendarModule /> : active === 'Users' && userRole === 'Admin' ? <UsersModule initialUsers={initialUsers} configured={configured} /> : active === 'Profile' ? <ProfileModule configured={configured} profile={profile} onSaved={setProfile} /> : <Dashboard active={active === 'Users' ? 'Overview' : active} greetingName={profile.nickname || profile.firstName} />}
+      {active === 'Market' ? <LeadsModule /> : active === 'Services' ? <ServicesModule /> : active === 'Calendar' ? <CalendarModule /> : active === 'Users' && userRole === 'Admin' ? <UsersModule initialUsers={initialUsers} configured={configured} /> : active === 'Settings' ? <ProfileModule configured={configured} profile={profile} onSaved={setProfile} settings /> : <Dashboard active={active === 'Users' ? 'Overview' : active} greetingName={profile.nickname || profile.firstName} />}
     </div>
   )
 }
