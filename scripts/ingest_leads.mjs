@@ -82,11 +82,15 @@ const leads = records.flatMap(record => {
     city: record.city.trim(),
     state: record.state.trim(),
     zip: record.zip.trim(),
-    phone: record.phone.trim(),
-    website: record.website.trim(),
+    phone: record.phone.trim() || existing?.phone || existing?.companyPhone || '',
+    website: record.website.trim() || existing?.website || existing?.companyUrl || '',
+    companyEmail: record.company_email?.trim() || record.email?.trim() || existing?.companyEmail || '',
     offer: existing?.offer || offerFor(vertical, category),
     notes: record.notes.trim() || existing?.notes || '',
     source: record.source.trim() || existing?.source || 'Google Drive',
+    ...(existing?.contactSource ? { contactSource: existing.contactSource } : {}),
+    ...(existing?.contactSourceUrl ? { contactSourceUrl: existing.contactSourceUrl } : {}),
+    ...(existing?.contactConfidence !== undefined ? { contactConfidence: existing.contactConfidence } : {}),
   }]
 })
 

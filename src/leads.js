@@ -25,11 +25,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "(954) 217-5070",
+    "website": "https://www.westoneyecarecenter.com/",
+    "companyEmail": "",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "contactSource": "Weston Eye Care Center official website",
+    "contactSourceUrl": "https://www.westoneyecarecenter.com/contact",
+    "contactConfidence": 1
   },
   {
     "id": 3,
@@ -57,11 +61,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+13053894751",
+    "website": "http://www.windathltx.com/",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "info@windathltx.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.2651938498020172
   },
   {
     "id": 5,
@@ -73,11 +81,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19543897000",
+    "website": "https://www.pediatricassociates.com/locations/broward-county/weston",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "1163 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "customerservice@pediatricassociates.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9818012803792954
   },
   {
     "id": 6,
@@ -89,11 +101,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9543892345",
+    "website": "https://www.westonbraces.com/",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 7,
@@ -137,11 +153,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9543237533",
+    "website": "https://www.davidstarhomecare.com/",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9785851672291755
   },
   {
     "id": 10,
@@ -249,11 +269,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19547195634",
+    "website": "https://plasmamedspa.com/",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "contact@plasmamedspa.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9902192950248718
   },
   {
     "id": 17,
@@ -265,11 +289,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+19542330745",
+    "website": "https://ariesphysicaltherapy.com/",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "support@ariesphysicaltherapy.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 18,
@@ -281,11 +309,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "9543851544",
+    "website": "https://www.riverchasedermatology.com/provider/stephanie-a-strohmeyer-pa-c/",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.85
   },
   {
     "id": 19,
@@ -297,11 +329,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "9543851544",
+    "website": "https://www.riverchasedermatology.com/provider/laura-villafane-pa-c/",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 20,
@@ -313,11 +349,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "9543851544",
+    "website": "https://www.riverchasedermatology.com/provider/quang-le-md-faad/",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 21,
@@ -345,11 +385,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+18444474860",
+    "website": "https://grit60fitness.com/weston",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "weston@grit60fitness.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9902192950248718
   },
   {
     "id": 23,
@@ -361,11 +405,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19543849184",
+    "website": "https://locations.foreyes.com/fl/weston/1352-weston-road",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "247 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "customerservice@foreyes.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 24,
@@ -377,11 +425,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19543897906",
+    "website": "https://www.zombekortho.com/",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "331 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "info@zombekortho.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 25,
@@ -393,11 +445,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9543848222",
+    "website": "http://countryislesdental.com/",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "257 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 26,
@@ -425,11 +481,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33327",
-    "phone": "",
-    "website": "",
+    "phone": "+19543849908",
+    "website": "http://www.kvoweston.com/",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "info@drkvalencia.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 28,
@@ -441,11 +501,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "(954) 998-0061",
+    "website": "https://www.thejoint.com/florida/weston/weston-27012",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "230 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "clinic27012@thejoint.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 29,
@@ -489,11 +553,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19549167092",
+    "website": "https://www.stretchzone.com/locations/weston/",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "241 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "weston@stretchzone.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.998574693530798
   },
   {
     "id": 32,
@@ -521,11 +589,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "9543891414",
+    "website": "https://www.sfenta.org/providers/adam-weisstuch/",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 34,
@@ -537,11 +609,15 @@ export const leadProspects = [
     "city": "Pembroke Pines",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "9548873368",
+    "website": "https://beenvwellness.com/",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 35,
@@ -553,11 +629,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9543846200",
+    "website": "https://www.rousefamilyeyecare.com/",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.994630724132061
   },
   {
     "id": 36,
@@ -585,11 +665,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+19548003453",
+    "website": "http://www.westonendocare.com/",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "563 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "info@westonendocare.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 38,
@@ -601,11 +685,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19542313726",
+    "website": "http://freakinfitness.com/",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "192 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "weston@freakinfitness.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9722161889076233
   },
   {
     "id": 39,
@@ -617,11 +705,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+17543646662",
+    "website": "https://www.themoranmedical.com/",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "sknbyanahi@hotmail.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9961472116708755
   },
   {
     "id": 40,
@@ -649,11 +741,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "9543851544",
+    "website": "https://www.riverchasedermatology.com/provider/jennifer-k-wong-do-faocd-faad/",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 42,
@@ -681,11 +777,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19542711077",
+    "website": "https://fs8.com/studio/westonlakes/",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "westonlakes@fs8studio.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 44,
@@ -697,11 +797,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
+    "phone": "9543490054",
     "website": "",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9655
   },
   {
     "id": 45,
@@ -713,11 +817,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "8555302383",
+    "website": "https://www.solismammo.com/florida/memorial-weston?utm_campaign=GBP_memorial-weston&utm_medium=organic&utm_source=bing",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 46,
@@ -729,11 +837,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19542482895",
+    "website": "https://www.WestonModernDentistry.com/?sc_cid=Facebook%3AO%3AGP%3A990%3ASocial%3AGeneral%3Ana&_vsrefdom=organic_social&y_source=1_MzgyNDcyNi01NTktbG9jYXRpb24ud2Vic2l0ZQ%3D%3D",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "114 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "westonmoderndentistry@smilegeneration.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9722161889076233
   },
   {
     "id": 47,
@@ -745,11 +857,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9543002611",
+    "website": "https://www.convivacarecenters.com/?utm_medium=businesslistings&utm_campaign=yext_nat_onlinelistings_en_digital_evergreen&y_source=1_MTA4OTQ2ODktNDgzLWxvY2F0aW9uLndlYnNpdGU%3D",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9655
   },
   {
     "id": 48,
@@ -761,11 +877,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9543840266",
+    "website": "https://locations.myeyedr.com/fl/weston/1673-market-street",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.97
   },
   {
     "id": 49,
@@ -825,11 +945,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33327",
-    "phone": "",
-    "website": "",
+    "phone": "+19546554431",
+    "website": "http://www.DesignerDigitalSystems.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "brucealaimo@outlook.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 53,
@@ -889,11 +1013,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+19543899483",
+    "website": "http://www.TitleGuarantyFlorida.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "info@titleguarantyflorida.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 57,
@@ -905,11 +1033,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33327",
-    "phone": "",
-    "website": "",
+    "phone": "9546592220",
+    "website": "http://www.strocklaw.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 58,
@@ -921,11 +1053,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19544347724",
+    "website": "http://homepartnerstitle.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "404 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "info@homepartnerstitle.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 59,
@@ -937,11 +1073,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19548562070",
+    "website": "http://www.linkedbydesign.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "support@linkedbydesign.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 60,
@@ -969,11 +1109,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33327",
-    "phone": "",
-    "website": "",
+    "phone": "9546592220",
+    "website": "https://safekeytitle.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 62,
@@ -985,11 +1129,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+19546651055",
+    "website": "http://www.winningplaymarketing.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "info@winningplaymarketing.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 63,
@@ -1049,11 +1197,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+19542331790",
+    "website": "http://www.hellmann.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "info@hellmann.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9902192950248718
   },
   {
     "id": 67,
@@ -1065,11 +1217,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "(954) 217-7742",
+    "website": "http://www.metrobytmobile.com",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 68,
@@ -1081,11 +1237,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19547808677",
+    "website": "http://www.userfriendlyts.com",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "info@userfriendlyts.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 69,
@@ -1097,11 +1257,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9545812470",
+    "website": "https://www.copylite.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.85
   },
   {
     "id": 70,
@@ -1113,11 +1277,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33327",
-    "phone": "",
-    "website": "",
+    "phone": "+19543846949",
+    "website": "http://www.westoncommercialcenter.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "loren@westoncommercialcenter.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9990922156572342
   },
   {
     "id": 71,
@@ -1145,11 +1313,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19543848880",
+    "website": "http://www.theupsstore.com/3989.htm",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "Multiple Weston locations",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "store3989@theupsstore.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9998511980712413
   },
   {
     "id": 73,
@@ -1177,11 +1349,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33332",
-    "phone": "",
-    "website": "",
+    "phone": "9542724101",
+    "website": "http://catscale.com/?utm_medium=yext&utm_source=bing",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 75,
@@ -1193,11 +1369,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9543069611",
+    "website": "http://www.marketflysolutions.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.85
   },
   {
     "id": 76,
@@ -1209,11 +1389,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "8002758777",
+    "website": "https://tools.usps.com/locations/details/1439306?utm_source=website-url&utm_medium=search&utm_campaign=yext",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.85
   },
   {
     "id": 77,
@@ -1225,11 +1409,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19543491682",
+    "website": "https://local.fedex.com/en-us/fl/weston/office-0999",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "usa0999@fedex.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9997314208447933
   },
   {
     "id": 78,
@@ -1321,11 +1509,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "9543549006",
+    "website": "https://bpolatam.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 84,
@@ -1449,11 +1641,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33327",
-    "phone": "",
+    "phone": "3055829986",
     "website": "",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 92,
@@ -1465,11 +1661,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "3052045427",
+    "website": "https://vnvevents.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 93,
@@ -1497,11 +1697,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "19543582625",
+    "website": "https://www.acfp.com",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "1113 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9718724489212036
   },
   {
     "id": 95,
@@ -1513,11 +1717,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19543721944",
+    "website": "http://www.mypanna.com",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "wtc@mypanna.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9621439576148987
   },
   {
     "id": 96,
@@ -1529,11 +1737,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "19542176907",
+    "website": "https://www.mypanna.com",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "4223 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.95
   },
   {
     "id": 97,
@@ -1561,11 +1773,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "7869792693",
+    "website": "https://labirrabarusa.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.85
   },
   {
     "id": 99,
@@ -1577,11 +1793,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19544400483",
+    "website": "http://www.sanofood.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "1106 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "marketing@consorciow.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9997123768925666
   },
   {
     "id": 100,
@@ -1593,11 +1813,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19542104828",
+    "website": "https://tarantellas.net/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "1057 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "karen@capriccios.net",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9902192950248718
   },
   {
     "id": 101,
@@ -1625,11 +1849,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+17547016806",
+    "website": "https://www.bairesgrill.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "1886 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "info@bairesgrill.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9906870722770691
   },
   {
     "id": 103,
@@ -1641,11 +1869,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+19542171233",
+    "website": "http://www.carolinaalehouse.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "3979 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "cah-weston@lmrest.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9722161889076233
   },
   {
     "id": 104,
@@ -1673,11 +1905,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9547691312",
+    "website": "https://www.orderkokaisushiweston.com/?utm_source=bing&utm_medium=websiteurl&utm_campaign=search",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9501216411590576
   },
   {
     "id": 106,
@@ -1689,11 +1925,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "19543848486",
+    "website": "https://www.chilln.com",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9723508358001709
   },
   {
     "id": 107,
@@ -1737,11 +1977,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+19543899273",
+    "website": "https://locations.bonefishgrill.com/florida/weston/4545-weston-road?y_source=1_MTU1MDI3ODgtNTU5LWxvY2F0aW9uLndlYnNpdGU%3D",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "1414 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "bg7023@bonefishgrill.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9892784953117371
   },
   {
     "id": 110,
@@ -1753,11 +1997,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+16452292982",
+    "website": "https://www.bonaventure19th.com/?y_source=1_MTAyMTcwOTE4NC01NTktbG9jYXRpb24ud2Vic2l0ZQ%3D%3D",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "info@bonaventure19th.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9914331763982773
   },
   {
     "id": 111,
@@ -1769,11 +2017,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+19543060077",
+    "website": "https://order.burgerfi.com/menu/burgerfi-weston",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "1013 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "contact@burgerfi.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9782172441482544
   },
   {
     "id": 112,
@@ -1785,11 +2037,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33327",
-    "phone": "",
-    "website": "",
+    "phone": "+17543016899",
+    "website": "https://locations.dunkindonuts.com/en/fl/weston/2575-glades-cir/363066?utm_source=facebook&utm_medium=local&utm_campaign=localmaps&utm_content=363066&y_source=1_NzMwMTQ5NjItNTU5LWxvY2F0aW9uLndlYnNpdGU%3D",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9902192950248718
   },
   {
     "id": 113,
@@ -1801,11 +2057,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "7867836530",
+    "website": "https://www.salumeria104.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9823361039161682
   },
   {
     "id": 114,
@@ -1865,11 +2125,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+19543060781",
+    "website": "https://belliniweston.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "1016 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9916663765907288
   },
   {
     "id": 118,
@@ -1929,11 +2193,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "19546600322",
+    "website": "https://www.publix.com",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9902192950248718
   },
   {
     "id": 122,
@@ -1945,11 +2213,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33332",
-    "phone": "",
-    "website": "",
+    "phone": "+19545337988",
+    "website": "https://www.yelp.com/biz/josefina-s-coffee-house-pembroke-pines",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9596138000488281
   },
   {
     "id": 123,
@@ -1977,11 +2249,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33327",
-    "phone": "",
-    "website": "",
+    "phone": "7867677174",
+    "website": "https://sosaappraisals.com/",
     "offer": "Quick Win: lead-qualification agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 125,
@@ -2009,11 +2285,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9548803511",
+    "website": "https://remaxconcierge.com/",
     "offer": "Quick Win: lead-qualification agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.85
   },
   {
     "id": 127,
@@ -2073,11 +2353,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "9543847300",
+    "website": "http://www.westparkrealtyfl.com/",
     "offer": "Quick Win: lead-qualification agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 131,
@@ -2121,11 +2405,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9543893459",
+    "website": "https://weston.keyes.com/",
     "offer": "Quick Win: lead-qualification agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9902192950248718
   },
   {
     "id": 134,
@@ -2169,11 +2457,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "(954) 909-4726",
+    "website": "https://lincoln363.prmgapp.com",
     "offer": "Quick Win: lead-qualification agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 137,
@@ -2185,11 +2477,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+19548731586",
+    "website": "https://www.teresasantana.com/",
     "offer": "Quick Win: lead-qualification agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "tere@teresasantana.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.46572360396385193
   },
   {
     "id": 138,
@@ -2217,11 +2513,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19542148199",
+    "website": "http://www.degrealty.com/",
     "offer": "Quick Win: lead-qualification agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "degrealty@gmail.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 140,
@@ -2233,11 +2533,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19543680169",
+    "website": "https://app.tour24now.com/prospect/tour/st-andrews-at-weston/register/",
     "offer": "Quick Win: lead-qualification agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "weston@apcompanies.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9982947677373886
   },
   {
     "id": 141,
@@ -2281,11 +2585,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+19546598455",
+    "website": "https://www.sunbelttitle.com/?utm_medium=local_search&utm_source=website_link_yxt&utm_campaign=yxt_local_profile",
     "offer": "Quick Win: lead-qualification agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "jmduffy@aol.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 144,
@@ -2361,11 +2669,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19547105524",
+    "website": "https://www.10xweston.com/?utm_knock=fb",
     "offer": "Quick Win: lead-qualification agent",
     "notes": "266 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9917255640029907
   },
   {
     "id": 149,
@@ -2425,11 +2737,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "3054428628",
+    "website": "https://trgmanagementcompany.com/",
     "offer": "Quick Win: lead-qualification agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 153,
@@ -2489,11 +2805,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19543842326",
+    "website": "https://mayraflrealtor.com",
     "offer": "Quick Win: lead-qualification agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "info@ureadvisors.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 157,
@@ -2521,11 +2841,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+17546009333",
+    "website": "https://linktr.ee/miguelmariateam",
     "offer": "Quick Win: lead-qualification agent",
     "notes": "121 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "miguel@miguelmaria.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 159,
@@ -2537,11 +2861,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+18005442627",
+    "website": "https://www.instagram.com/fortunamgt",
     "offer": "Quick Win: lead-qualification agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "info@fortunamgt.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.33050718903541565
   },
   {
     "id": 160,
@@ -2569,11 +2897,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33327",
-    "phone": "",
-    "website": "",
+    "phone": "+19546490666",
+    "website": "http://www.sfreappraisal.com",
     "offer": "Quick Win: lead-qualification agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 162,
@@ -2681,11 +3013,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33327",
-    "phone": "",
-    "website": "",
+    "phone": "+19544796583",
+    "website": "https://floridamitigationgroupusa.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "support@floridamitigationgroup.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.8095934446156026
   },
   {
     "id": 169,
@@ -2729,11 +3065,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19547873879",
+    "website": "http://www.kitchendesignsandmore.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "info@kitchendesignsandmore.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 172,
@@ -2745,11 +3085,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "(954) 445-0026",
+    "website": "https://casabelladg.com",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "casabelladesigngroupllc@gmail.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 173,
@@ -2761,11 +3105,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9546013629",
+    "website": "https://www.pasatroofing.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 174,
@@ -2777,11 +3125,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33327",
-    "phone": "",
-    "website": "",
+    "phone": "9543764373",
+    "website": "https://ft-lauderdale.kitchensolvers.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 175,
@@ -2793,11 +3145,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33327",
-    "phone": "",
-    "website": "",
+    "phone": "(754) 258-4899",
+    "website": "https://samedaygaragedoorpros.com/weston-garage-door-solutions",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 176,
@@ -2873,11 +3229,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33327",
-    "phone": "",
-    "website": "",
+    "phone": "+19543608034",
+    "website": "http://www.andrestheroofer.com",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 181,
@@ -2889,11 +3249,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "7542543141",
+    "website": "https://www.myalldry.com/broward-county-doral-florida/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 182,
@@ -2905,11 +3269,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "9548338472",
+    "website": "https://www.painterbros.com/fort-lauderdale/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 183,
@@ -2921,11 +3289,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "7543035007",
+    "website": "http://www.tradeproductions.net/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9902192950248718
   },
   {
     "id": 184,
@@ -2937,11 +3309,15 @@ export const leadProspects = [
     "city": "Southwest Ranches",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "9546803877",
+    "website": "http://www.frankseeberroofing.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 185,
@@ -2953,11 +3329,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+17542343838",
+    "website": "http://www.leonardoskitchens.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "design@leonardoskitchens.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 186,
@@ -2969,11 +3349,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19543981848",
+    "website": "http://www.shopstudio75.net/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "154 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "info@shopstudio75.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 187,
@@ -2985,11 +3369,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "7866633581",
+    "website": "https://www.topdogdrainandsewer.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.85
   },
   {
     "id": 188,
@@ -3082,10 +3470,14 @@ export const leadProspects = [
     "state": "FL",
     "zip": "33331",
     "phone": "(954) 515-5000",
-    "website": "",
+    "website": "https://www.victimaid.com",
     "offer": "Growth Build: client intake agent",
     "notes": "113 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "intake@turchinesq.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 194,
@@ -3113,11 +3505,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
+    "phone": "9542710554",
     "website": "",
     "offer": "Growth Build: client intake agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 196,
@@ -3129,11 +3525,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9549097407",
+    "website": "https://ucmjdefense.com/",
     "offer": "Growth Build: client intake agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 197,
@@ -3145,11 +3545,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
+    "phone": "9548692155",
     "website": "parjuslaw.com",
     "offer": "Growth Build: client intake agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.85
   },
   {
     "id": 198,
@@ -3161,11 +3565,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "9543825378",
+    "website": "http://americanimmigrationusa.com/",
     "offer": "Growth Build: client intake agent",
     "notes": "127 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 199,
@@ -3177,11 +3585,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "8006989159",
+    "website": "https://www.diattorney.com/",
     "offer": "Growth Build: client intake agent",
     "notes": "443 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 200,
@@ -3193,11 +3605,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "9545467951",
+    "website": "https://www.rubertlaw.com/?npcmp=dir:local:5179999:33331",
     "offer": "Growth Build: client intake agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 201,
@@ -3209,11 +3625,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "9549327130",
+    "website": "https://cabanaslawfirm.com/divorce-attorney-weston/",
     "offer": "Growth Build: client intake agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.85
   },
   {
     "id": 202,
@@ -3225,11 +3645,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9548764344",
+    "website": "http://forpeopleforjustice.com/",
     "offer": "Growth Build: client intake agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9655
   },
   {
     "id": 203,
@@ -3257,11 +3681,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+19543856363",
+    "website": "https://www.muchnicklaw.com/home",
     "offer": "Growth Build: client intake agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "gatorlaw600@aol.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 205,
@@ -3273,11 +3701,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19548595145",
+    "website": "http://www.lawofficesofbrianpabian.com/",
     "offer": "Growth Build: client intake agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "brian@pabian-law.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 206,
@@ -3289,11 +3721,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19549147116",
+    "website": "https://www.rashmueller.com/",
     "offer": "Growth Build: client intake agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "davidcrash@lawyer-emails.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9962052586078644
   },
   {
     "id": 207,
@@ -3337,11 +3773,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9549499746",
+    "website": "https://www.steinlaw.com/locations/weston/",
     "offer": "Growth Build: client intake agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9655
   },
   {
     "id": 210,
@@ -3369,11 +3809,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9547190652",
+    "website": "https://bakerlegalteam.com/",
     "offer": "Growth Build: client intake agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 212,
@@ -3417,11 +3861,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+19544455453",
+    "website": "http://USA-Inmigracion.com/",
     "offer": "Growth Build: client intake agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "info@jmgonzalezlaw.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 215,
@@ -3433,11 +3881,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+18559819923",
+    "website": "http://www.bedbuglaw.com/",
     "offer": "Growth Build: client intake agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 216,
@@ -3481,11 +3933,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9543849200",
+    "website": "https://www.rosenthalcounsel.com/",
     "offer": "Growth Build: client intake agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 219,
@@ -3497,11 +3953,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "7867725078",
+    "website": "https://familiescollaborate.com/",
     "offer": "Growth Build: client intake agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 220,
@@ -3529,11 +3989,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19543655639",
+    "website": "http://RafaeliLaw.com/",
     "offer": "Growth Build: client intake agent",
     "notes": "309 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "info@rafaelilaw.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 222,
@@ -3561,11 +4025,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19543852284",
+    "website": "http://ariastovar.com/index.php?option=com_contact&view=contact&id=1&Itemid=143",
     "offer": "Growth Build: client intake agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "info@ariastovar.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 224,
@@ -3577,11 +4045,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "(954) 356-0006",
+    "website": "https://www.lazaruslaw.us",
     "offer": "Growth Build: client intake agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "gary@lazaruslaw.us",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.77
   },
   {
     "id": 225,
@@ -3609,11 +4081,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "9543893337",
+    "website": "https://www.divorceattorneyatweston.com/",
     "offer": "Growth Build: client intake agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.85
   },
   {
     "id": 227,
@@ -3641,11 +4117,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+19543846114",
+    "website": "http://www.oppenheimlaw.com/",
     "offer": "Growth Build: client intake agent",
     "notes": "Also owns Weston Title",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "contactus@oppenheimlaw.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 229,
@@ -3689,11 +4169,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "9546814188",
+    "website": "https://www.smithcpasassociates.com/",
     "offer": "Growth Build: client onboarding agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.85
   },
   {
     "id": 232,
@@ -3737,11 +4221,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "7867046193",
+    "website": "https://www.astrataxes.com/",
     "offer": "Growth Build: client onboarding agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.85
   },
   {
     "id": 235,
@@ -3769,11 +4257,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19543897208",
+    "website": "https://www.chase.com/locator/banking/us/fl/weston/1040-weston-rd",
     "offer": "Growth Build: client onboarding agent",
     "notes": "Multiple Weston locations",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "chase@email.chase.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9902192950248718
   },
   {
     "id": 237,
@@ -3785,11 +4277,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9543492279",
+    "website": "https://www.flagstar.com/weston-flagstar-bank-florida-2245.html",
     "offer": "Growth Build: client onboarding agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.85
   },
   {
     "id": 238,
@@ -3817,11 +4313,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "9543853769",
+    "website": "https://www.amerantbank.com/branches/fl/weston/2630-weston-rd",
     "offer": "Growth Build: client onboarding agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 240,
@@ -3833,11 +4333,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "7868424800",
+    "website": "https://www.prestoloansusa.com/",
     "offer": "Growth Build: client onboarding agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 241,
@@ -3865,11 +4369,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+17543123260",
+    "website": "https://www.regions.com/locator/fl/weston/full-service-branch-1501-bonaventure-blvd",
     "offer": "Growth Build: client onboarding agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9995155770480633
   },
   {
     "id": 243,
@@ -3881,11 +4389,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19543849773",
+    "website": "https://www.hrblock.com/tax-office-near-me/florida/weston/9416",
     "offer": "Growth Build: client onboarding agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 244,
@@ -3897,11 +4409,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9543842944",
+    "website": "https://www.oceanbank.com/",
     "offer": "Growth Build: client onboarding agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9655
   },
   {
     "id": 245,
@@ -3977,11 +4493,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+19546591299",
+    "website": "https://www.td.com/us/en/personal-banking/store-locator?y_source=1_MzE0NzQ4Ny01NTktbG9jYXRpb24ud2Vic2l0ZQ%3D%3D#/?utm_source=google-maps&utm_medium=yext&utm_campaign=always_on&utm_content=tdct_appointment",
     "offer": "Growth Build: client onboarding agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9902192950248718
   },
   {
     "id": 250,
@@ -4009,11 +4529,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19544531300",
+    "website": "https://www.truist.com/",
     "offer": "Growth Build: client onboarding agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9995532691478729
   },
   {
     "id": 252,
@@ -4041,11 +4565,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19543065894",
+    "website": "https://locator.pnc.com/en/details/fl/weston/branch/16250-indian-trce?lnksrc=branch-listing-facebook",
     "offer": "Growth Build: client onboarding agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9976712614297867
   },
   {
     "id": 254,
@@ -4057,11 +4585,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9548889989",
+    "website": "https://www.my100bank.com/location/1504-weston-rd?utm_source=bing&utm_medium=yext",
     "offer": "Growth Build: client onboarding agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 255,
@@ -4073,11 +4605,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "8887966887",
+    "website": "https://www.synovus.com/locations/usa/fl/weston/4499-weston-road/",
     "offer": "Growth Build: client onboarding agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 256,
@@ -4137,11 +4673,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9543848799",
+    "website": "http://www.ozziedelgadojr.com/",
     "offer": "Growth Build: client onboarding agent",
     "notes": "Independent RIA",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.85
   },
   {
     "id": 260,
@@ -4153,11 +4693,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9544532330",
+    "website": "https://www.seacoastbank.com/locations/weston",
     "offer": "Growth Build: client onboarding agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 261,
@@ -4265,11 +4809,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19545074494",
+    "website": "http://www.westonmedspa.com/",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "829 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "firstclassobgyn@gmail.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 268,
@@ -4281,11 +4829,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "(754) 234-0966",
+    "website": "https://www.beautouchmedspa.com",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 269,
@@ -4297,11 +4849,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9544728355",
+    "website": "https://suriaplasticsurgery.com/",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9902192950248718
   },
   {
     "id": 270,
@@ -4313,11 +4869,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+19545303539",
+    "website": "http://www.saloncouncil.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "320 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "info@saloncouncil.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9722161889076233
   },
   {
     "id": 271,
@@ -4377,11 +4937,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
+    "phone": "+19549455005",
     "website": "",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9366055130958557
   },
   {
     "id": 275,
@@ -4425,11 +4989,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+19542788709",
+    "website": "https://handandstone.com/locations/weston/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "947 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "appt.weston@handandstone.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9902192950248718
   },
   {
     "id": 278,
@@ -4441,11 +5009,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19543060012",
+    "website": "https://www.haircuttery.com/booking/?salonId=4014&utm_source=facebook&utm_medium=organic_social",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "Multiple Weston locations",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "clientservices@ratnerco.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 279,
@@ -4457,11 +5029,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+19543857612",
+    "website": "http://stores.sallybeauty.com/fl/weston/beauty-supply-weston-fl-3267.html",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "realestate@sallybeauty.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9902192950248718
   },
   {
     "id": 280,
@@ -4489,11 +5065,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19543493376",
+    "website": "https://scacce.com/locations/weston/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "about@admcorp.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 282,
@@ -4585,11 +5165,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
+    "phone": "+19543584868",
     "website": "applewoodspa.com",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "216 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "applewoods2@aol.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9361431002616882
   },
   {
     "id": 288,
@@ -4633,11 +5217,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9544456077",
+    "website": "https://www.rejuvenationforher.com/",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 291,
@@ -4665,11 +5253,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33327",
-    "phone": "",
-    "website": "",
+    "phone": "+19542713080",
+    "website": "https://www.f45training.com/northweston",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "389 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9902192950248718
   },
   {
     "id": 293,
@@ -4729,11 +5321,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+17542966969",
+    "website": "http://www.saralakesalon.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "sarahairsalon20@gmail.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 297,
@@ -4745,11 +5341,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "9544342666",
+    "website": "http://www.parissalonspaofswr.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.85
   },
   {
     "id": 298,
@@ -4761,11 +5361,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9545059663",
+    "website": "https://www.belkisbarajas.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9492276906967163
   },
   {
     "id": 299,
@@ -4777,11 +5381,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19548498726",
+    "website": "http://www.bodylaserspa.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "info@bodylaserspa.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 300,
@@ -4793,11 +5401,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9543582107",
+    "website": "https://atcarlsbarbershop.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "539 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.85
   },
   {
     "id": 301,
@@ -4809,11 +5421,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+19544455649",
+    "website": "https://msha.ke/blondee",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "beautybyblondee@gmail.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 302,
@@ -4841,11 +5457,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+17864887172",
+    "website": "https://www.instagram.com/carosunaestetic/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.4817248284816742
   },
   {
     "id": 304,
@@ -4857,11 +5477,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "(954) 306-0570",
+    "website": "http://westonwellnessclub.com",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "customercare@westonwellnessclub.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9492276906967163
   },
   {
     "id": 305,
@@ -4905,11 +5529,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19543840058",
+    "website": "http://www.mvp-cuts.com",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "466 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "kachebarbershopfl@gmail.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.4285043179988861
   },
   {
     "id": 308,
@@ -4921,11 +5549,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19542174881",
+    "website": "http://www.windmillhealthcenter.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "info@windmillhealthcenter.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 309,
@@ -4937,11 +5569,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19544731406",
+    "website": "https://www.brueninginsurance.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "info@brueningins.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 310,
@@ -4985,11 +5621,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+19543495882",
+    "website": "https://agents.allstate.com/seth-friedman-weston-fl.html",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "sfriedman@allstate.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9938639998435974
   },
   {
     "id": 313,
@@ -5001,11 +5641,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+19546019555",
+    "website": "http://www.pinnacleflorida.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "jgonzalez@pinnacleflorida.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 314,
@@ -5017,11 +5661,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+19543896930",
+    "website": "http://www.clawsoninsurance.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "info@clawsoninsurance.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9729039305448532
   },
   {
     "id": 315,
@@ -5033,11 +5681,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19543846100",
+    "website": "http://www.alllinesins.net/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "info@alllinesins.net",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 316,
@@ -5049,11 +5701,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "2399630123",
+    "website": "https://agents.allstate.com/daniel-caminata-weston-fl.html",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.85
   },
   {
     "id": 317,
@@ -5081,11 +5737,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33327",
-    "phone": "",
-    "website": "",
+    "phone": "+19543848088",
+    "website": "http://www.jwgroupinsurance.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "jwgroupins@gmail.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 319,
@@ -5113,11 +5773,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9546347283",
+    "website": "http://www.insuranceunlimitedllc.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 321,
@@ -5145,11 +5809,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9543891289",
+    "website": "https://www.mcgriff.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.85
   },
   {
     "id": 323,
@@ -5161,11 +5829,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19542177227",
+    "website": "https://agents.allstate.com/arnardo-hernandez-weston-fl.html",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "ahernandez6@allstate.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 324,
@@ -5257,11 +5929,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33327",
-    "phone": "",
+    "phone": "+19548901500",
     "website": "",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "Multiple Weston locations",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 330,
@@ -5273,11 +5949,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33327",
-    "phone": "",
-    "website": "",
+    "phone": "+13055702122",
+    "website": "http://www.astoninsurancegroup.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "adriana@astonlife.co",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 331,
@@ -5353,11 +6033,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+17863862112",
+    "website": "http://insuranceplansenrollment.com/",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 336,
@@ -5369,11 +6053,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9543179300",
+    "website": "https://www.statefarm.com/agent/us/fl/weston/janet-fernandez-r4f5pbg5dgf",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 337,
@@ -5417,11 +6105,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33327",
-    "phone": "",
-    "website": "",
+    "phone": "9544871620",
+    "website": "https://sebandainsurancefranchiseforty.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 340,
@@ -5449,11 +6141,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19542173066",
+    "website": "http://www.marcrheingold.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "marc@marcrheingold.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 342,
@@ -5481,11 +6177,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19547649240",
+    "website": "http://www.weinsureadvisors.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "weinsureadvisors@gmail.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 344,
@@ -5545,11 +6245,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+19542176222",
+    "website": "http://www.northstar-insurance.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "shenny@northstar-insurance.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 348,
@@ -5577,11 +6281,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19543497103",
+    "website": "http://www.dennischarley.com/",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "dcharley@dennischarley.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 350,
@@ -5641,11 +6349,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "3059003474",
+    "website": "http://logiqfish.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "Directly offers AI automation services - local competitor",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 354,
@@ -5657,11 +6369,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+19542474068",
+    "website": "http://www.univoxtechnology.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "sales@univoxtechnology.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 355,
@@ -5673,11 +6389,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+13056525699",
+    "website": "http://www.forthright.com/contact/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "success@forthright.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 356,
@@ -5689,11 +6409,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+15123331321",
+    "website": "https://www.lotzap.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "info@lotzap.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 357,
@@ -5865,11 +6589,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+18775267414",
+    "website": "http://www.3metas.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "info@3metas.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 368,
@@ -5881,11 +6609,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19548889932",
+    "website": "http://www.CloudMobileForms.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "sales@cloudmobileforms.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 369,
@@ -5897,11 +6629,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "8004321729",
+    "website": "https://www.ukg.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "Major multi-building corporate HQ campus - Strategic Partner tier",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9902192950248718
   },
   {
     "id": 370,
@@ -5913,11 +6649,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19549985787",
+    "website": "https://www.omegaitsupport.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "info@omegaitsupport.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 371,
@@ -5929,11 +6669,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "7862815671",
+    "website": "http://tek-support.net/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 372,
@@ -5961,11 +6705,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "8009690164",
+    "website": "https://linkedip.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9026216417551041
   },
   {
     "id": 374,
@@ -5977,11 +6725,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33327",
-    "phone": "",
-    "website": "",
+    "phone": "+19549006790",
+    "website": "http://www.netvoix.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "info@netvoix.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9902192950248718
   },
   {
     "id": 375,
@@ -6041,11 +6793,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "8004321729",
+    "website": "https://www.ultimatesoftware.com/?utm_source=GMBlisting&utm_medium=organic",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.85
   },
   {
     "id": 379,
@@ -6057,11 +6813,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33327",
-    "phone": "",
-    "website": "",
+    "phone": "9544539705",
+    "website": "https://bocavox.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 380,
@@ -6090,10 +6850,14 @@ export const leadProspects = [
     "state": "FL",
     "zip": "33327",
     "phone": "",
-    "website": "",
+    "website": "http://www.carytek.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "info@carytek.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 382,
@@ -6121,11 +6885,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+19548889223",
+    "website": "http://www.iesgp.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "info@iescrm.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.6708061099052429
   },
   {
     "id": 384,
@@ -6185,11 +6953,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "9546475797",
+    "website": "http://www.movil-parts.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "Online only, not open to public",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.85
   },
   {
     "id": 388,
@@ -6377,11 +7149,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19547033000",
+    "website": "https://westonoutpatient.com/",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "458 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9902192950248718
   },
   {
     "id": 400,
@@ -6393,11 +7169,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "9543851544",
+    "website": "https://www.riverchasedermatology.com/provider/phi-van-le-md-faad/",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 401,
@@ -6441,11 +7221,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "(954) 900-2183",
+    "website": "https://cyclebar.com/location/weston",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "weston@cyclebar.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.77
   },
   {
     "id": 404,
@@ -6457,11 +7241,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+18665586510",
+    "website": "https://www.nicklauschildrens.org/about-us/locations-and-directions/dan-marino-outpatient-center",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "info@nicklaushealth.org",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9511460661888123
   },
   {
     "id": 405,
@@ -6473,11 +7261,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "9543891414",
+    "website": "https://www.sfenta.org/providers/daniel-s-morse/",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 406,
@@ -6489,11 +7281,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9543359284",
+    "website": "https://aplaceathome.com/weston-fl/",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.85
   },
   {
     "id": 407,
@@ -6521,11 +7317,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19549288135",
+    "website": "https://redlineathletics.com/weston/?utm_source=gmb&utm_medium=organic&utm_campaign=Qiigo",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "weston@redlineathletics.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9722161889076233
   },
   {
     "id": 409,
@@ -6553,11 +7353,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+19542376878",
+    "website": "https://www.purebarre.com/location/weston-fl",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "weston@purebarre.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 411,
@@ -6585,11 +7389,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19543003255",
+    "website": "http://drlindsay.com/",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "info@drlindsay.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 413,
@@ -6601,11 +7409,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9543892599",
+    "website": "http://www.florida-allergy.com/",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9704848915338516
   },
   {
     "id": 414,
@@ -6617,11 +7429,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9543892599",
+    "website": "https://physicians.florida-allergy.com/kfir-shamir-md-a1bcaf27b1e3",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 415,
@@ -6665,11 +7481,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19548706159",
+    "website": "https://www.pearlevision.com/pv-us/stores/fl/weston/C930/?cid=Yext_C930&y_source=1_MTQxODg0ODgtNTU5LWxvY2F0aW9uLndlYnNpdGU%3D",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9999644846022129
   },
   {
     "id": 418,
@@ -6713,11 +7533,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19543854047",
+    "website": "http://stores.gnc.com/weston-fl-635?utm_source=facebook&utm_medium=distrib&utm_campaign=facebook-distrib",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 421,
@@ -6729,11 +7553,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "9544663574",
+    "website": "https://sawgrassortho.com/",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "211 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9902192950248718
   },
   {
     "id": 422,
@@ -6745,11 +7573,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9543844196",
+    "website": "https://www.publix.com/pharmacy?utm_medium=maps&utm_source=extendednetwork&utm_content=psmpharm_website_url",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.85
   },
   {
     "id": 423,
@@ -6777,11 +7609,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9542176500",
+    "website": "http://correctvision.com/",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 425,
@@ -6841,11 +7677,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19548735666",
+    "website": "http://realignbyrandee.com/",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "realignbyrandee@gmail.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.7470677495002747
   },
   {
     "id": 429,
@@ -6857,11 +7697,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "9543891414",
+    "website": "https://www.sfenta.org/locations/2500-weston-road/",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "228 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9902192950248718
   },
   {
     "id": 430,
@@ -6889,11 +7733,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "9542895472",
+    "website": "https://www.fcneurology.net/business-directory/9528/carlos-gadia-md/",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 432,
@@ -6937,11 +7785,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+19542172992",
+    "website": "https://www.westoncontactlens.com",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "238 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "info@westoncontactlens.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9902192950248718
   },
   {
     "id": 435,
@@ -6969,11 +7821,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19543381111",
+    "website": "https://harpermd.com/",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "support@harpermd.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.1445883959531784
   },
   {
     "id": 437,
@@ -7097,11 +7953,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19542173155",
+    "website": "https://www.eyesurgeryassociatesflorida.com/locations/weston/?y_source=1_MjAzOTM3MTEtNDQwLWxvY2F0aW9uLndlYnNpdGU=",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "645 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "administrator@eyesurgeryassociates.net",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9902192950248718
   },
   {
     "id": 445,
@@ -7145,11 +8005,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "(954) 678-5622",
+    "website": "https://exercisecoach.com/weston",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "weston@exercisecoach.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.77
   },
   {
     "id": 448,
@@ -7257,11 +8121,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "9544513869",
+    "website": "https://www.integrativehealth.us/locations/weston-fl.html",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 455,
@@ -7273,11 +8141,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33332",
-    "phone": "",
-    "website": "",
+    "phone": "+19542927517",
+    "website": "http://www.theyogadirection.com/",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "104 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "christine@theyogadirection.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9722161889076233
   },
   {
     "id": 456,
@@ -7289,11 +8161,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9542765552",
+    "website": "https://www.mhs.net/physicians/j/jorge-rodriguez-natalie",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9902192950248718
   },
   {
     "id": 457,
@@ -7305,11 +8181,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "9548079800",
+    "website": "https://flomedinfusion.com/",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9902192950248718
   },
   {
     "id": 458,
@@ -7321,11 +8201,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+13059224178",
+    "website": "http://www.justrecoverymove.com/",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "justrecovery.weston@gmail.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9472025036811829
   },
   {
     "id": 459,
@@ -7369,11 +8253,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9543147768",
+    "website": "http://www.rheumatologymedicalcenter.com/",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 462,
@@ -7385,11 +8273,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9542710913",
+    "website": "http://www.medilifecenter.com/",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "159 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 463,
@@ -7401,11 +8293,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9544007225",
+    "website": "http://www.geminiobgyn.com/",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "187 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9655
   },
   {
     "id": 464,
@@ -7417,11 +8313,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9548706159",
+    "website": "https://eyedoctors.pearlevision.com/fl/weston/2234-weston-road.html?cid=yext_odPVODC930-110000208&y_source=1_MTM3MTYzNzYtNDgzLWxvY2F0aW9uLndlYnNpdGU%3D",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9931
   },
   {
     "id": 465,
@@ -7497,11 +8397,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+13053333125",
+    "website": "https://empowerdevelopmenttherapycenter.com/",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "empowerdevelopmenttherapy@gmail.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9902192950248718
   },
   {
     "id": 470,
@@ -7545,11 +8449,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19544009001",
+    "website": "http://mastersonchiropractic.com/",
     "offer": "Quick Win: intake & scheduling agent",
     "notes": "195 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "mastersonjoseph@hotmail.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 473,
@@ -7609,11 +8517,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33327",
-    "phone": "",
-    "website": "",
+    "phone": "+19543890495",
+    "website": "http://www.venussuarezpa.com/",
     "offer": "Growth Build: client intake agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 477,
@@ -7657,11 +8569,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19543153625",
+    "website": "http://www.narvaezlaw.net/",
     "offer": "Growth Build: client intake agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "rosana@narvaezlaw.net",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 480,
@@ -7673,11 +8589,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9545302236",
+    "website": "http://www.shulbylaw.com/",
     "offer": "Growth Build: client intake agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 481,
@@ -7721,11 +8641,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19545292057",
+    "website": "http://www.danapechersky.com/",
     "offer": "Growth Build: client intake agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "contact@danapechersky.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 484,
@@ -7769,11 +8693,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19546516810",
+    "website": "https://www.ferrerlawgroup.com/",
     "offer": "Growth Build: client intake agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "flgmail@ferrerlawgroup.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 487,
@@ -7897,11 +8825,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "7865019803",
+    "website": "http://www.notariolatino.com/",
     "offer": "Growth Build: client intake agent",
     "notes": "134 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9902192950248718
   },
   {
     "id": 495,
@@ -7929,11 +8861,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9542171016",
+    "website": "https://www.justinmorganlaw.com/",
     "offer": "Growth Build: client intake agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 497,
@@ -7977,11 +8913,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9543859160",
+    "website": "https://www.divorcebroward.com/",
     "offer": "Growth Build: client intake agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 500,
@@ -7993,11 +8933,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+19546598300",
+    "website": "http://www.greenberglawgrp.com/",
     "offer": "Growth Build: client intake agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "ross@greenberglawgrp.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 501,
@@ -8009,11 +8953,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9549980793",
+    "website": "http://kaplanemploymentlaw.com/",
     "offer": "Growth Build: client intake agent",
     "notes": "92 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.85
   },
   {
     "id": 502,
@@ -8025,11 +8973,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19546363802",
+    "website": "http://www.behrenlaw.com/",
     "offer": "Growth Build: client intake agent",
     "notes": "97 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "scott@behrenlaw.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 503,
@@ -8041,11 +8993,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9548002864",
+    "website": "http://bozaniclaw.com/",
     "offer": "Growth Build: client intake agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 504,
@@ -8169,11 +9125,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+19543493300",
+    "website": "http://www.schulaw.com",
     "offer": "Growth Build: client intake agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "info@schulaw.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.6518253684043884
   },
   {
     "id": 512,
@@ -8185,11 +9145,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+19543891479",
+    "website": "http://www.abogadoconsular.com/",
     "offer": "Growth Build: client intake agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "info@abogadoconsular.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 513,
@@ -8217,11 +9181,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+13053796000",
+    "website": "http://www.GenovaFamilyLaw.com/",
     "offer": "Growth Build: client intake agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "info@genovafamilylaw.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 515,
@@ -8233,11 +9201,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+19543856811",
+    "website": "http://www.visasusa.net/",
     "offer": "Growth Build: client intake agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "piedrahitai@visasusa.net",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 516,
@@ -8249,11 +9221,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "9543608242",
+    "website": "https://www.rblawfl.com/",
     "offer": "Growth Build: client intake agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 517,
@@ -8297,11 +9273,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+19546701267",
+    "website": "http://www.NnamdiJackson.com/",
     "offer": "Growth Build: client intake agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "njackson@nsjlawoffice.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.7294923663139343
   },
   {
     "id": 520,
@@ -8329,11 +9309,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+13054481255",
+    "website": "https://falklawyers.com/weston-car-accident-attorney",
     "offer": "Growth Build: client intake agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "weston@falklawyers.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 522,
@@ -8409,11 +9393,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+13057225959",
+    "website": "https://therischlawfirm.com/",
     "offer": "Growth Build: client intake agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "contact@therischlawfirm.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 527,
@@ -8441,11 +9429,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+19545315658",
+    "website": "http://www.aptus-legal.com/",
     "offer": "Growth Build: client intake agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "rosalind@matoslegal.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 529,
@@ -8473,11 +9465,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19543840998",
+    "website": "http://www.pkslegal.com",
     "offer": "Growth Build: client intake agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "info@pkslegal.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.6761409640312195
   },
   {
     "id": 531,
@@ -8681,11 +9677,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19543852355",
+    "website": "http://campionlaw.com/",
     "offer": "Growth Build: client intake agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "office@campionlaw.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 544,
@@ -8697,11 +9697,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+19542176225",
+    "website": "http://www.bradleygross.com/",
     "offer": "Growth Build: client intake agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "info@bradleygross.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 545,
@@ -8713,11 +9717,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
+    "phone": "+13056001211",
     "website": "",
     "offer": "Growth Build: client intake agent",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "gpierre@gwplegal.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 546,
@@ -8729,11 +9737,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
+    "phone": "+19547081433",
     "website": "",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 547,
@@ -8761,11 +9773,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33327",
-    "phone": "",
-    "website": "",
+    "phone": "+19546555104",
+    "website": "http://www.cotufadesigns.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "cotufadesigns@gmail.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 549,
@@ -8873,11 +9889,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "3055730658",
+    "website": "https://www.brustmancarrinopr.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 556,
@@ -8889,11 +9909,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "9542995310",
+    "website": "http://www.onset.media/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 557,
@@ -8953,11 +9977,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+18448887377",
+    "website": "https://www.southfloridainsuranceadjuster.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "svenook@advocateclaims.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.45196589827537537
   },
   {
     "id": 561,
@@ -9001,11 +10029,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19543420550",
+    "website": "http://www.arcgonline.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "info@arcgonline.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.5769685506820679
   },
   {
     "id": 564,
@@ -9017,11 +10049,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+19544510323",
+    "website": "http://thepropertyclaim.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "claims@jmdconsultants.co",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 565,
@@ -9033,11 +10069,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+19548396480",
+    "website": "http://www.appletower.net/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "244 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "info@appletower.net",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 566,
@@ -9049,11 +10089,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+13059611183",
+    "website": "https://asapstaffingservices.com/company",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "contact@asapstaffingservices.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 567,
@@ -9065,11 +10109,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+19543892511",
+    "website": "http://www.lesweston.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "117 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "info@lesweston.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 568,
@@ -9081,11 +10129,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+19543844440",
+    "website": "http://orion-title.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "pperez@orion-title.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 569,
@@ -9097,11 +10149,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19543494807",
+    "website": "http://www.firstintitle.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "131 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "josephine.godinez@firstintitle.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 570,
@@ -9113,11 +10169,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9542581845",
+    "website": "https://boardandbrush.com/sunrise",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "167 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9059488773345947
   },
   {
     "id": 571,
@@ -9193,11 +10253,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "8009404848",
+    "website": "https://www.taylorus.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 576,
@@ -9209,11 +10273,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9546519511",
+    "website": "http://www.bestmaidclean.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.85
   },
   {
     "id": 577,
@@ -9257,11 +10325,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "9549453316",
+    "website": "https://www.shrednations.com/fl/the-ups-store-18869-33331/?utm_source=bpb&utm_medium=retail&utm_campaign=shred-retail-marketing-bing",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 580,
@@ -9305,11 +10377,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19549990706",
+    "website": "http://www.primoliquors.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "236 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "primoliquors@gmail.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9302752017974854
   },
   {
     "id": 583,
@@ -9337,11 +10413,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19542176681",
+    "website": "https://www.wtces.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "frontdesk@wtces.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 585,
@@ -9353,11 +10433,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19549085775",
+    "website": "http://quick-times-liquors-wines.business.site",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "paradiseliquorsunrise@gmail.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 586,
@@ -9401,11 +10485,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "7542168318",
+    "website": "https://tanasi.us/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 589,
@@ -9417,11 +10505,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+13059100486",
+    "website": "http://www.bfsconsultingus.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "info@bfsconsultingus.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 590,
@@ -9433,11 +10525,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+19546152212",
+    "website": "http://www.sftafl.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "mrosado@sftafl.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9196957349777222
   },
   {
     "id": 591,
@@ -9497,11 +10593,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+541124063187",
+    "website": "http://www.tododeusa.com.ar/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "info@tododeusa.com.ar",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 595,
@@ -9529,11 +10629,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19546549225",
+    "website": "http://Www.dancologisticsinc.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9902192950248718
   },
   {
     "id": 597,
@@ -9593,11 +10697,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "9542800360",
+    "website": "https://www.credit360.biz/credit-repair-weston",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 601,
@@ -9625,11 +10733,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+19545160673",
+    "website": "http://www.southerncapitaltitle.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "angela@southerncapitaltitle.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 603,
@@ -9641,11 +10753,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "8599048035",
+    "website": "http://main-street-marketing.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 604,
@@ -9705,11 +10821,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+18883541867",
+    "website": "https://www.sociallybuzz.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "info@sociallybuzz.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.36970722675323486
   },
   {
     "id": 608,
@@ -9785,11 +10905,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+18886731053",
+    "website": "https://linktr.ee/virfon_",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "servicioalcliente@virfon.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 613,
@@ -9849,11 +10973,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19544667075",
+    "website": "https://www.webslaw.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "info@weblegal.io",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 617,
@@ -9865,11 +10993,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9544659315",
+    "website": "https://www.ramonortegacpa.com/",
     "offer": "Growth Build: client onboarding agent",
     "notes": "146 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 618,
@@ -9881,11 +11013,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19543492355",
+    "website": "https://smartmartwireless.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "356 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "info@smartmartwireless.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9600046724081039
   },
   {
     "id": 619,
@@ -9929,11 +11065,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "+19542825400",
+    "website": "http://www.flexsealproducts.com",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "info@swiftdrtv.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.43066349625587463
   },
   {
     "id": 622,
@@ -9945,11 +11085,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "+19546150615",
+    "website": "http://www.bethazor.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "beth@azoradvisoryservices.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 623,
@@ -10009,11 +11153,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "8888860969",
+    "website": "http://drcoolservicellc.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 627,
@@ -10057,11 +11205,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "7542960894",
+    "website": "https://garagedoorrepairsusa.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "122 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.85
   },
   {
     "id": 630,
@@ -10073,11 +11225,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9542872306",
+    "website": "https://chaseroofing.com/weston-roofing/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 631,
@@ -10233,11 +11389,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "9546051995",
+    "website": "https://www.tasfire.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 641,
@@ -10249,11 +11409,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33327",
-    "phone": "",
-    "website": "",
+    "phone": "7542963528",
+    "website": "https://filterbuy.com/hvac-solutions/florida/weston/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.85
   },
   {
     "id": 642,
@@ -10313,11 +11477,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "7542367300",
+    "website": "https://airprosusa.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.85
   },
   {
     "id": 646,
@@ -10393,11 +11561,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "9544407737",
+    "website": "https://alphagaragesolutions.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 651,
@@ -10441,11 +11613,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "7866031851",
+    "website": "http://rsvphomeinspection.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 654,
@@ -10489,11 +11665,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "9549346556",
+    "website": "https://ovencleaningjoy.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 657,
@@ -10537,11 +11717,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33327",
-    "phone": "",
+    "phone": "+19543002555",
     "website": "",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "110 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "jakesgaragellc@gmail.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 660,
@@ -10585,11 +11769,15 @@ export const leadProspects = [
     "city": "Southwest Ranches",
     "state": "FL",
     "zip": "33331",
-    "phone": "",
-    "website": "",
+    "phone": "(561) 206-2591",
+    "website": "http://www.homesbylandmark.com",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.77
   },
   {
     "id": 663,
@@ -10601,11 +11789,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33327",
-    "phone": "",
-    "website": "",
+    "phone": "+19549468400",
+    "website": "http://elegantflooringkitchenbath.design/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "gotflooring@gmail.com",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 664,
@@ -10617,11 +11809,15 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33327",
-    "phone": "",
-    "website": "",
+    "phone": "9548812665",
+    "website": "http://airbyus.com/",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.9199122190475464
   },
   {
     "id": 665,
@@ -10665,10 +11861,14 @@ export const leadProspects = [
     "city": "Weston",
     "state": "FL",
     "zip": "33326",
-    "phone": "",
-    "website": "",
+    "phone": "(954) 385-1707",
+    "website": "http://www.yahaninc.com",
     "offer": "Strategic Partner: operations and technology roadmap",
     "notes": "131 Google reviews",
-    "source": "chamberofcommerce.com"
+    "source": "chamberofcommerce.com",
+    "companyEmail": "",
+    "contactSource": "Overture Maps 2026-06-17.0",
+    "contactSourceUrl": "https://docs.overturemaps.org/guides/places/",
+    "contactConfidence": 0.77
   }
 ]
