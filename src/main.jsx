@@ -11,7 +11,10 @@ import {
   BriefcaseBusiness,
   Building2,
   CalendarDays,
+  CalendarCheck2,
   CheckCircle2,
+  ChevronLeft,
+  ChevronRight,
   ChevronDown,
   CircleDollarSign,
   CircleCheck,
@@ -23,6 +26,7 @@ import {
   LockKeyhole,
   LogOut,
   Mail,
+  Megaphone,
   Menu,
   MoreHorizontal,
   Pencil,
@@ -33,6 +37,7 @@ import {
   Settings,
   Sparkles,
   Target,
+  Trash2,
   UserRound,
   UserCog,
   Users,
@@ -45,10 +50,17 @@ const navItems = [
   { label: 'Contacts', icon: Users, count: 128 },
   { label: 'Companies', icon: Building2 },
   { label: 'Clients', icon: Layers3, count: 48 },
-  { label: 'Leads & Prospects', icon: Target, count: leadProspects.length },
+  { label: 'Market', icon: Target, count: leadProspects.length },
+  { label: 'Services', icon: Sparkles, count: 3 },
   { label: 'Users', icon: UserCog, count: 5 },
   { label: 'Pipeline', icon: BriefcaseBusiness, count: 7 },
   { label: 'Calendar', icon: CalendarDays },
+]
+
+const serviceCatalog = [
+  { icon: BrainCircuit, title: 'AI strategy', type: 'Advisory', text: 'Find the right AI use cases and build a practical roadmap tied to measurable business outcomes.', deliverables: ['Opportunity assessment', 'AI roadmap', 'Implementation priorities'] },
+  { icon: Workflow, title: 'Systems & workflow design', type: 'Transformation', text: 'Replace operational friction with connected workflows, clear ownership, and scalable systems.', deliverables: ['Current-state review', 'Future-state workflows', 'Systems blueprint'] },
+  { icon: ArrowUpRight, title: 'Project delivery', type: 'Delivery', text: 'Move critical initiatives from plan to launch with visible decisions, risks, milestones, and accountability.', deliverables: ['Delivery roadmap', 'Operating cadence', 'Launch oversight'] },
 ]
 
 const opportunities = [
@@ -167,7 +179,7 @@ function MetricCard({ label, value, note, icon: Icon, accent }) {
   )
 }
 
-function Dashboard({ active, firstName }) {
+function Dashboard({ active, greetingName }) {
   const [filter, setFilter] = useState('All deals')
   const [query, setQuery] = useState('')
   const visible = useMemo(() => opportunities.filter(item => item.company.toLowerCase().includes(query.toLowerCase())), [query])
@@ -176,7 +188,7 @@ function Dashboard({ active, firstName }) {
     <main className="content pane">
       <div className="content-inner">
         <section className="page-heading">
-          <div><p className="eyebrow">{active}</p><h1>Good morning, {firstName || 'there'}.</h1><p>Here’s what’s moving across your business today.</p></div>
+          <div><p className="eyebrow">{active}</p><h1>Good morning, {greetingName || 'there'}.</h1><p>Here’s what’s moving across your business today.</p></div>
           <button className="primary-button"><Plus size={17} /> Add opportunity</button>
         </section>
 
@@ -270,21 +282,305 @@ function ClientsModule() {
   return <main className="content pane clients-content"><div className="clients-layout"><section className="clients-workspace"><header className="clients-heading"><div><p className="eyebrow">Clients</p><h1>Clients</h1><p>Manage client organizations and relationships.</p></div><button className="primary-button" onClick={() => setShowForm(true)}><Plus size={17} /> New client</button></header><section className="client-summary" aria-label="Client summary"><span><Building2 size={18} /><small>Total clients</small><strong>{clients.length}</strong></span><span><CircleCheck size={18} /><small>Active</small><strong>{clients.filter(client => client.status === 'Active').length}</strong></span><span><Clock3 size={18} /><small>Prospects</small><strong>{clients.filter(client => client.status === 'Prospect').length}</strong></span><span><CircleCheck size={18} /><small>Inactive</small><strong>{clients.filter(client => client.status === 'Inactive').length}</strong></span></section><section className="clients-table-panel"><div className="client-filters"><label className="client-search"><Search size={15} /><input value={query} onChange={event => setQuery(event.target.value)} placeholder="Search clients..." aria-label="Search clients" /></label>{[['Industry vertical', vertical, setVertical, values('vertical')], ['Category', category, setCategory, values('category')], ['Subcategory', subcategory, setSubcategory, values('subcategory')], ['Status', status, setStatus, ['All', 'Active', 'Prospect', 'Inactive']]].map(([label, value, setter, options]) => <label className="filter-select" key={label}><span>{label}</span><select value={value} onChange={event => setter(event.target.value)}>{options.map(option => <option key={option}>{option}</option>)}</select></label>)}<button className="filter-button" onClick={() => { setVertical('All'); setCategory('All'); setSubcategory('All'); setStatus('All') }}><Filter size={14} /> Reset</button></div><div className="client-table"><div className="client-table-labels"><span>Company</span><span>Industry hierarchy</span><span>Primary contact</span><span>Contacts</span><span>Status</span><span>Last activity</span></div>{visibleClients.map((client, index) => <button className={`client-row ${selected.id === client.id ? 'selected' : ''}`} key={client.id} onClick={() => setSelectedId(client.id)}><span className="company-cell"><i className={`company-logo logo-${index % 4}`}>{client.initials}</i><strong>{client.name}</strong></span><span className="hierarchy-cell">{client.vertical} <b>›</b> {client.category} <b>›</b> {client.subcategory}</span><span><strong>{client.primary.name}</strong><small>{client.primary.title}</small></span><span>{client.contacts.length + 1} <Users size={13} /></span><span><em className={`client-status ${client.status.toLowerCase()}`}>{client.status}</em></span><span>{client.lastActivity}</span></button>)}{visibleClients.length === 0 && <div className="clients-empty">No clients match these filters.</div>}</div><footer className="clients-table-footer">Showing {visibleClients.length} of {clients.length} clients</footer></section></section><ClientDetail client={selected} onAddContact={addContact} /></div>{showForm && <ClientForm onClose={() => setShowForm(false)} onCreate={createClient} />}</main>
 }
 
-function LeadDetail({ lead }) {
-  const address = [lead.address, lead.city, lead.state, lead.zip].filter(Boolean).join(', ')
-  return <aside className="client-detail-pane"><header className="client-detail-head"><div className="company-cell"><span className="company-logo logo-1">{lead.name[0]}</span><span><strong>{lead.name}</strong><small>{lead.priority}</small></span></div><em className="client-status prospect">Prospect</em></header><div className="client-detail-actions">{lead.website && <a href={`https://${lead.website.replace(/^https?:\/\//, '')}`} target="_blank" rel="noreferrer"><Globe2 size={14} /> Website</a>}{lead.phone && <a className="dark" href={`tel:${lead.phone}`}><Phone size={15} /> Call</a>}</div><section className="lead-offer"><small>Suggested wedge offer</small><strong>{lead.offer}</strong></section><section className="client-detail-section"><h3>Classification</h3><dl><div><dt>Industry vertical</dt><dd>{lead.vertical}</dd></div><div><dt>Category</dt><dd>{lead.category}</dd></div><div><dt>Subcategory</dt><dd>{lead.subcategory}</dd></div><div><dt>Priority</dt><dd>{lead.priority}</dd></div></dl></section><section className="client-detail-section"><h3>Contact details</h3><dl><div><dt><Building2 size={14} /> Address</dt><dd>{address || 'Not available'}</dd></div><div><dt><Phone size={14} /> Phone</dt><dd>{lead.phone || 'Not available'}</dd></div><div><dt><Globe2 size={14} /> Website</dt><dd>{lead.website || 'Not available'}</dd></div><div><dt>Source</dt><dd>{lead.source}</dd></div></dl></section><section className="client-detail-section"><h3>Research notes</h3><p className="lead-note">{lead.notes || 'No additional notes.'}</p></section></aside>
+function CompanyEventSelector({ value, onSelect }) {
+  const [query, setQuery] = useState(value || '')
+  const [open, setOpen] = useState(false)
+  const [customTargets, setCustomTargets] = useState([])
+  useEffect(() => {
+    const saved = window.localStorage.getItem('osai-custom-targets')
+    if (saved) { try { setCustomTargets(JSON.parse(saved)) } catch {} }
+  }, [])
+  useEffect(() => { setQuery(value || '') }, [value])
+  const companies = [...leadProspects, ...customTargets]
+  const normalized = query.trim().toLowerCase()
+  const matches = normalized ? companies.filter(company => company.name.toLowerCase().includes(normalized)).slice(0, 6) : companies.slice(0, 6)
+  const suggestion = normalized ? companies.find(company => company.name.toLowerCase().startsWith(normalized)) || matches[0] : null
+  const selected = companies.find(company => company.name.toLowerCase() === (value || '').toLowerCase())
+  const choose = company => { setQuery(company.name); onSelect(company.name); setOpen(false) }
+  const createTarget = () => {
+    const name = query.trim()
+    if (!name || !window.confirm(`Create New Target?\n\n${name}`)) return
+    const target = { id: `custom-${Date.now()}`, name, vertical: 'Unassigned', category: 'Unassigned', subcategory: 'Unassigned', address: '', city: '', state: '', zip: '', stage: 'Target', offer: 'Offer not assigned', notes: '' }
+    const next = [...customTargets, target]
+    setCustomTargets(next)
+    window.localStorage.setItem('osai-custom-targets', JSON.stringify(next))
+    choose(target)
+  }
+  const confirmed = companies.some(company => company.name.toLowerCase() === normalized)
+  return <div className="company-event-selector">
+    <label>Company
+      <span className="company-autocomplete">
+        {suggestion && suggestion.name.toLowerCase().startsWith(normalized) && normalized && <span className="company-ghost"><b>{query}</b>{suggestion.name.slice(query.length)}</span>}
+        <input value={query} onFocus={() => setOpen(true)} onChange={event => { setQuery(event.target.value); onSelect(''); setOpen(true) }} onKeyDown={event => { if (event.key === 'Enter') { event.preventDefault(); if (suggestion) choose(suggestion); else createTarget() } }} placeholder="Company Name" autoComplete="off" />
+      </span>
+    </label>
+    {open && query.trim() && <div className="company-suggestions">{matches.map(company => <button type="button" key={company.id} onMouseDown={event => event.preventDefault()} onClick={() => choose(company)}><strong>{company.name}</strong><small>{company.category || 'Unassigned'} · {[company.city, company.state].filter(Boolean).join(', ') || 'Location not available'}</small></button>)}{!confirmed && !matches.length && <button type="button" className="create-target-option" onMouseDown={event => event.preventDefault()} onClick={createTarget}><Plus size={13} /> Create New Target?</button>}</div>}
+    {selected && <div className="selected-company-details"><strong>{selected.name}</strong><span>{selected.category || 'Unassigned'}</span><small>{[selected.address, selected.city, selected.state].filter(Boolean).join(', ') || 'Address not available'}</small></div>}
+  </div>
 }
 
+function LeadDetail({ lead, onNotesChange, calendarItems, onCalendarItemsChange }) {
+  const [tab, setTab] = useState('Main')
+  const [editingCalendarItem, setEditingCalendarItem] = useState(null)
+  const [contactsByCompany, setContactsByCompany] = useState({})
+  const [editingContact, setEditingContact] = useState(null)
+  useEffect(() => {
+    const savedContacts = window.localStorage.getItem('osai-market-contacts')
+    if (savedContacts) { try { setContactsByCompany(JSON.parse(savedContacts)) } catch {} }
+  }, [])
+  const headerAddress = [lead.address, lead.city].filter(Boolean).join(', ')
+  const mainContact = [lead.mainContactFirstName, lead.mainContactLastName].filter(Boolean).join(' ')
+  const companyUrl = lead.companyUrl || lead.website
+  const companyPhone = lead.companyPhone || lead.phone
+  const storedContacts = contactsByCompany[lead.id] || []
+  const seedMainContact = mainContact ? [{ id: `seed-${lead.id}`, firstName: lead.mainContactFirstName, lastName: lead.mainContactLastName, email: lead.mainEmail || '', phone: lead.mainPhone || '', isMain: true, assignment: 'Company', project: '' }] : []
+  const companyContacts = Object.hasOwn(contactsByCompany, lead.id) ? storedContacts : seedMainContact
+  const companyName = lead.name.toLowerCase()
+  const relatedCalendarItems = calendarItems
+    .filter(item => {
+      const related = (item.related || '').toLowerCase()
+      return related && (related === companyName || companyName.includes(related) || related.includes(companyName))
+    })
+    .sort((a, b) => `${a.date}${a.time}`.localeCompare(`${b.date}${b.time}`))
+  const tabs = ['Main', 'Contacts', 'Calendar', 'Offers']
+  const updateCalendarItems = updater => {
+    onCalendarItemsChange(updater)
+  }
+  const saveCalendarItem = event => {
+    event.preventDefault()
+    updateCalendarItems(current => editingCalendarItem.id ? current.map(item => item.id === editingCalendarItem.id ? editingCalendarItem : item) : [...current, { ...editingCalendarItem, id: Date.now() }])
+    setEditingCalendarItem(null)
+  }
+  const deleteCalendarItem = id => {
+    updateCalendarItems(current => current.filter(item => item.id !== id))
+    setEditingCalendarItem(null)
+  }
+  const saveContact = event => {
+    event.preventDefault()
+    setContactsByCompany(current => {
+      let contacts = current[lead.id] || seedMainContact
+      if (editingContact.isMain) contacts = contacts.map(contact => ({ ...contact, isMain: false }))
+      contacts = editingContact.id ? contacts.map(contact => contact.id === editingContact.id ? editingContact : contact) : [...contacts, { ...editingContact, id: Date.now() }]
+      const next = { ...current, [lead.id]: contacts }
+      window.localStorage.setItem('osai-market-contacts', JSON.stringify(next))
+      return next
+    })
+    setEditingContact(null)
+  }
+  const deleteContact = id => {
+    setContactsByCompany(current => {
+      const next = { ...current, [lead.id]: (current[lead.id] || seedMainContact).filter(contact => contact.id !== id) }
+      window.localStorage.setItem('osai-market-contacts', JSON.stringify(next))
+      return next
+    })
+    setEditingContact(null)
+  }
+  return (
+    <aside className="client-detail-pane market-company-rail">
+      <header className="client-detail-head">
+        <div className="company-rail-heading">
+          <strong>{lead.name}</strong>
+          <small>{lead.category}</small>
+          <small className="company-rail-address">{headerAddress || 'Address not available'}</small>
+        </div>
+        <em className={`client-status stage-${lead.stage.toLowerCase()}`}>{lead.stage}</em>
+      </header>
+      <nav className="company-rail-nav" aria-label="Company details">
+        {tabs.map(item => <button className={tab === item ? 'active' : ''} key={item} onClick={() => setTab(item)}>{item}</button>)}
+      </nav>
+      {tab === 'Main' && <>
+        <section className="client-detail-section">
+          <h3>Classification</h3>
+          <dl>
+            <div><dt>Industry</dt><dd>{lead.vertical}</dd></div>
+            <div><dt>Category</dt><dd>{lead.category}</dd></div>
+            <div><dt>Subcategory</dt><dd>{lead.subcategory}</dd></div>
+            <div><dt>Stage</dt><dd>{lead.stage}</dd></div>
+          </dl>
+        </section>
+        <section className="client-detail-section">
+          <h3>Company details</h3>
+          <dl>
+            <div><dt>Company URL</dt><dd>{companyUrl ? <a href={`https://${companyUrl.replace(/^https?:\/\//, '')}`} target="_blank" rel="noreferrer">{companyUrl}</a> : 'Not available'}</dd></div>
+            <div><dt>Company email</dt><dd>{lead.companyEmail ? <a href={`mailto:${lead.companyEmail}`}>{lead.companyEmail}</a> : 'Not available'}</dd></div>
+            <div><dt>Company phone</dt><dd>{companyPhone || 'Not available'}</dd></div>
+          </dl>
+        </section>
+        <section className="client-detail-section">
+          <h3>Notes</h3>
+          <textarea className="lead-notes-editor" aria-label="Notes" value={lead.notes || ''} onChange={event => onNotesChange(event.target.value)} placeholder="Add notes about this company..." />
+        </section>
+      </>}
+      {tab === 'Contacts' && <section className="client-detail-section company-contacts-list">
+        {!editingContact ? <>
+          <div className="company-tab-heading"><h3>Contacts</h3><button onClick={() => setEditingContact({ id: null, firstName: '', lastName: '', email: '', phone: '', isMain: companyContacts.length === 0, assignment: 'Company', project: '' })}><Plus size={12} /> Add</button></div>
+          {companyContacts.length ? companyContacts.map(contact => <article key={contact.id} onClick={() => setEditingContact(contact)}><div><strong>{[contact.firstName, contact.lastName].filter(Boolean).join(' ')}</strong><small>{contact.isMain ? 'Main contact' : contact.assignment === 'Project' ? `Project contact · ${contact.project || 'Unassigned project'}` : 'Company contact'}</small><a href={`mailto:${contact.email}`}>{contact.email || 'Email not available'}</a><span>{contact.phone || 'Phone not available'}</span></div>{contact.isMain && <em>Main</em>}</article>) : <div className="company-tab-empty"><Users size={22} /><strong>No contacts</strong><span>Add the first contact for this company.</span></div>}
+        </> : <form className="company-calendar-editor company-contact-editor" onSubmit={saveContact}>
+          <div className="company-tab-heading"><h3>{editingContact.id ? 'Edit contact' : 'Add contact'}</h3>{editingContact.id && <button type="button" className="danger" onClick={() => deleteContact(editingContact.id)}>Delete</button>}</div>
+          <div className="company-editor-pair"><label>First name<input required autoFocus value={editingContact.firstName} onChange={event => setEditingContact({ ...editingContact, firstName: event.target.value })} /></label><label>Last name<input required value={editingContact.lastName} onChange={event => setEditingContact({ ...editingContact, lastName: event.target.value })} /></label></div>
+          <label>Email<input type="email" value={editingContact.email} onChange={event => setEditingContact({ ...editingContact, email: event.target.value })} /></label>
+          <label>Phone<input value={editingContact.phone} onChange={event => setEditingContact({ ...editingContact, phone: event.target.value })} /></label>
+          <label>Contact assignment<select value={editingContact.assignment} onChange={event => setEditingContact({ ...editingContact, assignment: event.target.value, project: event.target.value === 'Project' ? editingContact.project : '' })}><option>Company</option><option>Project</option></select></label>
+          {editingContact.assignment === 'Project' && <label>Project<input required value={editingContact.project} onChange={event => setEditingContact({ ...editingContact, project: event.target.value })} placeholder="Project name" /></label>}
+          <label className="main-contact-toggle"><input type="checkbox" checked={editingContact.isMain} onChange={event => setEditingContact({ ...editingContact, isMain: event.target.checked })} /> Main company contact</label>
+          <footer><button type="button" onClick={() => setEditingContact(null)}>Cancel</button><button className="dark" type="submit">Save contact</button></footer>
+        </form>}
+      </section>}
+      {tab === 'Calendar' && <section className="client-detail-section company-calendar-list">
+        {!editingCalendarItem ? <>
+          <div className="company-tab-heading"><h3>Calendar</h3><button onClick={() => setEditingCalendarItem({ id: null, type: 'Outreach', title: '', date: dateKey(new Date()), time: '', related: lead.name, notes: '' })}><Plus size={12} /> Add</button></div>
+          {relatedCalendarItems.length ? relatedCalendarItems.map(item => <article className="company-calendar-item" key={item.id} onClick={() => setEditingCalendarItem(item)}>
+            <div><strong>{item.title}</strong><small>{parseDateKey(item.date).toLocaleDateString([], { month: 'short', day: 'numeric' })} · {formatTime(item.time)}</small><em>{calendarTypes[item.type]?.label || item.type}</em></div>
+            <span className="company-calendar-actions"><button onClick={event => { event.stopPropagation(); setEditingCalendarItem(item) }}>Edit</button><i /> <button onClick={event => { event.stopPropagation(); deleteCalendarItem(item.id) }}>Delete</button></span>
+          </article>) : <div className="company-tab-empty"><CalendarDays size={22} /><strong>No calendar items</strong><span>Schedule activity from this company or the Calendar module.</span></div>}
+        </> : <form className="company-calendar-editor" onSubmit={saveCalendarItem}>
+          <div className="company-tab-heading"><h3>{editingCalendarItem.id ? 'Edit event' : 'Add event'}</h3>{editingCalendarItem.id && <button type="button" className="danger" onClick={() => deleteCalendarItem(editingCalendarItem.id)}>Delete</button>}</div>
+          <label>Status<select value={editingCalendarItem.type} onChange={event => setEditingCalendarItem({ ...editingCalendarItem, type: event.target.value })}>{Object.keys(calendarTypes).map(type => <option key={type}>{type}</option>)}</select></label>
+          <label>Title<input required autoFocus value={editingCalendarItem.title} onChange={event => setEditingCalendarItem({ ...editingCalendarItem, title: event.target.value })} /></label>
+          <div className="company-editor-pair"><label>Date<input required type="date" value={editingCalendarItem.date} onChange={event => setEditingCalendarItem({ ...editingCalendarItem, date: event.target.value })} /></label><label>Time<input type="time" value={editingCalendarItem.time} onChange={event => setEditingCalendarItem({ ...editingCalendarItem, time: event.target.value })} /></label></div>
+          <label>Company<input value={lead.name} readOnly aria-readonly="true" /></label>
+          <label>Notes<textarea value={editingCalendarItem.notes || ''} onChange={event => setEditingCalendarItem({ ...editingCalendarItem, notes: event.target.value })} /></label>
+          <footer><button type="button" onClick={() => setEditingCalendarItem(null)}>Cancel</button><button className="dark" type="submit">Save event</button></footer>
+        </form>}
+      </section>}
+      {tab === 'Offers' && <section className="client-detail-section company-offer-panel">
+        <h3>Offers</h3>
+        {lead.offer ? <article><small>Recommended offer</small><strong>{lead.offer}</strong><p>Use this offer as the starting point for outreach and qualification.</p></article> : <div className="company-tab-empty"><BriefcaseBusiness size={22} /><strong>No offer assigned</strong><span>Add an offer when this target is qualified.</span></div>}
+      </section>}
+    </aside>
+  )
+}
 function LeadsModule() {
   const [query, setQuery] = useState('')
-  const [vertical, setVertical] = useState('All')
-  const [category, setCategory] = useState('All')
-  const [priority, setPriority] = useState('All')
+  const [location, setLocation] = useState('')
+  const [vertical, setVertical] = useState('')
+  const [category, setCategory] = useState('')
+  const [subcategory, setSubcategory] = useState('')
+  const [stage, setStage] = useState('')
+  const [notesById, setNotesById] = useState({})
+  const [marketCalendarItems, setMarketCalendarItems] = useState(calendarSeed)
+  const [customTargets, setCustomTargets] = useState([])
   const [selectedId, setSelectedId] = useState(leadProspects[0].id)
-  const options = key => ['All', ...new Set(leadProspects.map(lead => lead[key]).filter(Boolean))]
-  const visible = leadProspects.filter(lead => `${lead.name} ${lead.category} ${lead.subcategory} ${lead.city}`.toLowerCase().includes(query.toLowerCase()) && (vertical === 'All' || lead.vertical === vertical) && (category === 'All' || lead.category === category) && (priority === 'All' || lead.priority === priority))
-  const selected = leadProspects.find(lead => lead.id === selectedId) || visible[0] || leadProspects[0]
-  return <main className="content pane clients-content"><div className="clients-layout"><section className="clients-workspace"><header className="clients-heading"><div><p className="eyebrow">Business development</p><h1>Leads & Prospects</h1><p>Weston prospects ingested from the Google Drive research list.</p></div><span className="source-chip">Source · Google Drive</span></header><section className="client-summary" aria-label="Lead summary"><span><Target size={18} /><small>Total leads</small><strong>{leadProspects.length}</strong></span><span><ArrowUpRight size={18} /><small>Priority 1</small><strong>{leadProspects.filter(lead => lead.priority === 'Priority 1').length}</strong></span><span><Building2 size={18} /><small>Categories</small><strong>{new Set(leadProspects.map(lead => lead.category)).size}</strong></span><span><Globe2 size={18} /><small>With website</small><strong>{leadProspects.filter(lead => lead.website).length}</strong></span></section><section className="clients-table-panel"><div className="client-filters"><label className="client-search"><Search size={15} /><input value={query} onChange={event => setQuery(event.target.value)} placeholder="Search leads..." aria-label="Search leads" /></label>{[['Industry vertical', vertical, setVertical, options('vertical')], ['Category', category, setCategory, options('category')], ['Priority', priority, setPriority, options('priority')]].map(([label, value, setter, choices]) => <label className="filter-select" key={label}><span>{label}</span><select value={value} onChange={event => setter(event.target.value)}>{choices.map(choice => <option key={choice}>{choice}</option>)}</select></label>)}<button className="filter-button" onClick={() => { setQuery(''); setVertical('All'); setCategory('All'); setPriority('All') }}><Filter size={14} /> Reset</button></div><div className="client-table"><div className="client-table-labels"><span>Company</span><span>Industry hierarchy</span><span>Location</span><span>Phone</span><span>Priority</span><span>Source</span></div>{visible.map((lead, index) => <button className={`client-row ${selected.id === lead.id ? 'selected' : ''}`} key={lead.id} onClick={() => setSelectedId(lead.id)}><span className="company-cell"><i className={`company-logo logo-${index % 4}`}>{lead.name[0]}</i><strong>{lead.name}</strong></span><span className="hierarchy-cell">{lead.vertical} <b>›</b> {lead.category} <b>›</b> {lead.subcategory}</span><span>{lead.city}, {lead.state}<small>{lead.zip}</small></span><span>{lead.phone || 'Not available'}</span><span><em className="lead-priority">{lead.priority}</em></span><span>{lead.source}</span></button>)}{visible.length === 0 && <div className="clients-empty">No prospects match these filters.</div>}</div><footer className="clients-table-footer">Showing {visible.length} of {leadProspects.length} leads and prospects</footer></section></section><LeadDetail lead={selected} /></div></main>
+  useEffect(() => {
+    const saved = window.localStorage.getItem('osai-calendar-items')
+    if (saved) { try { setMarketCalendarItems(normalizeCalendarItems(JSON.parse(saved))) } catch {} }
+    const savedTargets = window.localStorage.getItem('osai-custom-targets')
+    if (savedTargets) { try { setCustomTargets(JSON.parse(savedTargets)) } catch {} }
+  }, [])
+  const marketLeads = useMemo(() => [...leadProspects, ...customTargets].map(lead => ({ ...lead, stage: lead.stage || 'Target', location: [lead.city, lead.state].filter(Boolean).join(', ') })), [customTargets])
+  const activeFilters = { location, vertical, category, subcategory, stage }
+  const matchesQuery = lead => `${lead.name} ${lead.category} ${lead.subcategory} ${lead.city}`.toLowerCase().includes(query.toLowerCase())
+  const optionsFor = key => [...new Set(marketLeads.filter(lead => matchesQuery(lead) && Object.entries(activeFilters).every(([filterKey, value]) => filterKey === key || !value || lead[filterKey] === value)).map(lead => lead[key]).filter(Boolean))].sort()
+  const visible = marketLeads.filter(lead => `${lead.name} ${lead.category} ${lead.subcategory} ${lead.city}`.toLowerCase().includes(query.toLowerCase()) && (!location || lead.location === location) && (!vertical || lead.vertical === vertical) && (!category || lead.category === category) && (!subcategory || lead.subcategory === subcategory) && (!stage || lead.stage === stage))
+  const selectedRecord = visible.find(lead => lead.id === selectedId) || visible[0] || marketLeads[0]
+  const selected = { ...selectedRecord, notes: notesById[selectedRecord.id] ?? selectedRecord.notes }
+  const marketFilters = [['Location', location, setLocation, optionsFor('location')], ['Industry', vertical, setVertical, optionsFor('vertical')], ['Category', category, setCategory, optionsFor('category')], ['Subcategory', subcategory, setSubcategory, optionsFor('subcategory')], ['Stage', stage, setStage, optionsFor('stage')]]
+  const stageMetrics = [
+    { label: 'Target', icon: Target },
+    { label: 'Prospect', icon: UserRound },
+    { label: 'Lead', icon: Users },
+    { label: 'Opportunity', icon: BriefcaseBusiness },
+  ]
+  const marketStatusFor = lead => {
+    const company = lead.name.toLowerCase()
+    return marketCalendarItems
+      .filter(item => item.related.toLowerCase() === company || company.includes(item.related.toLowerCase()) || item.related.toLowerCase().includes(company))
+      .sort((a, b) => `${b.date}${b.time}`.localeCompare(`${a.date}${a.time}`))[0]?.type || 'Not Contacted'
+  }
+  const updateMarketCalendarItems = updater => {
+    setMarketCalendarItems(current => {
+      const next = updater(current)
+      window.localStorage.setItem('osai-calendar-items', JSON.stringify(next))
+      return next
+    })
+  }
+  const resetFilters = () => { setQuery(''); setLocation(''); setVertical(''); setCategory(''); setSubcategory(''); setStage('') }
+  return <main className="content pane clients-content"><div className="clients-layout"><section className="clients-workspace"><header className="clients-heading market-heading"><div><h1>Market Development</h1><p>Search and refine your market to identify the right targets, qualify opportunities, and advance relationships through the development stages from prospect to client. Build a focused pipeline that turns market potential into actionable business opportunities.</p></div><label className="client-search market-heading-search"><Search size={15} /><input value={query} onChange={event => setQuery(event.target.value)} placeholder="Search market..." aria-label="Search market" /></label></header><section className="market-lifecycle" aria-label="Market development stages">{stageMetrics.map(({ label, icon: Icon }, index) => <React.Fragment key={label}><span className={index === 0 ? 'current' : ''}><i><Icon aria-hidden="true" size={16} /></i><span><strong>{label}</strong><small>{marketLeads.filter(lead => lead.stage === label).length.toLocaleString()}</small></span></span>{index < stageMetrics.length - 1 && <ArrowRight aria-hidden="true" size={18} />}</React.Fragment>)}</section><section className="market-filter-panel"><div className="market-filters">{marketFilters.map(([label, value, setter, choices]) => <label className={`market-filter ${value ? 'editing' : ''}`} key={label}><select aria-label={label} value={value} onChange={event => setter(event.target.value)}><option value="">{label}</option>{choices.map(choice => <option key={choice} value={choice}>{choice}</option>)}</select><ChevronDown aria-hidden="true" size={13} /></label>)}<span className="market-reset-divider" aria-hidden="true" /><button className="filter-button" onClick={resetFilters}>Reset</button></div></section><section className="clients-table-panel market-grid-panel"><div className="client-table market-table"><div className="client-table-labels"><span>Company</span><span>Industry hierarchy</span><span>Offer</span><span>Stage</span><span>Status</span></div>{visible.map((lead, index) => <button className={`client-row ${selected.id === lead.id ? 'selected' : ''}`} key={lead.id} onClick={() => setSelectedId(lead.id)}><span className="company-cell"><i className={`company-logo logo-${index % 4}`}>{lead.name[0]}</i><strong>{lead.name}</strong></span><span className="hierarchy-cell">{lead.vertical} <b>›</b> {lead.category} <b>›</b> {lead.subcategory}</span><span className="market-offer">{lead.offer}</span><span className="market-stage-cell"><em className="lead-priority">{lead.stage}</em></span><span className={`market-status status-${marketStatusFor(lead).toLowerCase().replace(/[^a-z]/g, '')}`}>{marketStatusFor(lead)}</span></button>)}{visible.length === 0 && <div className="clients-empty">No market records match these filters.</div>}</div><footer className="clients-table-footer">Showing {visible.length} of {marketLeads.length} market records</footer></section></section><LeadDetail lead={selected} onNotesChange={notes => setNotesById(current => ({ ...current, [selected.id]: notes }))} calendarItems={marketCalendarItems} onCalendarItemsChange={updateMarketCalendarItems} /></div></main>
+}
+
+const calendarTypes = {
+  'Not Contacted': { label: 'Not Contacted', icon: Target },
+  Outreach: { label: 'Outreach', icon: Megaphone },
+  Connected: { label: 'Connected', icon: Users },
+  'Follow-Up': { label: 'Follow-Up', icon: ArrowRight },
+  Scheduled: { label: 'Scheduled', icon: CalendarCheck2 },
+  Active: { label: 'Active', icon: CheckCircle2 },
+  Nurture: { label: 'Nurture', icon: Sparkles },
+  Unresponsive: { label: 'Unresponsive', icon: Clock3 },
+  Closed: { label: 'Closed', icon: CircleCheck },
+}
+
+const normalizeCalendarStatus = status => ({ Goal: 'Active', Appointment: 'Scheduled', 'Follow-up': 'Follow-Up' })[status] || (calendarTypes[status] ? status : 'Not Contacted')
+const normalizeCalendarItems = items => items.map(item => ({ ...item, type: normalizeCalendarStatus(item.type) }))
+
+const calendarSeed = [
+  { id: 1, type: 'Active', title: 'Weekly pipeline goal', date: '2026-08-03', time: '', related: 'Market Development', notes: 'Qualify five new prospects.' },
+  { id: 2, type: 'Outreach', title: 'Weston intro emails', date: '2026-08-04', time: '10:00', related: 'Weston targets', notes: 'Send the first outreach sequence.' },
+  { id: 3, type: 'Scheduled', title: 'Discovery call', date: '2026-08-06', time: '14:30', related: 'Movac Hearing', notes: 'Review intake and scheduling needs.' },
+  { id: 4, type: 'Follow-Up', title: 'Send proposal recap', date: '2026-08-07', time: '09:00', related: 'Weston Eye Care Center', notes: 'Confirm decision timeline and next step.' },
+  { id: 5, type: 'Outreach', title: 'LinkedIn outreach', date: '2026-08-11', time: '11:30', related: 'Health & Medicine prospects', notes: '' },
+  { id: 6, type: 'Scheduled', title: 'Project working session', date: '2026-08-13', time: '13:00', related: 'Client Operations Transformation', notes: 'Review milestone status.' },
+  { id: 7, type: 'Active', title: 'Review monthly targets', date: '2026-08-17', time: '', related: 'OSAI Consulting', notes: '' },
+  { id: 8, type: 'Follow-Up', title: 'Check in with decision maker', date: '2026-08-19', time: '15:00', related: 'Building New Pathways', notes: '' },
+  { id: 9, type: 'Scheduled', title: 'Solution review', date: '2026-08-25', time: '10:30', related: 'Pediatric Associates', notes: '' },
+]
+
+const dateKey = date => `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`
+const parseDateKey = value => { const [year, month, day] = value.split('-').map(Number); return new Date(year, month - 1, day) }
+const formatTime = value => value ? new Date(`2000-01-01T${value}`).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }) : 'All day'
+
+function CalendarModule() {
+  const today = new Date()
+  const [cursor, setCursor] = useState(new Date(today.getFullYear(), today.getMonth(), 1))
+  const [selectedDate, setSelectedDate] = useState(dateKey(today))
+  const [view, setView] = useState('Month')
+  const [dragOver, setDragOver] = useState('')
+  const [events, setEvents] = useState(calendarSeed)
+  const [editing, setEditing] = useState(null)
+  useEffect(() => {
+    const saved = window.localStorage.getItem('osai-calendar-items')
+    if (saved) { try { setEvents(normalizeCalendarItems(JSON.parse(saved))) } catch {} }
+  }, [])
+  useEffect(() => { window.localStorage.setItem('osai-calendar-items', JSON.stringify(events)) }, [events])
+  const monthStart = new Date(cursor.getFullYear(), cursor.getMonth(), 1)
+  const gridStart = new Date(monthStart); gridStart.setDate(1 - monthStart.getDay())
+  const monthDays = Array.from({ length: 42 }, (_, index) => { const date = new Date(gridStart); date.setDate(gridStart.getDate() + index); return date })
+  const selectedDateObject = parseDateKey(selectedDate)
+  const weekStart = new Date(selectedDateObject); weekStart.setDate(selectedDateObject.getDate() - selectedDateObject.getDay())
+  const visibleDays = view === 'Month' ? monthDays : Array.from({ length: 7 }, (_, index) => { const date = new Date(weekStart); date.setDate(weekStart.getDate() + index); return date })
+  const selectedEvents = events.filter(item => item.date === selectedDate).sort((a, b) => (a.time || '').localeCompare(b.time || ''))
+  const openNew = date => setEditing({ id: null, type: 'Not Contacted', title: '', date: date || selectedDate, time: '', related: '', notes: '' })
+  const saveItem = event => {
+    event.preventDefault()
+    if (!editing.related) { window.alert('Select a company or create a new target before saving.'); return }
+    setEvents(current => editing.id ? current.map(item => item.id === editing.id ? editing : item) : [...current, { ...editing, id: Date.now() }])
+    setSelectedDate(editing.date)
+    setEditing(null)
+  }
+  const removeItem = id => { setEvents(current => current.filter(item => item.id !== id)); setEditing(null) }
+  const moveItem = (id, date) => setEvents(current => current.map(item => item.id === id ? { ...item, date } : item))
+  const moveCursor = direction => setCursor(current => new Date(current.getFullYear(), current.getMonth() + direction, 1))
+  const goToday = () => { const now = new Date(); setCursor(new Date(now.getFullYear(), now.getMonth(), 1)); setSelectedDate(dateKey(now)) }
+  return <main className="content pane calendar-content"><div className="calendar-shell"><section className="calendar-workspace"><header className="calendar-heading"><div><h1>Calendar</h1><p>Plan goals, outreach, appointments, and follow-ups.</p></div><button className="primary-button" onClick={() => openNew()}><Plus size={16} /> Add item</button></header><div className="calendar-toolbar"><div className="calendar-period"><button aria-label="Previous month" onClick={() => moveCursor(-1)}><ChevronLeft size={16} /></button><button aria-label="Next month" onClick={() => moveCursor(1)}><ChevronRight size={16} /></button><strong>{cursor.toLocaleDateString([], { month: 'long', year: 'numeric' })}</strong><button className="today-button" onClick={goToday}>Today</button></div><div className="calendar-legend">{Object.entries(calendarTypes).map(([type, meta]) => <span className={`calendar-type type-${type.toLowerCase().replace(/[^a-z]/g, '')}`} key={type}><i />{meta.label}</span>)}</div><div className="calendar-view-toggle"><button className={view === 'Month' ? 'active' : ''} onClick={() => setView('Month')}>Month</button><button className={view === 'Week' ? 'active' : ''} onClick={() => setView('Week')}>Week</button></div></div><section className={`calendar-grid view-${view.toLowerCase()}`}><div className="calendar-weekdays">{['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => <span key={day}>{day}</span>)}</div><div className="calendar-days">{visibleDays.map(day => { const key = dateKey(day); const dayEvents = events.filter(item => item.date === key); const outside = view === 'Month' && day.getMonth() !== cursor.getMonth(); return <div className={`calendar-day ${outside ? 'outside' : ''} ${selectedDate === key ? 'selected' : ''} ${dragOver === key ? 'drop-target' : ''}`} key={key} onClick={() => setSelectedDate(key)} onDoubleClick={() => openNew(key)} onDragOver={event => { event.preventDefault(); setDragOver(key) }} onDragLeave={() => setDragOver('')} onDrop={event => { event.preventDefault(); moveItem(Number(event.dataTransfer.getData('text/plain')), key); setSelectedDate(key); setDragOver('') }}><button className="calendar-day-number" onClick={() => setSelectedDate(key)}>{day.getDate()}</button><div className="calendar-event-stack">{dayEvents.map(item => { const Icon = calendarTypes[item.type].icon; return <button draggable className={`calendar-event type-${item.type.toLowerCase().replace(/[^a-z]/g, '')}`} key={item.id} onDragStart={event => { event.dataTransfer.setData('text/plain', item.id); event.dataTransfer.effectAllowed = 'move' }} onClick={event => { event.stopPropagation(); setSelectedDate(key); setEditing(item) }}><Icon size={11} /><span>{item.time && <small>{formatTime(item.time)}</small>}{item.title}</span></button> })}</div>{dragOver === key && <span className="drop-copy">Drop here</span>}</div>})}</div></section></section><aside className="calendar-agenda">
+        {editing ? <>
+          <header><div><small>{editing.id ? 'Calendar item' : 'New calendar item'}</small><h2>{editing.id ? 'Edit event' : 'Add event'}</h2></div><button aria-label="Close editor" onClick={() => setEditing(null)}><X size={17} /></button></header>
+          <section><form className="calendar-rail-editor company-calendar-editor" onSubmit={saveItem}>
+            <label>Status<select value={editing.type} onChange={event => setEditing({ ...editing, type: event.target.value })}>{Object.keys(calendarTypes).map(type => <option key={type}>{type}</option>)}</select></label>
+            <label>Title<input required autoFocus value={editing.title} onChange={event => setEditing({ ...editing, title: event.target.value })} placeholder="What needs to happen?" /></label>
+            <div className="company-editor-pair"><label>Date<input required type="date" value={editing.date} onChange={event => setEditing({ ...editing, date: event.target.value })} /></label><label>Time<input type="time" value={editing.time} onChange={event => setEditing({ ...editing, time: event.target.value })} /></label></div>
+            <CompanyEventSelector value={editing.related} onSelect={company => setEditing({ ...editing, related: company })} />
+            <label>Notes<textarea value={editing.notes} onChange={event => setEditing({ ...editing, notes: event.target.value })} placeholder="Add context or next steps" /></label>
+            <footer>{editing.id && <button type="button" className="delete-button" onClick={() => removeItem(editing.id)}><Trash2 size={13} /> Delete</button>}<button type="button" onClick={() => setEditing(null)}>Cancel</button><button type="submit" className="dark">Save event</button></footer>
+          </form></section>
+        </> : <>
+          <header><div><small>{selectedDateObject.toLocaleDateString([], { weekday: 'long' })}</small><h2>{selectedDateObject.toLocaleDateString([], { month: 'long', day: 'numeric', year: 'numeric' })}</h2></div><button aria-label="Add item to selected day" onClick={() => openNew(selectedDate)}><Plus size={17} /></button></header>
+          <section><h3>Schedule</h3>{selectedEvents.length ? selectedEvents.map(item => { const Icon = calendarTypes[item.type].icon; return <button className={`agenda-item type-${item.type.toLowerCase().replace(/[^a-z]/g, '')}`} key={item.id} onClick={() => setEditing(item)}><i><Icon size={14} /></i><span><small>{formatTime(item.time)} · {calendarTypes[item.type].label}</small><strong>{item.title}</strong><em>{item.related || 'No relationship added'}</em></span></button> }) : <div className="calendar-empty"><CalendarDays size={24} /><strong>No items scheduled</strong><span>Double-click a date or add an item.</span></div>}</section>
+        </>}
+      </aside></div></main>
+}
+
+function ServicesModule() {
+  return <main className="content pane services-content"><div className="content-inner"><header className="page-heading"><div><h1>Services</h1><p>Define, package, and manage the services OSAI brings to market.</p></div></header><section className="workspace-services">{serviceCatalog.map(({ icon: Icon, title, type, text, deliverables }) => <article key={title}><header><span><Icon size={20} /></span><small>{type}</small></header><h2>{title}</h2><p>{text}</p><div><strong>Core deliverables</strong>{deliverables.map(item => <span key={item}><CheckCircle2 size={13} />{item}</span>)}</div></article>)}</section></div></main>
 }
 
 function UserAccessDetail({ user, onChange }) {
@@ -349,18 +645,18 @@ function ProfileForm({ profile, onSave }) {
     event.preventDefault()
     setStatus('Saving…')
     try {
-      await onSave({ firstName: form.firstName.trim(), lastName: form.lastName.trim(), email: form.email })
+      await onSave({ firstName: form.firstName.trim(), lastName: form.lastName.trim(), nickname: (form.nickname || '').trim(), email: form.email })
       setStatus('Profile saved')
     } catch {
       setStatus('Unable to save profile')
     }
   }
-  return <main className="content pane profile-content"><section className="profile-module"><header><div><h1>Profile</h1><p>Manage the name connected to your OSAI workspace.</p></div><span className="profile-large-avatar">{`${form.firstName?.[0] || ''}${form.lastName?.[0] || ''}`.toUpperCase() || 'OU'}</span></header><form onSubmit={submit}><div className="profile-form-grid"><label>First name<input required name="firstName" value={form.firstName} onChange={update} autoComplete="given-name" /></label><label>Last name<input required name="lastName" value={form.lastName} onChange={update} autoComplete="family-name" /></label></div><label>Email address<input name="email" value={form.email} disabled aria-describedby="email-help" /></label><small id="email-help">Email is managed by your sign-in account.</small><footer><span role="status">{status}</span><button className="primary-button" type="submit">Save profile</button></footer></form></section></main>
+  return <main className="content pane profile-content"><section className="profile-module"><header><div><h1>Profile</h1><p>Manage the name connected to your OSAI workspace.</p></div><span className="profile-large-avatar">{`${form.firstName?.[0] || ''}${form.lastName?.[0] || ''}`.toUpperCase() || 'OU'}</span></header><form onSubmit={submit}><div className="profile-form-grid"><label>Nickname<input name="nickname" value={form.nickname} onChange={update} autoComplete="nickname" placeholder="Welcome name" /></label><label>First name<input required name="firstName" value={form.firstName} onChange={update} autoComplete="given-name" /></label><label>Last name<input required name="lastName" value={form.lastName} onChange={update} autoComplete="family-name" /></label></div><label>Email address<input name="email" value={form.email} disabled aria-describedby="email-help" /></label><small id="email-help">Email is managed by your sign-in account.</small><footer><span role="status">{status}</span><button className="primary-button" type="submit">Save profile</button></footer></form></section></main>
 }
 
 function ClerkProfileModule({ profile, onSaved }) {
   const { user } = useUser()
-  return <ProfileForm profile={profile} onSave={async next => { await user.update({ firstName: next.firstName, lastName: next.lastName }); onSaved(next) }} />
+  return <ProfileForm profile={profile} onSave={async next => { await user.update({ firstName: next.firstName, lastName: next.lastName, unsafeMetadata: { ...user.unsafeMetadata, nickname: next.nickname } }); onSaved(next) }} />
 }
 
 function ProfileModule({ configured, profile, onSaved }) {
@@ -385,8 +681,7 @@ function ProjectHero() {
 }
 
 function ServicesSection() {
-  const services = [{ icon: BrainCircuit, title: 'AI strategy', text: 'Find the right use cases and build a practical roadmap.' },{ icon: Workflow, title: 'Systems & workflow design', text: 'Replace friction with connected, scalable operations.' },{ icon: ArrowUpRight, title: 'Project delivery', text: 'Create momentum with clear ownership, cadence, and decisions.' }]
-  return <section className="services-section" id="services"><h2>Strategy is only<br />valuable when it ships.</h2><div className="service-list">{services.map(({icon:Icon,title,text})=><article key={title}><span><Icon size={21} /></span><h3>{title}</h3><p>{text}</p></article>)}</div></section>
+  return <section className="services-section" id="services"><h2>Strategy is only<br />valuable when it ships.</h2><div className="service-list">{serviceCatalog.map(({icon:Icon,title,text})=><article key={title}><span><Icon size={21} /></span><h3>{title}</h3><p>{text}</p></article>)}</div></section>
 }
 
 function ProjectShowcase() {
@@ -436,7 +731,7 @@ export function Landing({ configured }) {
   )
 }
 
-export function AdminApp({ configured = false, userRole = 'Admin', initialProfile = { firstName: 'Earl', lastName: 'Powery', email: '' }, initialUsers = [] }) {
+export function AdminApp({ configured = false, userRole = 'Admin', initialProfile = { firstName: 'Earl', lastName: 'Powery', nickname: '', email: '' }, initialUsers = [] }) {
   const [active, setActive] = useState('Overview')
   const [menuOpen, setMenuOpen] = useState(false)
   const [profile, setProfile] = useState(initialProfile)
@@ -450,7 +745,7 @@ export function AdminApp({ configured = false, userRole = 'Admin', initialProfil
       <Header onMenu={() => setMenuOpen(true)} profile={profile} onProfile={() => setActive('Profile')} userRole={userRole} />
       <Sidebar active={active} setActive={setActive} open={menuOpen} close={() => setMenuOpen(false)} configured={configured} userCount={initialUsers.length || userSeed.length} userRole={userRole} />
       {menuOpen && <button className="scrim" aria-label="Close navigation" onClick={() => setMenuOpen(false)} />}
-      {active === 'Clients' ? <ClientsModule /> : active === 'Leads & Prospects' ? <LeadsModule /> : active === 'Users' && userRole === 'Admin' ? <UsersModule initialUsers={initialUsers} configured={configured} /> : active === 'Profile' ? <ProfileModule configured={configured} profile={profile} onSaved={setProfile} /> : <Dashboard active={active === 'Users' ? 'Overview' : active} firstName={profile.firstName} />}
+      {active === 'Clients' ? <ClientsModule /> : active === 'Market' ? <LeadsModule /> : active === 'Services' ? <ServicesModule /> : active === 'Calendar' ? <CalendarModule /> : active === 'Users' && userRole === 'Admin' ? <UsersModule initialUsers={initialUsers} configured={configured} /> : active === 'Profile' ? <ProfileModule configured={configured} profile={profile} onSaved={setProfile} /> : <Dashboard active={active === 'Users' ? 'Overview' : active} greetingName={profile.nickname || profile.firstName} />}
     </div>
   )
 }

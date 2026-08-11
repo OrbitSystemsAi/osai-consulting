@@ -23,7 +23,7 @@ function formatClerkUser(clerkUser) {
 
 export default async function AdminPage() {
   const configured = Boolean(process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY && process.env.CLERK_SECRET_KEY)
-  if (!configured) return <AdminApp configured={false} initialProfile={{ firstName: 'Earl', lastName: 'Powery', email: 'epowery@icloud.com' }} />
+  if (!configured) return <AdminApp configured={false} initialProfile={{ firstName: 'Earl', lastName: 'Powery', nickname: '', email: 'epowery@icloud.com' }} />
 
   const { userId } = await auth()
   if (!userId) redirect('/')
@@ -36,5 +36,5 @@ export default async function AdminPage() {
   const { data: clerkUsers } = await client.users.getUserList({ limit: 100, orderBy: '-created_at' })
   const users = clerkUsers.length ? clerkUsers.map(formatClerkUser) : [formatClerkUser(user)]
 
-  return <AdminApp configured userRole={currentRole} initialProfile={{ firstName: user?.firstName || '', lastName: user?.lastName || '', email: user?.primaryEmailAddress?.emailAddress || '' }} initialUsers={users} />
+  return <AdminApp configured userRole={currentRole} initialProfile={{ firstName: user?.firstName || '', lastName: user?.lastName || '', nickname: typeof user?.unsafeMetadata?.nickname === 'string' ? user.unsafeMetadata.nickname : '', email: user?.primaryEmailAddress?.emailAddress || '' }} initialUsers={users} />
 }
