@@ -57,9 +57,14 @@ const navItems = [
 ]
 
 const serviceIcons = { Advisory: BrainCircuit, Transformation: Workflow, Delivery: ArrowUpRight }
-const customServicesKey = 'osai-custom-services-v1'
-const serviceProductOverridesKey = 'osai-service-products-v1'
-const customCampaignsKey = 'osai-custom-campaigns-v1'
+async function workspaceRequest(path, options = {}) {
+  const response = await fetch(path, { ...options, headers: { 'Content-Type': 'application/json', ...(options.headers || {}) } })
+  if (!response.ok) {
+    const payload = await response.json().catch(() => ({}))
+    throw new Error(payload.error || `Request failed (${response.status})`)
+  }
+  return response.status === 204 ? null : response.json()
+}
 
 function serviceSlug(value) {
   return value.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
@@ -149,7 +154,7 @@ const activity = [
   { icon: Users, text: `${leadProspects.length} Weston prospects ingested`, time: 'Google Drive', color: 'gold' },
 ]
 
-const campaignCatalog = [
+export const campaignCatalog = [
   {
     id: 'weston-healthcare-outreach',
     title: 'Weston Healthcare Outreach',
@@ -416,7 +421,7 @@ function CompanyEventSelector({ value, onSelect }) {
   </div>
 }
 
-function LeadDetail({ lead, onNotesChange, calendarItems, onCalendarItemsChange }) {
+function LeadDetail({ lead, onNotesChange, calendarItems, onSaveCalendarItem, onDeleteCalendarItem }) {
   const [tab, setTab] = useState('Main')
   const [editingCalendarItem, setEditingCalendarItem] = useState(null)
   const [contactsByCompany, setContactsByCompany] = useState({})
@@ -440,17 +445,18 @@ function LeadDetail({ lead, onNotesChange, calendarItems, onCalendarItemsChange 
     })
     .sort((a, b) => `${a.date}${a.time}`.localeCompare(`${b.date}${b.time}`))
   const tabs = ['Main', 'Contacts', 'Calendar', 'Campaigns', 'Offers']
-  const updateCalendarItems = updater => {
-    onCalendarItemsChange(updater)
-  }
-  const saveCalendarItem = event => {
+  const saveCalendarItem = async event => {
     event.preventDefault()
-    updateCalendarItems(current => editingCalendarItem.id ? current.map(item => item.id === editingCalendarItem.id ? editingCalendarItem : item) : [...current, { ...editingCalendarItem, id: Date.now() }])
-    setEditingCalendarItem(null)
+    try {
+      await onSaveCalendarItem(editingCalendarItem)
+      setEditingCalendarItem(null)
+    } catch (reason) { window.alert(reason.message) }
   }
-  const deleteCalendarItem = id => {
-    updateCalendarItems(current => current.filter(item => item.id !== id))
-    setEditingCalendarItem(null)
+  const deleteCalendarItem = async id => {
+    try {
+      await onDeleteCalendarItem(id)
+      setEditingCalendarItem(null)
+    } catch (reason) { window.alert(reason.message) }
   }
   const saveContact = event => {
     event.preventDefault()
@@ -559,12 +565,11 @@ function LeadsModule() {
   const [subcategory, setSubcategory] = useState('')
   const [stage, setStage] = useState('')
   const [notesById, setNotesById] = useState({})
-  const [marketCalendarItems, setMarketCalendarItems] = useState(calendarSeed)
+  const [marketCalendarItems, setMarketCalendarItems] = useState([])
   const [customTargets, setCustomTargets] = useState([])
   const [selectedId, setSelectedId] = useState(leadProspects[0].id)
   useEffect(() => {
-    const saved = window.localStorage.getItem('osai-calendar-items')
-    if (saved) { try { setMarketCalendarItems(normalizeCalendarItems(JSON.parse(saved))) } catch {} }
+    workspaceRequest('/api/calendar-events').then(items => setMarketCalendarItems(normalizeCalendarItems(items))).catch(() => setMarketCalendarItems([]))
     const savedTargets = window.localStorage.getItem('osai-custom-targets')
     if (savedTargets) { try { setCustomTargets(JSON.parse(savedTargets)) } catch {} }
   }, [])
@@ -588,15 +593,16 @@ function LeadsModule() {
       .filter(item => item.related.toLowerCase() === company || company.includes(item.related.toLowerCase()) || item.related.toLowerCase().includes(company))
       .sort((a, b) => `${b.date}${b.time}`.localeCompare(`${a.date}${a.time}`))[0]?.type || 'Not Contacted'
   }
-  const updateMarketCalendarItems = updater => {
-    setMarketCalendarItems(current => {
-      const next = updater(current)
-      window.localStorage.setItem('osai-calendar-items', JSON.stringify(next))
-      return next
-    })
+  const saveMarketCalendarItem = async item => {
+    const saved = await workspaceRequest(item.id ? `/api/calendar-events/${item.id}` : '/api/calendar-events', { method: item.id ? 'PATCH' : 'POST', body: JSON.stringify(item) })
+    setMarketCalendarItems(current => item.id ? current.map(existing => existing.id === item.id ? saved : existing) : [...current, saved])
+  }
+  const deleteMarketCalendarItem = async id => {
+    await workspaceRequest(`/api/calendar-events/${id}`, { method: 'DELETE' })
+    setMarketCalendarItems(current => current.filter(item => item.id !== id))
   }
   const resetFilters = () => { setQuery(''); setLocation(''); setVertical(''); setCategory(''); setSubcategory(''); setStage('') }
-  return <main className="content pane clients-content"><div className="clients-layout"><section className="clients-workspace"><header className="clients-heading market-heading"><div><h1>Market Development</h1><p>Search and refine your market to identify the right targets, qualify opportunities, and advance relationships through the development stages from prospect to client. Build a focused pipeline that turns market potential into actionable business opportunities.</p></div><label className="client-search market-heading-search"><Search size={15} /><input value={query} onChange={event => setQuery(event.target.value)} placeholder="Search market..." aria-label="Search market" /></label></header><section className="market-lifecycle" aria-label="Market development stages">{stageMetrics.map(({ label, icon: Icon }, index) => <React.Fragment key={label}><span className={index === 0 ? 'current' : ''}><i><Icon aria-hidden="true" size={16} /></i><span><strong>{label}</strong><small>{marketLeads.filter(lead => lead.stage === label).length.toLocaleString()}</small></span></span>{index < stageMetrics.length - 1 && <ArrowRight aria-hidden="true" size={18} />}</React.Fragment>)}</section><section className="market-filter-panel"><div className="market-filters">{marketFilters.map(([label, value, setter, choices]) => <label className={`market-filter ${value ? 'editing' : ''}`} key={label}><select aria-label={label} value={value} onChange={event => setter(event.target.value)}><option value="">{label}</option>{choices.map(choice => <option key={choice} value={choice}>{choice}</option>)}</select><ChevronDown aria-hidden="true" size={13} /></label>)}<span className="market-reset-divider" aria-hidden="true" /><button className="filter-button" onClick={resetFilters}>Reset</button></div></section><section className="clients-table-panel market-grid-panel"><div className="client-table market-table"><div className="client-table-labels"><span>Company</span><span>Industry hierarchy</span><span>Offer</span><span>Stage</span><span>Status</span></div>{visible.map((lead, index) => <button className={`client-row ${selected.id === lead.id ? 'selected' : ''}`} key={lead.id} onClick={() => setSelectedId(lead.id)}><span className="company-cell"><i className={`company-logo logo-${index % 4}`}>{lead.name[0]}</i><strong>{lead.name}</strong></span><span className="hierarchy-cell">{lead.vertical} <b>›</b> {lead.category} <b>›</b> {lead.subcategory}</span><span className="market-offer">{lead.offer}</span><span className="market-stage-cell"><em className="lead-priority">{lead.stage}</em></span><span className={`market-status status-${marketStatusFor(lead).toLowerCase().replace(/[^a-z]/g, '')}`}>{marketStatusFor(lead)}</span></button>)}{visible.length === 0 && <div className="clients-empty">No market records match these filters.</div>}</div><footer className="clients-table-footer">Showing {visible.length} of {marketLeads.length} market records</footer></section></section><LeadDetail lead={selected} onNotesChange={notes => setNotesById(current => ({ ...current, [selected.id]: notes }))} calendarItems={marketCalendarItems} onCalendarItemsChange={updateMarketCalendarItems} /></div></main>
+  return <main className="content pane clients-content"><div className="clients-layout"><section className="clients-workspace"><header className="clients-heading market-heading"><div><h1>Market Development</h1><p>Search and refine your market to identify the right targets, qualify opportunities, and advance relationships through the development stages from prospect to client. Build a focused pipeline that turns market potential into actionable business opportunities.</p></div><label className="client-search market-heading-search"><Search size={15} /><input value={query} onChange={event => setQuery(event.target.value)} placeholder="Search market..." aria-label="Search market" /></label></header><section className="market-lifecycle" aria-label="Market development stages">{stageMetrics.map(({ label, icon: Icon }, index) => <React.Fragment key={label}><span className={index === 0 ? 'current' : ''}><i><Icon aria-hidden="true" size={16} /></i><span><strong>{label}</strong><small>{marketLeads.filter(lead => lead.stage === label).length.toLocaleString()}</small></span></span>{index < stageMetrics.length - 1 && <ArrowRight aria-hidden="true" size={18} />}</React.Fragment>)}</section><section className="market-filter-panel"><div className="market-filters">{marketFilters.map(([label, value, setter, choices]) => <label className={`market-filter ${value ? 'editing' : ''}`} key={label}><select aria-label={label} value={value} onChange={event => setter(event.target.value)}><option value="">{label}</option>{choices.map(choice => <option key={choice} value={choice}>{choice}</option>)}</select><ChevronDown aria-hidden="true" size={13} /></label>)}<span className="market-reset-divider" aria-hidden="true" /><button className="filter-button" onClick={resetFilters}>Reset</button></div></section><section className="clients-table-panel market-grid-panel"><div className="client-table market-table"><div className="client-table-labels"><span>Company</span><span>Industry hierarchy</span><span>Offer</span><span>Stage</span><span>Status</span></div>{visible.map((lead, index) => <button className={`client-row ${selected.id === lead.id ? 'selected' : ''}`} key={lead.id} onClick={() => setSelectedId(lead.id)}><span className="company-cell"><i className={`company-logo logo-${index % 4}`}>{lead.name[0]}</i><strong>{lead.name}</strong></span><span className="hierarchy-cell">{lead.vertical} <b>›</b> {lead.category} <b>›</b> {lead.subcategory}</span><span className="market-offer">{lead.offer}</span><span className="market-stage-cell"><em className="lead-priority">{lead.stage}</em></span><span className={`market-status status-${marketStatusFor(lead).toLowerCase().replace(/[^a-z]/g, '')}`}>{marketStatusFor(lead)}</span></button>)}{visible.length === 0 && <div className="clients-empty">No market records match these filters.</div>}</div><footer className="clients-table-footer">Showing {visible.length} of {marketLeads.length} market records</footer></section></section><LeadDetail lead={selected} onNotesChange={notes => setNotesById(current => ({ ...current, [selected.id]: notes }))} calendarItems={marketCalendarItems} onSaveCalendarItem={saveMarketCalendarItem} onDeleteCalendarItem={deleteMarketCalendarItem} /></div></main>
 }
 
 const calendarTypes = {
@@ -636,17 +642,12 @@ function CalendarModule() {
   const [selectedDate, setSelectedDate] = useState(dateKey(today))
   const [view, setView] = useState('Month')
   const [dragOver, setDragOver] = useState('')
-  const [events, setEvents] = useState(calendarSeed)
-  const [calendarHydrated, setCalendarHydrated] = useState(false)
+  const [events, setEvents] = useState([])
+  const [calendarError, setCalendarError] = useState('')
   const [editing, setEditing] = useState(null)
   useEffect(() => {
-    const saved = window.localStorage.getItem('osai-calendar-items')
-    if (saved) { try { setEvents(normalizeCalendarItems(JSON.parse(saved))) } catch {} }
-    setCalendarHydrated(true)
+    workspaceRequest('/api/calendar-events').then(items => setEvents(normalizeCalendarItems(items))).catch(reason => setCalendarError(reason.message))
   }, [])
-  useEffect(() => {
-    if (calendarHydrated) window.localStorage.setItem('osai-calendar-items', JSON.stringify(events))
-  }, [events, calendarHydrated])
   const monthStart = new Date(cursor.getFullYear(), cursor.getMonth(), 1)
   const gridStart = new Date(monthStart); gridStart.setDate(1 - monthStart.getDay())
   const monthDays = Array.from({ length: 42 }, (_, index) => { const date = new Date(gridStart); date.setDate(gridStart.getDate() + index); return date })
@@ -655,15 +656,27 @@ function CalendarModule() {
   const visibleDays = view === 'Month' ? monthDays : Array.from({ length: 7 }, (_, index) => { const date = new Date(weekStart); date.setDate(weekStart.getDate() + index); return date })
   const selectedEvents = events.filter(item => item.date === selectedDate).sort((a, b) => (a.time || '').localeCompare(b.time || ''))
   const openNew = date => setEditing({ id: null, type: 'Not Contacted', title: '', date: date || selectedDate, time: '', related: '', notes: '' })
-  const saveItem = event => {
+  const saveItem = async event => {
     event.preventDefault()
     if (!editing.related) { window.alert('Select a company or create a new target before saving.'); return }
-    setEvents(current => editing.id ? current.map(item => item.id === editing.id ? editing : item) : [...current, { ...editing, id: Date.now() }])
-    setSelectedDate(editing.date)
-    setEditing(null)
+    try {
+      const saved = await workspaceRequest(editing.id ? `/api/calendar-events/${editing.id}` : '/api/calendar-events', { method: editing.id ? 'PATCH' : 'POST', body: JSON.stringify(editing) })
+      setEvents(current => editing.id ? current.map(item => item.id === editing.id ? saved : item) : [...current, saved])
+      setSelectedDate(saved.date)
+      setEditing(null)
+      setCalendarError('')
+    } catch (reason) { setCalendarError(reason.message) }
   }
-  const removeItem = id => { setEvents(current => current.filter(item => item.id !== id)); setEditing(null) }
-  const moveItem = (id, date) => setEvents(current => current.map(item => item.id === id ? { ...item, date } : item))
+  const removeItem = async id => {
+    try { await workspaceRequest(`/api/calendar-events/${id}`, { method: 'DELETE' }); setEvents(current => current.filter(item => item.id !== id)); setEditing(null); setCalendarError('') }
+    catch (reason) { setCalendarError(reason.message) }
+  }
+  const moveItem = async (id, date) => {
+    const item = events.find(event => event.id === id)
+    if (!item) return
+    try { const saved = await workspaceRequest(`/api/calendar-events/${id}`, { method: 'PATCH', body: JSON.stringify({ ...item, date }) }); setEvents(current => current.map(event => event.id === id ? saved : event)); setCalendarError('') }
+    catch (reason) { setCalendarError(reason.message) }
+  }
   const moveCursor = direction => setCursor(current => new Date(current.getFullYear(), current.getMonth() + direction, 1))
   const goToday = () => { const now = new Date(); setCursor(new Date(now.getFullYear(), now.getMonth(), 1)); setSelectedDate(dateKey(now)) }
   return <main className="content pane calendar-content"><div className="calendar-shell"><section className="calendar-workspace"><header className="calendar-heading"><div><h1>Calendar</h1><p>Plan goals, outreach, appointments, and follow-ups.</p></div><button className="primary-button" onClick={() => openNew()}><Plus size={16} /> Add item</button></header><div className="calendar-toolbar"><div className="calendar-period"><button aria-label="Previous month" onClick={() => moveCursor(-1)}><ChevronLeft size={16} /></button><button aria-label="Next month" onClick={() => moveCursor(1)}><ChevronRight size={16} /></button><strong>{cursor.toLocaleDateString([], { month: 'long', year: 'numeric' })}</strong><button className="today-button" onClick={goToday}>Today</button></div><div className="calendar-legend">{Object.entries(calendarTypes).map(([type, meta]) => <span className={`calendar-type type-${type.toLowerCase().replace(/[^a-z]/g, '')}`} key={type}><i />{meta.label}</span>)}</div><div className="calendar-view-toggle"><button className={view === 'Month' ? 'active' : ''} onClick={() => setView('Month')}>Month</button><button className={view === 'Week' ? 'active' : ''} onClick={() => setView('Week')}>Week</button></div></div><section className={`calendar-grid view-${view.toLowerCase()}`}><div className="calendar-weekdays">{['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => <span key={day}>{day}</span>)}</div><div className="calendar-days">{visibleDays.map(day => { const key = dateKey(day); const dayEvents = events.filter(item => item.date === key); const outside = view === 'Month' && day.getMonth() !== cursor.getMonth(); return <div className={`calendar-day ${outside ? 'outside' : ''} ${selectedDate === key ? 'selected' : ''} ${dragOver === key ? 'drop-target' : ''}`} key={key} onClick={() => setSelectedDate(key)} onDoubleClick={() => openNew(key)} onDragOver={event => { event.preventDefault(); setDragOver(key) }} onDragLeave={() => setDragOver('')} onDrop={event => { event.preventDefault(); moveItem(Number(event.dataTransfer.getData('text/plain')), key); setSelectedDate(key); setDragOver('') }}><button className="calendar-day-number" onClick={() => setSelectedDate(key)}>{day.getDate()}</button><div className="calendar-event-stack">{dayEvents.map(item => { const Icon = calendarTypes[item.type].icon; return <button draggable className={`calendar-event type-${item.type.toLowerCase().replace(/[^a-z]/g, '')}`} key={item.id} onDragStart={event => { event.dataTransfer.setData('text/plain', item.id); event.dataTransfer.effectAllowed = 'move' }} onClick={event => { event.stopPropagation(); setSelectedDate(key); setEditing(item) }}><Icon size={11} /><span>{item.time && <small>{formatTime(item.time)}</small>}{item.title}</span></button> })}</div>{dragOver === key && <span className="drop-copy">Drop here</span>}</div>})}</div></section></section><aside className="calendar-agenda">
@@ -688,34 +701,23 @@ function ServicesModule({ onCountChange }) {
   const [selectedId, setSelectedId] = useState(null)
   const [addOpen, setAddOpen] = useState(false)
   const [productAddOpen, setProductAddOpen] = useState(false)
-  const [customServices, setCustomServices] = useState([])
-  const [productOverrides, setProductOverrides] = useState({})
+  const [services, setServices] = useState([])
+  const [error, setError] = useState('')
   useEffect(() => {
-    try {
-      const saved = JSON.parse(window.localStorage.getItem(customServicesKey) || '[]')
-      const savedProducts = JSON.parse(window.localStorage.getItem(serviceProductOverridesKey) || '{}')
-      setCustomServices(saved)
-      setProductOverrides(savedProducts)
-      onCountChange(serviceCatalog.length + saved.length)
-    } catch { setCustomServices([]); setProductOverrides({}) }
+    workspaceRequest('/api/services').then(items => { setServices(items); onCountChange(items.length) }).catch(reason => setError(reason.message))
   }, [onCountChange])
-  const services = [...serviceCatalog, ...customServices].map(service => ({ ...service, products: productOverrides[service.id] || service.products }))
   const selected = services.find(service => service.id === selectedId)
-  const addService = service => {
-    const uniqueService = { ...service, id: `${service.id}-${Date.now()}` }
-    const next = [...customServices, uniqueService]
-    setCustomServices(next)
-    window.localStorage.setItem(customServicesKey, JSON.stringify(next))
-    onCountChange(serviceCatalog.length + next.length)
-    setAddOpen(false)
-    setSelectedId(uniqueService.id)
+  const addService = async service => {
+    try {
+      const created = await workspaceRequest('/api/services', { method: 'POST', body: JSON.stringify(service) })
+      setServices(current => [...current, created]); onCountChange(services.length + 1); setAddOpen(false); setSelectedId(created.id); setError('')
+    } catch (reason) { setError(reason.message) }
   }
-  const addProduct = product => {
-    const nextProducts = [...selected.products, product]
-    const nextOverrides = { ...productOverrides, [selected.id]: nextProducts }
-    setProductOverrides(nextOverrides)
-    window.localStorage.setItem(serviceProductOverridesKey, JSON.stringify(nextOverrides))
-    setProductAddOpen(false)
+  const addProduct = async product => {
+    try {
+      const created = await workspaceRequest(`/api/services/${encodeURIComponent(selected.id)}/products`, { method: 'POST', body: JSON.stringify(product) })
+      setServices(current => current.map(service => service.id === selected.id ? { ...service, products: [...service.products, created] } : service)); setProductAddOpen(false); setError('')
+    } catch (reason) { setError(reason.message) }
   }
 
   if (selected) {
@@ -733,30 +735,23 @@ function ServicesModule({ onCountChange }) {
     </div></main>
   }
 
-  return <main className="content pane services-content"><div className="content-inner"><header className="page-heading services-heading"><div><h1>Services</h1><p>Define, package, and manage the services OSAI brings to market.</p></div><button className="service-add" onClick={() => setAddOpen(true)}><Plus size={15} /> Add</button></header><section className="workspace-services">{services.map(service => <article className="service-card" key={service.id} role="link" tabIndex={0} aria-label={`View ${service.title}`} onClick={() => setSelectedId(service.id)} onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); setSelectedId(service.id) } }}><h2>{service.title}</h2><em>{service.category}</em><p>{service.brief}</p><div className="service-card-products"><strong>Products</strong><ul>{service.products.map(product => <li key={product.name}>{product.name}</li>)}</ul></div></article>)}</section>{addOpen && <AddServiceDialog onClose={() => setAddOpen(false)} onAdd={addService} />}</div></main>
+  return <main className="content pane services-content"><div className="content-inner"><header className="page-heading services-heading"><div><h1>Services</h1><p>Define, package, and manage the services OSAI brings to market.</p>{error && <small className="service-upload-error" role="alert">{error}</small>}</div><button className="service-add" onClick={() => setAddOpen(true)}><Plus size={15} /> Add</button></header><section className="workspace-services">{services.map(service => <article className="service-card" key={service.id} role="link" tabIndex={0} aria-label={`View ${service.title}`} onClick={() => setSelectedId(service.id)} onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); setSelectedId(service.id) } }}><h2>{service.title}</h2><em>{service.category}</em><p>{service.brief}</p><div className="service-card-products"><strong>Products</strong><ul>{service.products.map(product => <li key={product.name}>{product.name}</li>)}</ul></div></article>)}</section>{addOpen && <AddServiceDialog onClose={() => setAddOpen(false)} onAdd={addService} />}</div></main>
 }
 
 function CampaignModule({ onCountChange }) {
   const [selectedId, setSelectedId] = useState(null)
   const [addOpen, setAddOpen] = useState(false)
-  const [customCampaigns, setCustomCampaigns] = useState([])
+  const [campaigns, setCampaigns] = useState([])
+  const [error, setError] = useState('')
   useEffect(() => {
-    try {
-      const saved = JSON.parse(window.localStorage.getItem(customCampaignsKey) || '[]')
-      setCustomCampaigns(saved)
-      onCountChange(campaignCatalog.length + saved.length)
-    } catch { setCustomCampaigns([]) }
+    workspaceRequest('/api/campaigns').then(items => { setCampaigns(items); onCountChange(items.length) }).catch(reason => setError(reason.message))
   }, [onCountChange])
-  const campaigns = [...campaignCatalog, ...customCampaigns]
   const selected = campaigns.find(campaign => campaign.id === selectedId)
-  const addCampaign = campaign => {
-    const uniqueCampaign = { ...campaign, id: `${campaign.id}-${Date.now()}` }
-    const next = [...customCampaigns, uniqueCampaign]
-    setCustomCampaigns(next)
-    window.localStorage.setItem(customCampaignsKey, JSON.stringify(next))
-    onCountChange(campaignCatalog.length + next.length)
-    setAddOpen(false)
-    setSelectedId(uniqueCampaign.id)
+  const addCampaign = async campaign => {
+    try {
+      const created = await workspaceRequest('/api/campaigns', { method: 'POST', body: JSON.stringify(campaign) })
+      setCampaigns(current => [...current, created]); onCountChange(campaigns.length + 1); setAddOpen(false); setSelectedId(created.id); setError('')
+    } catch (reason) { setError(reason.message) }
   }
   if (selected) {
     return <main className="content pane services-content"><div className="content-inner service-detail">
@@ -767,7 +762,7 @@ function CampaignModule({ onCountChange }) {
       </section>
     </div></main>
   }
-  return <main className="content pane services-content"><div className="content-inner"><header className="page-heading services-heading"><div><h1>Campaign</h1><p>Plan and manage focused activity that moves relationships through the market-development lifecycle.</p></div><button className="service-add" onClick={() => setAddOpen(true)}><Plus size={15} /> Add</button></header><section className="workspace-services workspace-campaigns">{campaigns.map(campaign => <article className="service-card" key={campaign.id} role="link" tabIndex={0} aria-label={`View ${campaign.title}`} onClick={() => setSelectedId(campaign.id)} onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); setSelectedId(campaign.id) } }}><h2>{campaign.title}</h2><em>{campaign.category}</em><p>{campaign.brief}</p><div className="service-card-products"><strong>Activities</strong><ul>{campaign.activities.map(item => <li key={item.name}>{item.name}</li>)}</ul></div></article>)}</section>{addOpen && <AddCampaignDialog onClose={() => setAddOpen(false)} onAdd={addCampaign} />}</div></main>
+  return <main className="content pane services-content"><div className="content-inner"><header className="page-heading services-heading"><div><h1>Campaign</h1><p>Plan and manage focused activity that moves relationships through the market-development lifecycle.</p>{error && <small className="service-upload-error" role="alert">{error}</small>}</div><button className="service-add" onClick={() => setAddOpen(true)}><Plus size={15} /> Add</button></header><section className="workspace-services workspace-campaigns">{campaigns.map(campaign => <article className="service-card" key={campaign.id} role="link" tabIndex={0} aria-label={`View ${campaign.title}`} onClick={() => setSelectedId(campaign.id)} onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); setSelectedId(campaign.id) } }}><h2>{campaign.title}</h2><em>{campaign.category}</em><p>{campaign.brief}</p><div className="service-card-products"><strong>Activities</strong><ul>{campaign.activities.map(item => <li key={item.name}>{item.name}</li>)}</ul></div></article>)}</section>{addOpen && <AddCampaignDialog onClose={() => setAddOpen(false)} onAdd={addCampaign} />}</div></main>
 }
 
 function AddCampaignDialog({ onClose, onAdd }) {
@@ -974,6 +969,19 @@ export function AdminApp({ configured = false, userRole = 'Admin', initialProfil
     const allowedViews = [...navItems.filter(item => userRole === 'Admin' || item.label !== 'Users').map(item => item.label), 'Settings']
     if (requestedView && allowedViews.includes(requestedView)) setActive(requestedView)
   }, [userRole])
+  useEffect(() => {
+    if (!configured) return
+    const keys = ['osai-calendar-items', 'osai-custom-services-v1', 'osai-service-products-v1', 'osai-custom-campaigns-v1']
+    const payload = Object.fromEntries(keys.map(key => {
+      try { return [key, JSON.parse(window.localStorage.getItem(key) || 'null')] } catch { return [key, null] }
+    }))
+    if (!keys.some(key => payload[key] && Object.keys(payload[key]).length)) return
+    workspaceRequest('/api/workspace/import', { method: 'POST', body: JSON.stringify(payload) }).then(result => {
+      if (!result.imported) return
+      keys.forEach(key => window.localStorage.removeItem(key))
+      window.location.reload()
+    }).catch(() => {})
+  }, [configured])
   return (
     <div className="app-shell">
       <Header onMenu={() => setMenuOpen(true)} profile={profile} onProfile={() => setActive('Settings')} userRole={userRole} />

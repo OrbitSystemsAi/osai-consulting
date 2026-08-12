@@ -120,3 +120,72 @@ CREATE INDEX IF NOT EXISTS companies_status_idx ON companies(status);
 CREATE UNIQUE INDEX IF NOT EXISTS companies_name_ci_idx ON companies(LOWER(name));
 CREATE INDEX IF NOT EXISTS opportunities_company_id_idx ON opportunities(company_id);
 CREATE INDEX IF NOT EXISTS opportunities_owner_id_idx ON opportunities(owner_id);
+
+-- Shared workspace content. Clerk user IDs are stored as audit identifiers rather
+-- than foreign keys because Clerk is the source of truth for authenticated users.
+CREATE TABLE IF NOT EXISTS calendar_events (
+  id BIGSERIAL PRIMARY KEY,
+  status TEXT NOT NULL DEFAULT 'Not Contacted',
+  title TEXT NOT NULL,
+  event_date DATE NOT NULL,
+  event_time TIME,
+  related_to TEXT NOT NULL,
+  notes TEXT NOT NULL DEFAULT '',
+  created_by TEXT NOT NULL,
+  updated_by TEXT NOT NULL,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS services (
+  id TEXT PRIMARY KEY,
+  title TEXT NOT NULL,
+  category TEXT NOT NULL,
+  brief TEXT NOT NULL,
+  description TEXT NOT NULL,
+  created_by TEXT NOT NULL,
+  updated_by TEXT NOT NULL,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS service_products (
+  id BIGSERIAL PRIMARY KEY,
+  service_id TEXT NOT NULL REFERENCES services(id) ON DELETE CASCADE,
+  name TEXT NOT NULL,
+  summary TEXT NOT NULL DEFAULT '',
+  includes TEXT[] NOT NULL DEFAULT '{}',
+  format TEXT NOT NULL DEFAULT '',
+  investment TEXT NOT NULL DEFAULT '',
+  position INTEGER NOT NULL DEFAULT 0,
+  created_by TEXT NOT NULL,
+  updated_by TEXT NOT NULL,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  UNIQUE (service_id, name)
+);
+
+CREATE TABLE IF NOT EXISTS campaigns (
+  id TEXT PRIMARY KEY,
+  title TEXT NOT NULL,
+  category TEXT NOT NULL DEFAULT 'Planning',
+  brief TEXT NOT NULL,
+  description TEXT NOT NULL,
+  activities JSONB NOT NULL DEFAULT '[]'::jsonb,
+  created_by TEXT NOT NULL,
+  updated_by TEXT NOT NULL,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS calendar_events_date_idx ON calendar_events(event_date, event_time);
+CREATE INDEX IF NOT EXISTS calendar_events_related_idx ON calendar_events(LOWER(related_to));
+CREATE UNIQUE INDEX IF NOT EXISTS calendar_events_import_dedupe_idx ON calendar_events(title, event_date, COALESCE(event_time, '00:00'::time), LOWER(related_to));
+CREATE INDEX IF NOT EXISTS service_products_service_position_idx ON service_products(service_id, position, id);
+CREATE INDEX IF NOT EXISTS campaigns_updated_at_idx ON campaigns(updated_at DESC);
+
+CREATE TABLE IF NOT EXISTS workspace_imports (
+  import_key TEXT PRIMARY KEY,
+  imported_by TEXT NOT NULL,
+  imported_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
