@@ -22,7 +22,8 @@ function formatClerkUser(clerkUser) {
 }
 
 export default async function AdminPage() {
-  const configured = Boolean(process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY && process.env.CLERK_SECRET_KEY)
+  const localPreview = process.env.NODE_ENV === 'development' && process.env.LOCAL_WORKSPACE_PREVIEW === 'true'
+  const configured = !localPreview && Boolean(process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY && process.env.CLERK_SECRET_KEY)
   if (!configured) return <AdminApp configured={false} initialProfile={{ firstName: 'Earl', lastName: 'Powery', nickname: '', email: 'epowery@icloud.com' }} />
 
   const { userId } = await auth()

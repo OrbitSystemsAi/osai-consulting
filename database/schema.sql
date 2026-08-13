@@ -178,11 +178,55 @@ CREATE TABLE IF NOT EXISTS campaigns (
   updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
+ALTER TABLE campaigns ADD COLUMN IF NOT EXISTS status TEXT NOT NULL DEFAULT 'draft';
+ALTER TABLE campaigns ADD COLUMN IF NOT EXISTS objective TEXT NOT NULL DEFAULT '';
+ALTER TABLE campaigns ADD COLUMN IF NOT EXISTS owner_name TEXT NOT NULL DEFAULT '';
+ALTER TABLE campaigns ADD COLUMN IF NOT EXISTS audience JSONB NOT NULL DEFAULT '{}'::jsonb;
+ALTER TABLE campaigns ADD COLUMN IF NOT EXISTS workflow JSONB NOT NULL DEFAULT '{"days":[]}'::jsonb;
+ALTER TABLE campaigns ADD COLUMN IF NOT EXISTS schedule JSONB NOT NULL DEFAULT '{}'::jsonb;
+ALTER TABLE campaigns ADD COLUMN IF NOT EXISTS current_step INTEGER NOT NULL DEFAULT 1;
+
 CREATE INDEX IF NOT EXISTS calendar_events_date_idx ON calendar_events(event_date, event_time);
 CREATE INDEX IF NOT EXISTS calendar_events_related_idx ON calendar_events(LOWER(related_to));
 CREATE UNIQUE INDEX IF NOT EXISTS calendar_events_import_dedupe_idx ON calendar_events(title, event_date, COALESCE(event_time, '00:00'::time), LOWER(related_to));
 CREATE INDEX IF NOT EXISTS service_products_service_position_idx ON service_products(service_id, position, id);
 CREATE INDEX IF NOT EXISTS campaigns_updated_at_idx ON campaigns(updated_at DESC);
+
+CREATE TABLE IF NOT EXISTS campaign_recipients (
+  id BIGSERIAL PRIMARY KEY,
+  campaign_id TEXT NOT NULL REFERENCES campaigns(id) ON DELETE CASCADE,
+  contact_id BIGINT REFERENCES contacts(id) ON DELETE SET NULL,
+  email TEXT NOT NULL,
+  first_name TEXT NOT NULL DEFAULT '',
+  company_name TEXT NOT NULL DEFAULT '',
+  state TEXT NOT NULL DEFAULT 'pending',
+  current_day_id TEXT,
+  current_activity_id TEXT,
+  next_run_at TIMESTAMPTZ,
+  do_not_contact BOOLEAN NOT NULL DEFAULT FALSE,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  UNIQUE (campaign_id, email)
+);
+
+CREATE TABLE IF NOT EXISTS campaign_executions (
+  id BIGSERIAL PRIMARY KEY,
+  campaign_id TEXT NOT NULL REFERENCES campaigns(id) ON DELETE CASCADE,
+  recipient_id BIGINT REFERENCES campaign_recipients(id) ON DELETE CASCADE,
+  day_id TEXT,
+  activity_id TEXT,
+  activity_type TEXT NOT NULL,
+  status TEXT NOT NULL DEFAULT 'queued',
+  provider_message_id TEXT,
+  idempotency_key TEXT NOT NULL UNIQUE,
+  result JSONB NOT NULL DEFAULT '{}'::jsonb,
+  created_by TEXT NOT NULL,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS campaign_recipients_next_run_idx ON campaign_recipients(campaign_id, next_run_at);
+CREATE INDEX IF NOT EXISTS campaign_executions_campaign_idx ON campaign_executions(campaign_id, created_at DESC);
 
 CREATE TABLE IF NOT EXISTS workspace_imports (
   import_key TEXT PRIMARY KEY,

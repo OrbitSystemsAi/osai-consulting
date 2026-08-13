@@ -12,10 +12,11 @@
   "dependencies": {
     "@clerk/nextjs": "latest",
     "@neondatabase/serverless": "latest",
+    "@upstash/qstash": "^2.11.3",
+    "lucide-react": "latest",
     "next": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "lucide-react": "latest"
-  },
-  "devDependencies": {}
+    "resend": "^6.19.0"
+  }
 }

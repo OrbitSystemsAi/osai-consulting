@@ -1,9 +1,11 @@
 'use client'
 
 import React, { useEffect, useMemo, useState } from 'react'
-import { SignInButton, SignOutButton, UserButton, useAuth, useUser } from '@clerk/nextjs'
+import { SignInButton, SignOutButton, UserButton, useAuth } from '@clerk/nextjs'
 import { leadProspects } from './leads'
 import { serviceCatalog } from './services'
+import { CampaignBuilder } from './campaign-builder'
+import { defaultCampaignAudience, defaultCampaignSchedule, defaultCampaignWorkflow } from '../lib/campaign-workflow'
 import {
   ArrowRight,
   ArrowUpRight,
@@ -746,6 +748,11 @@ function CampaignModule({ onCountChange }) {
   useEffect(() => {
     workspaceRequest('/api/campaigns').then(items => { setCampaigns(items); onCountChange(items.length) }).catch(reason => setError(reason.message))
   }, [onCountChange])
+  useEffect(() => {
+    if (!campaigns.length) return
+    const requested = new URLSearchParams(window.location.search).get('campaign')
+    if (requested && campaigns.some(campaign => campaign.id === requested)) setSelectedId(requested)
+  }, [campaigns])
   const selected = campaigns.find(campaign => campaign.id === selectedId)
   const addCampaign = async campaign => {
     try {
@@ -754,30 +761,15 @@ function CampaignModule({ onCountChange }) {
     } catch (reason) { setError(reason.message) }
   }
   if (selected) {
-    return <main className="content pane services-content"><div className="content-inner service-detail">
-      <button className="service-back" onClick={() => setSelectedId(null)}><ChevronLeft size={16} /> Campaign</button>
-      <header className="service-detail-heading"><div className="service-detail-title"><div><h1>{selected.title}</h1><em>{selected.category}</em></div></div><p>{selected.description}</p></header>
-      <section className="service-product-grid" aria-label={`${selected.title} activities`}>
-        {selected.activities.map(activityItem => <article key={activityItem.name}><h2>{activityItem.name}</h2><p>{activityItem.summary}</p><div><strong>Activities</strong><ul>{activityItem.includes.map(item => <li key={item}>{item}</li>)}</ul></div></article>)}
-      </section>
-    </div></main>
+    return <CampaignBuilder campaign={selected} onBack={() => setSelectedId(null)} onSaved={saved => setCampaigns(current => current.map(item => item.id === saved.id ? saved : item))} />
   }
   return <main className="content pane services-content"><div className="content-inner"><header className="page-heading services-heading"><div><h1>Campaign</h1><p>Plan and manage focused activity that moves relationships through the market-development lifecycle.</p>{error && <small className="service-upload-error" role="alert">{error}</small>}</div><button className="service-add" onClick={() => setAddOpen(true)}><Plus size={15} /> Add</button></header><section className="workspace-services workspace-campaigns">{campaigns.map(campaign => <article className="service-card" key={campaign.id} role="link" tabIndex={0} aria-label={`View ${campaign.title}`} onClick={() => setSelectedId(campaign.id)} onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); setSelectedId(campaign.id) } }}><h2>{campaign.title}</h2><em>{campaign.category}</em><p>{campaign.brief}</p><div className="service-card-products"><strong>Activities</strong><ul>{campaign.activities.map(item => <li key={item.name}>{item.name}</li>)}</ul></div></article>)}</section>{addOpen && <AddCampaignDialog onClose={() => setAddOpen(false)} onAdd={addCampaign} />}</div></main>
 }
 
 function AddCampaignDialog({ onClose, onAdd }) {
-  const [file, setFile] = useState(null)
-  const [preview, setPreview] = useState(null)
-  const [error, setError] = useState('')
-  const chooseFile = async event => {
-    const nextFile = event.target.files?.[0]
-    if (!nextFile) return
-    setFile(nextFile)
-    setError('')
-    try { setPreview(parseUploadedCampaign(await nextFile.text(), nextFile.name)) }
-    catch (reason) { setPreview(null); setError(reason.message || 'Unable to read this document.') }
-  }
-  return <div className="crm-modal-backdrop"><section className="crm-modal service-upload-dialog" role="dialog" aria-modal="true" aria-labelledby="add-campaign-title"><header><div><h2 id="add-campaign-title">Add campaign</h2><p>Upload a campaign document to create its card and detail page.</p></div><button className="row-menu" onClick={onClose} aria-label="Close campaign upload"><X size={18} /></button></header><div className="service-upload-body"><label className="service-file-picker"><input type="file" accept=".md,.txt,.json,text/markdown,text/plain,application/json" onChange={chooseFile} /><span><Plus size={18} /><strong>{file ? file.name : 'Choose campaign document'}</strong><small>Markdown, plain text, or JSON</small></span></label>{error && <p className="service-upload-error" role="alert">{error}</p>}{preview && <article className="service-upload-preview"><small>Preview</small><h3>{preview.title}</h3><em>{preview.category}</em><p>{preview.brief}</p><span>{preview.activities.length} activit{preview.activities.length === 1 ? 'y' : 'ies'}</span></article>}</div><footer><button type="button" className="quiet-button" onClick={onClose}>Cancel</button><button className="primary-button" disabled={!preview} onClick={() => onAdd(preview)}>Add campaign</button></footer></section></div>
+  const [form, setForm] = useState({ title: '', objective: '', ownerName: 'Earl Powery' })
+  const create = () => onAdd({ id: serviceSlug(form.title), title: form.title, category: 'Draft', brief: form.objective, description: form.objective, objective: form.objective, ownerName: form.ownerName, status: 'draft', activities: [], audience: defaultCampaignAudience(), workflow: defaultCampaignWorkflow(), schedule: defaultCampaignSchedule(), currentStep: 1 })
+  return <div className="crm-modal-backdrop"><section className="crm-modal campaign-create-dialog" role="dialog" aria-modal="true" aria-labelledby="add-campaign-title"><header><div><h2 id="add-campaign-title">Create campaign</h2><p>Start with the campaign’s purpose and owner. Audience and outreach logic come next.</p></div><button className="row-menu" onClick={onClose} aria-label="Close campaign creation"><X size={18} /></button></header><div className="campaign-create-body"><label><span>Campaign name</span><input autoFocus value={form.title} onChange={event => setForm(current => ({ ...current, title: event.target.value }))} placeholder="Campaign name" /></label><label><span>Objective</span><textarea value={form.objective} onChange={event => setForm(current => ({ ...current, objective: event.target.value }))} placeholder="What should this campaign accomplish?" /></label><label><span>Owner</span><input value={form.ownerName} onChange={event => setForm(current => ({ ...current, ownerName: event.target.value }))} /></label></div><footer><button type="button" className="quiet-button" onClick={onClose}>Cancel</button><button className="primary-button" disabled={!form.title.trim() || !form.objective.trim()} onClick={create}>Continue to audience</button></footer></section></div>
 }
 
 function AddServiceDialog({ onClose, onAdd }) {
@@ -874,16 +866,20 @@ function ProfileForm({ profile, onSave, settings = false, configured = false }) 
     try {
       await onSave({ firstName: form.firstName.trim(), lastName: form.lastName.trim(), nickname: (form.nickname || '').trim(), email: form.email })
       setStatus('Profile saved')
-    } catch {
-      setStatus('Unable to save profile')
+    } catch (error) {
+      setStatus(error.message || 'Unable to save profile')
     }
   }
   return <main className="content pane profile-content"><div className="settings-body"><section className="profile-module"><header><div><h1>{settings ? 'Settings' : 'Profile'}</h1><p>Manage your profile and OSAI workspace preferences.</p></div><span className="profile-large-avatar">{`${form.firstName?.[0] || ''}${form.lastName?.[0] || ''}`.toUpperCase() || 'OU'}</span></header><form onSubmit={submit}><div className="profile-form-grid"><label>Nickname<input name="nickname" value={form.nickname} onChange={update} autoComplete="nickname" placeholder="Welcome name" /></label><label>First name<input required name="firstName" value={form.firstName} onChange={update} autoComplete="given-name" /></label><label>Last name<input required name="lastName" value={form.lastName} onChange={update} autoComplete="family-name" /></label></div><label>Email address<input name="email" value={form.email} disabled aria-describedby="email-help" /></label><small id="email-help">Email is managed by your sign-in account.</small><footer><span role="status">{status}</span><button className="primary-button" type="submit">Save profile</button></footer></form></section>{settings && <section className="settings-account-section"><div><h2>Account</h2><p>End your current OSAI workspace session.</p></div><SignOutAction configured={configured} /></section>}</div></main>
 }
 
 function ClerkProfileModule({ profile, onSaved, settings, configured }) {
-  const { user } = useUser()
-  return <ProfileForm profile={profile} settings={settings} configured={configured} onSave={async next => { await user.update({ firstName: next.firstName, lastName: next.lastName, unsafeMetadata: { ...user.unsafeMetadata, nickname: next.nickname } }); onSaved(next) }} />
+  return <ProfileForm profile={profile} settings={settings} configured={configured} onSave={async next => {
+    const response = await fetch('/api/profile', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(next) })
+    const result = await response.json()
+    if (!response.ok) throw new Error(result.error || 'Unable to save profile')
+    onSaved(result)
+  }} />
 }
 
 function ProfileModule({ configured, profile, onSaved, settings = false }) {
