@@ -51,9 +51,9 @@ import {
 const navItems = [
   { label: 'Overview', icon: LayoutDashboard },
   { label: 'Market', icon: Target, count: leadProspects.length },
-  { label: 'Calendar', icon: CalendarDays },
-  { label: 'Campaign', icon: Megaphone, count: 3 },
   { label: 'Services', icon: Sparkles, count: serviceCatalog.length },
+  { label: 'Campaign', icon: Megaphone, count: 3 },
+  { label: 'Calendar', icon: CalendarDays },
   { label: 'Pipeline', icon: BriefcaseBusiness, count: 7 },
   { label: 'Users', icon: UserCog, count: 5 },
 ]
